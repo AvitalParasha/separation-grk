@@ -1,0 +1,18 @@
+# Build artifacts
+bin/
+obj/
+
+# Generated parser files
+src/sgrk_parser.cpp
+src/sgrk_parser.hpp
+src/sgrk_scanner.cpp
+src/location.hh
+src/position.hh
+src/stack.hh
+
+# macOS
+.DS_Store
+
+# Tool output
+output.dot
+output.png

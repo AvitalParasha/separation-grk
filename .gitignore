@@ -16,3 +16,6 @@ src/stack.hh
 # Tool output
 output.dot
 output.png
+
+# Local notes
+installation_changes_made.txt

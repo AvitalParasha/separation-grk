@@ -1,0 +1,42 @@
+"in:trigger" ;
+"out:bit0" &
+"out:bit1" &
+"out:bit2" &
+"out:bit3" &
+"out:bit4" &
+"out:bit5" &
+"out:bit6" &
+"out:bit7" &
+"out:bit8" &
+"out:bit9" ;
+1 ;
+("out:bit0" -> !X "out:bit0") &
+(!"out:bit0" -> X "out:bit0") &
+("out:bit1" -> !X "out:bit1") &
+(!"out:bit1" -> X "out:bit1") &
+("out:bit2" -> !X "out:bit2") &
+(!"out:bit2" -> X "out:bit2") &
+("out:bit3" -> !X "out:bit3") &
+(!"out:bit3" -> X "out:bit3") &
+("out:bit4" -> !X "out:bit4") &
+(!"out:bit4" -> X "out:bit4") &
+("out:bit5" -> !X "out:bit5") &
+(!"out:bit5" -> X "out:bit5") &
+("out:bit6" -> !X "out:bit6") &
+(!"out:bit6" -> X "out:bit6") &
+("out:bit7" -> !X "out:bit7") &
+(!"out:bit7" -> X "out:bit7") &
+("out:bit8" -> !X "out:bit8") &
+(!"out:bit8" -> X "out:bit8") &
+("out:bit9" -> !X "out:bit9") &
+(!"out:bit9" -> X "out:bit9") ;
+((GF "in:trigger") -> (FG "out:bit0")) &
+((GF "in:trigger") -> (FG "out:bit1")) &
+((GF "in:trigger") -> (FG "out:bit2")) &
+((GF "in:trigger") -> (FG "out:bit3")) &
+((GF "in:trigger") -> (FG "out:bit4")) &
+((GF "in:trigger") -> (FG "out:bit5")) &
+((GF "in:trigger") -> (FG "out:bit6")) &
+((GF "in:trigger") -> (FG "out:bit7")) &
+((GF "in:trigger") -> (FG "out:bit8")) &
+((GF "in:trigger") -> (FG "out:bit9"))

@@ -3,7 +3,7 @@ CUDD=../cudd-install
 IDIR=$(CUDD)/include
 LDIR=$(CUDD)/lib
 
-BISON=bison
+BISON=/opt/homebrew/opt/bison/bin/bison
 FLEX=flex
 CC=g++
 
@@ -16,7 +16,7 @@ SRC := $(wildcard $(SRC_DIR)/*.cpp)
 OBJ := $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRC)) $(OBJ_DIR)/sgrk_parser.o $(OBJ_DIR)/sgrk_scanner.o
 
 CPPFLAGS := -I$(IDIR) -MMD -MP
-CFLAGS := -Wall --std=c++17
+CFLAGS := -Wall --std=c++17 -isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1
 LDFLAGS := -L$(LDIR)
 LDLIBS := -lcudd
 

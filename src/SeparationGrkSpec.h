@@ -8,19 +8,31 @@
 
 namespace SGrk {
 
+enum class ImplicationType { R2R, R2P };
+
 class SeparationGrkImplication {
+	ImplicationType type_;
 	std::vector<CUDD::BDD> assumptions_;
 	std::vector<CUDD::BDD> guarantees_;
 
  public:
 
-	SeparationGrkImplication() {}
-	
-	SeparationGrkImplication(std::vector<CUDD::BDD> assumptions,
+	SeparationGrkImplication() : type_(ImplicationType::R2R) {}
+
+	SeparationGrkImplication(ImplicationType type,
+	                         std::vector<CUDD::BDD> assumptions,
 	                         std::vector<CUDD::BDD> guarantees)
-	: assumptions_(std::move(assumptions))
+	: type_(type)
+	, assumptions_(std::move(assumptions))
 	, guarantees_(std::move(guarantees)) {}
 
+	SeparationGrkImplication(std::vector<CUDD::BDD> assumptions,
+	                         std::vector<CUDD::BDD> guarantees)
+	: type_(ImplicationType::R2R)
+	, assumptions_(std::move(assumptions))
+	, guarantees_(std::move(guarantees)) {}
+
+	ImplicationType Type() const { return type_; }
 	const std::vector<CUDD::BDD>& Assumptions() const { return assumptions_; }
 	const std::vector<CUDD::BDD>& Guarantees() const { return guarantees_; }
 };

@@ -36,6 +36,15 @@ class CycleCover {
 
 	CUDD::BDD HasCycle(const CUDD::BDD& connected, const CUDD::BDD& prop) const;
 
+	CUDD::BDD ComputeAliveRegion(
+	    const CUDD::BDD& safety_guarantees,
+	    const std::vector<CUDD::BDD>& guarantees) const;
+
+	PathStrategy ComputeR2PPathStrategy(
+	    const CUDD::BDD& transition_relation,
+	    const CUDD::BDD& bipath_relation,
+	    const CUDD::BDD& alive_region) const;
+
 	CUDD::BDD ComputeCoveredRegion(const SeparationGrkSpec& spec,
 	                               const SpaceConnectivity& connectivity) const;
 	

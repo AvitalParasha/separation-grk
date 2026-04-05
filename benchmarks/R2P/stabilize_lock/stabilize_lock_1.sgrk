@@ -1,0 +1,5 @@
+1 ;
+!"out:locked0" ;
+1 ;
+("out:locked0" -> X "out:locked0") ;
+((GF "in:trigger") -> (FG "out:locked0"))

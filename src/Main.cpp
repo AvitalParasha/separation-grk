@@ -118,6 +118,20 @@ int main(int argc, char* argv[]) {
 	
 	const SGrk::SeparationGrkSpec& spec = driver.spec;
 
+	const auto& implications = spec.JusticeImplications();
+	if (!implications.empty()) {
+		SGrk::ImplicationType expected_type = implications[0].Type();
+		for (std::size_t i = 1; i < implications.size(); ++i) {
+			if (implications[i].Type() != expected_type) {
+				std::cerr << "Error: mixed R2R (GF->GF) and R2P (GF->FG) "
+				          << "implications are not supported. "
+				          << "All implications must use the same type."
+				          << std::endl;
+				return 1;
+			}
+		}
+	}
+
 	SGrk::SeparationGrkSolver solver(mgr, vars, spec);
 
 	std::optional<SGrk::SeparationGrkStrategy> strategy = solver.Run();

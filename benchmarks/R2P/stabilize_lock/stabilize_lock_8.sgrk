@@ -1,0 +1,26 @@
+1 ;
+!"out:locked0" &
+!"out:locked1" &
+!"out:locked2" &
+!"out:locked3" &
+!"out:locked4" &
+!"out:locked5" &
+!"out:locked6" &
+!"out:locked7" ;
+1 ;
+("out:locked0" -> X "out:locked0") &
+("out:locked1" -> X "out:locked1") &
+("out:locked2" -> X "out:locked2") &
+("out:locked3" -> X "out:locked3") &
+("out:locked4" -> X "out:locked4") &
+("out:locked5" -> X "out:locked5") &
+("out:locked6" -> X "out:locked6") &
+("out:locked7" -> X "out:locked7") ;
+((GF "in:trigger") -> (FG "out:locked0")) &
+((GF "in:trigger") -> (FG "out:locked1")) &
+((GF "in:trigger") -> (FG "out:locked2")) &
+((GF "in:trigger") -> (FG "out:locked3")) &
+((GF "in:trigger") -> (FG "out:locked4")) &
+((GF "in:trigger") -> (FG "out:locked5")) &
+((GF "in:trigger") -> (FG "out:locked6")) &
+((GF "in:trigger") -> (FG "out:locked7"))

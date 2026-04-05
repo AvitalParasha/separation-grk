@@ -1,8 +1,12 @@
+MYSELF=$(realpath "$0")
+MYDIR="${MYSELF%/*}"
+
+cd "${MYDIR}"
 javac -d . RailwaySignaling.java
 
 for m in {2..3}
 do
-    rm railway_signaling_${m}/railway_signaling_${m}_*.sgrk
+    rm "railway_signaling_${m}/railway_signaling_${m}_"*.sgrk
 
     for n in {2..10}
     do

@@ -1,0 +1,50 @@
+1 ;
+!"out:a0" &
+!"out:a1" &
+!"out:a2" &
+!"out:a3" &
+!"out:a4" &
+!"out:a5" &
+!"out:a6" &
+!"out:a7" &
+!"out:b0" &
+!"out:b1" &
+!"out:b2" &
+!"out:b3" &
+!"out:b4" &
+!"out:b5" &
+!"out:b6" &
+!"out:b7" ;
+1 ;
+(("out:a0" & !"out:b0") -> !X "out:a0") &
+(("out:a0" & "out:b0") -> X "out:a0") &
+(("out:a0" & "out:b0") -> X "out:b0") &
+(("out:a1" & !"out:b1") -> !X "out:a1") &
+(("out:a1" & "out:b1") -> X "out:a1") &
+(("out:a1" & "out:b1") -> X "out:b1") &
+(("out:a2" & !"out:b2") -> !X "out:a2") &
+(("out:a2" & "out:b2") -> X "out:a2") &
+(("out:a2" & "out:b2") -> X "out:b2") &
+(("out:a3" & !"out:b3") -> !X "out:a3") &
+(("out:a3" & "out:b3") -> X "out:a3") &
+(("out:a3" & "out:b3") -> X "out:b3") &
+(("out:a4" & !"out:b4") -> !X "out:a4") &
+(("out:a4" & "out:b4") -> X "out:a4") &
+(("out:a4" & "out:b4") -> X "out:b4") &
+(("out:a5" & !"out:b5") -> !X "out:a5") &
+(("out:a5" & "out:b5") -> X "out:a5") &
+(("out:a5" & "out:b5") -> X "out:b5") &
+(("out:a6" & !"out:b6") -> !X "out:a6") &
+(("out:a6" & "out:b6") -> X "out:a6") &
+(("out:a6" & "out:b6") -> X "out:b6") &
+(("out:a7" & !"out:b7") -> !X "out:a7") &
+(("out:a7" & "out:b7") -> X "out:a7") &
+(("out:a7" & "out:b7") -> X "out:b7") ;
+((GF "in:trigger") -> (FG "out:a0")) &
+((GF "in:trigger") -> (FG "out:a1")) &
+((GF "in:trigger") -> (FG "out:a2")) &
+((GF "in:trigger") -> (FG "out:a3")) &
+((GF "in:trigger") -> (FG "out:a4")) &
+((GF "in:trigger") -> (FG "out:a5")) &
+((GF "in:trigger") -> (FG "out:a6")) &
+((GF "in:trigger") -> (FG "out:a7"))

@@ -89,11 +89,19 @@ CycleStrategy CycleCover::ComputeCycleStrategy(
 	CycleStrategy cycle_strategy(mgr_, vars_, idle_strategy);
 	
 	for (const auto& implication : spec.JusticeImplications()) {
-		PathStrategy path_strategy = ComputePathStrategy(transition_relation,
-		                                                 bipath_relation,
-		                                                 implication.Guarantees());
-
-		cycle_strategy.Merge(path_strategy);
+		if (implication.Type() == ImplicationType::R2R) {
+			// R2R: cycle through guarantee states
+			PathStrategy path_strategy = ComputePathStrategy(
+				transition_relation, bipath_relation, implication.Guarantees());
+			cycle_strategy.Merge(path_strategy);
+		} else {
+			// R2P: reach and maintain alive region
+			CUDD::BDD alive = ComputeAliveRegion(
+				spec.SafetyGuarantees(), implication.Guarantees());
+			PathStrategy path_strategy = ComputeR2PPathStrategy(
+				transition_relation, bipath_relation, alive);
+			cycle_strategy.Merge(path_strategy);
+		}
 	}
 
 	return cycle_strategy;
@@ -104,6 +112,52 @@ CUDD::BDD CycleCover::HasCycle(const CUDD::BDD& connected,
 	// Exists s' . Connected(s, s') & Prop(s')
 	return vars_->Exists(vars_->PrimedVars(),
 	                     connected & vars_->UnprimedToPrimed(prop));
+}
+
+CUDD::BDD CycleCover::ComputeAliveRegion(
+    const CUDD::BDD& safety_guarantees,
+    const std::vector<CUDD::BDD>& guarantees) const {
+	// Conjunction of all guarantees: states where ALL hold simultaneously
+	CUDD::BDD all_g = mgr_->bddOne();
+	for (const auto& g : guarantees) {
+		all_g &= g;
+	}
+
+	// Safety fixpoint: largest subset of all_g that is closed
+	// under system transitions (every state has a successor in the set)
+	CUDD::BDD alive = all_g;
+	while (true) {
+		CUDD::BDD new_alive = alive &
+			vars_->Exists(vars_->PrimedOutputs(),
+				safety_guarantees & vars_->UnprimedToPrimed(alive));
+		if (new_alive == alive) return alive;
+		alive = new_alive;
+	}
+}
+
+PathStrategy CycleCover::ComputeR2PPathStrategy(
+    const CUDD::BDD& transition_relation,
+    const CUDD::BDD& bipath_relation,
+    const CUDD::BDD& alive_region) const {
+	// Part 0: Reachability strategy toward alive region
+	MemorylessStrategy reach_strategy =
+		ComputeReachabilityStrategy(transition_relation, bipath_relation, alive_region);
+
+	// Part 1: Maintain strategy — stay in alive forever
+	CUDD::BDD maintain_moves = transition_relation &
+		alive_region & vars_->UnprimedToPrimed(alive_region);
+	MemorylessStrategy maintain_strategy =
+		MemorylessStrategy::Determinize(mgr_, vars_, maintain_moves);
+
+	std::vector<MemorylessStrategy> parts = {reach_strategy, maintain_strategy};
+	std::vector<CUDD::BDD> stops = {
+		alive_region,      // Phase 0 stops when we reach alive
+		mgr_->bddZero()   // Phase 1 NEVER stops (stay forever)
+	};
+
+	CUDD::BDD realizable = reach_strategy.RealizableRegion() &
+	                        maintain_strategy.RealizableRegion();
+	return PathStrategy(realizable, std::move(parts), std::move(stops));
 }
 
 CUDD::BDD CycleCover::ComputeCoveredRegion(
@@ -126,17 +180,26 @@ CUDD::BDD CycleCover::ComputeCoveredRegion(
 
 	for (const auto& implication : spec.JusticeImplications()) {
 		CUDD::BDD can_satisfy_assumptions = mgr_->bddOne();
-		
+
 		for (const auto& assumption : implication.Assumptions()) {
 			can_satisfy_assumptions &=
 				HasCycle(environment_bipath_relation, assumption);
 		}
 
-		CUDD::BDD can_satisfy_guarantees = mgr_->bddOne();
+		CUDD::BDD can_satisfy_guarantees;
 
-		for (const auto& guarantee : implication.Guarantees()) {
-			can_satisfy_guarantees =
-				HasCycle(system_bipath_relation, guarantee);
+		if (implication.Type() == ImplicationType::R2R) {
+			// R2R: can cycle through each guarantee individually
+			can_satisfy_guarantees = mgr_->bddOne();
+			for (const auto& guarantee : implication.Guarantees()) {
+				can_satisfy_guarantees &=
+					HasCycle(system_bipath_relation, guarantee);
+			}
+		} else {
+			// R2P: exists a cycle where ALL guarantees hold simultaneously
+			CUDD::BDD alive = ComputeAliveRegion(
+				spec.SafetyGuarantees(), implication.Guarantees());
+			can_satisfy_guarantees = HasCycle(system_bipath_relation, alive);
 		}
 
 		covered_region &= !can_satisfy_assumptions | can_satisfy_guarantees;

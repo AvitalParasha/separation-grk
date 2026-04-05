@@ -4,12 +4,12 @@ from formulas import *
 from sgrk import format_sgrk
 
 if len(sys.argv) < 2:
-    print "Usage: " + sys.argv[0] + " <#rooms>"
+    print("Usage: " + sys.argv[0] + " <#rooms>")
 else:
     n_rooms = int(sys.argv[1])
 
     if n_rooms < 1:
-        print "Number of rooms must be a positive integer, defaulting to 1"
+        print("Number of rooms must be a positive integer, defaulting to 1")
 
     def make_init(room, clean):
         return ([Var(room[0])] + # room_0

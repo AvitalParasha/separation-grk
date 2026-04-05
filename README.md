@@ -12,7 +12,21 @@ The project also requires a working installation of ``flex`` and ``bison``, and 
 
 ## Specification format
 
-Examples of specification files can be found in the ``benchmarks`` subdirectory. The following example can be found in ``cleaning_robots/cleaning_robots_1.sgrk``:
+Examples of specification files can be found in the ``benchmarks`` subdirectory, organized into two categories based on their fairness pattern:
+
+* **``benchmarks/R2R/``** — Recurrence-to-Recurrence benchmarks using the standard ``GF`` → ``GF`` fairness pattern. Contains the following scalable example families, each with a Python/Java generator and a shell script that produces specifications for i=1..10 (or i=2..10):
+  * ``cleaning_robots/`` — Cleaning robot coordination in a one-way corridor (i = number of rooms)
+  * ``multi_mode/`` — Multi-mode controller (i = number of modes)
+  * ``railway_signaling_2/`` — Railway signaling with delay 2 (i = number of tracks)
+  * ``railway_signaling_3/`` — Railway signaling with delay 3 (i = number of tracks)
+  * ``rotating_robots/`` — Rotating robots on a grid (single hand-written example)
+
+* **``benchmarks/R2P/``** — Recurrence-to-Persistence benchmarks using the ``GF`` → ``FG`` fairness pattern. Each example has its own directory with a ``README.md`` explaining the specification, its scaling parameter, and its realizability. Contains scalable families with generators for i=1..10:
+  * ``stabilize_lock/`` — One-way latch stabilization (i = number of locks, realizable for all i)
+  * ``forced_oscillation/`` — Contradiction between safety oscillation and persistence (i = number of bits, unrealizable for all i)
+  * ``alive_region_pruning/`` — Absorbing vs. trap states requiring region pruning (i = number of (a,b) pairs, realizable for all i)
+
+The following R2R example can be found in ``R2R/cleaning_robots/cleaning_robots_1.sgrk``:
 
 ```
 "in:room0" & !"in:clean0" & !"in:done" ;
@@ -52,6 +66,13 @@ Specification files must be in the format
 
 where assumptions are boolean formulas over the input variables and guarantees are boolean formulas over the output variables. All variables must be in quotation marks. Input variables must be prefixed by ``in:`` and output variables by ``out:``, and their names can use any alphanumeric character or underscores, in any order. Although the tool currently does not check whether the assumptions only contain input variables and the guarantees only contain output variables, if this condition is violated the tool is not guaranteed to produce correct results.
 
+For R2P benchmarks, the fairness section uses ``FG`` (persistence) on the guarantee side instead of ``GF`` (recurrence):
+
+```
+((GF <justice-assumption>) -> (FG <justice-guarantee>)) &
+...
+```
+
 Boolean formulas use the operators ``!`` (not), ``&`` (and), ``|`` (or), ``->`` (implies), ``<->`` (iff) and ``^`` (xor), and the constants ``0`` and ``1``. In the safety assumptions and guarantees variables can also be preceded by the temporal operator ``X`` (next).
 
 Whitespace and newlines are used for readability, but ignored by the parser.
@@ -70,6 +91,84 @@ The implicit semantics of a specification in the format above are given by the f
 
 In this formula, ``W`` denotes the "weak until" operator, ``G`` the "globally" operator and ``F`` the "eventually" operator.
 
+## Benchmarks
+
+### Directory structure
+
+```
+benchmarks/
+  formulas.py              Shared LTL formula building library
+  to_strix.py              Shared converter: SGRK → Strix format
+  to_strix.sh              Runs to_strix.py over a benchmark family
+  run_all_tests.sh         Runs all R2R and R2P tests
+  R2R/
+    run_r2r_tests.sh       Runs all R2R benchmarks and checks realizability
+    cleaning_robots.py      Generator (param: number of rooms)
+    cleaning_robots.sh      Generates cleaning_robots_1..10.sgrk
+    multi_mode.py           Generator (param: number of modes)
+    multi_mode.sh           Generates multi_mode_1..10.sgrk
+    RailwaySignaling.java   Generator (params: delay, number of tracks)
+    railway_signaling.sh    Generates railway_signaling_{2,3}_{2..10}.sgrk
+    sgrk.py                 R2R formatting helper (GF→GF)
+    cleaning_robots/        Generated .sgrk files
+    multi_mode/             Generated .sgrk files
+    railway_signaling_2/    Generated .sgrk files
+    railway_signaling_3/    Generated .sgrk files
+    rotating_robots/        Hand-written .sgrk file
+  R2P/
+    run_r2p_tests.sh       Runs all R2P benchmarks and checks realizability
+    stabilize_lock.py       Generator (param: number of locks)
+    stabilize_lock.sh       Generates stabilize_lock_1..10.sgrk
+    forced_oscillation.py   Generator (param: number of bits)
+    forced_oscillation.sh   Generates forced_oscillation_1..10.sgrk
+    alive_region_pruning.py Generator (param: number of (a,b) pairs)
+    alive_region_pruning.sh Generates alive_region_pruning_1..10.sgrk
+    stabilize_lock/         Generated .sgrk files + README.md
+    forced_oscillation/     Generated .sgrk files + README.md
+    alive_region_pruning/   Generated .sgrk files + README.md
+```
+
+### Generating benchmarks
+
+To regenerate the benchmark files, run the shell scripts from their respective directories:
+
+```bash
+# R2R benchmarks
+bash benchmarks/R2R/cleaning_robots.sh
+bash benchmarks/R2R/multi_mode.sh
+bash benchmarks/R2R/railway_signaling.sh
+
+# R2P benchmarks
+bash benchmarks/R2P/stabilize_lock.sh
+bash benchmarks/R2P/forced_oscillation.sh
+bash benchmarks/R2P/alive_region_pruning.sh
+```
+
+### Running tests
+
+To verify all benchmarks produce the expected realizability results:
+
+```bash
+# Run everything
+bash benchmarks/run_all_tests.sh
+
+# Or individually
+bash benchmarks/R2R/run_r2r_tests.sh
+bash benchmarks/R2P/run_r2p_tests.sh
+```
+
+### Converting to Strix format
+
+To convert benchmarks to the Strix synthesis tool format:
+
+```bash
+# R2R example
+bash benchmarks/to_strix.sh cleaning_robots R2R
+
+# R2P example
+bash benchmarks/to_strix.sh stabilize_lock R2P
+```
+
 ## Running the tool
 
 To run the tool, use the command
@@ -78,9 +177,9 @@ To run the tool, use the command
 bin/sgrk <specification-file> [--test=<test-set-file>] [--play=<input-play-file>] [--dumpdot=<output-dot-file>]
 ```
 
-where ``<specification-file>`` is a file in tnhe format above. The tool outputs either ``Realizable`` or ``Unrealizable``.
+where ``<specification-file>`` is a file in the format above. The tool outputs either ``Realizable`` or ``Unrealizable``.
 
-Although the tool computes a winning strategy if the specification is realizable, currently there is no option to save this winning strategy in a standard format such as AIGER. However, the winning strategy can be inspected in various ways by using the optional arguments. We descripte these options below.
+Although the tool computes a winning strategy if the specification is realizable, currently there is no option to save this winning strategy in a standard format such as AIGER. However, the winning strategy can be inspected in various ways by using the optional arguments. We describe these options below.
 
 ### Dump dot
 
@@ -92,7 +191,7 @@ If the optional argument ``--dumpdot=<output-dot-file>`` is provided, then it wi
 
 ### Test
 
-If the optional argument ``--test=<test-set-file>`` is provided, the tool reads the input ``<test-set-file>``. The following example test file for the ``cleaning_robots_2.sgrk`` benchmark can be found in ``benchmarks/cleaning_robots_2.test``:
+If the optional argument ``--test=<test-set-file>`` is provided, the tool reads the input ``<test-set-file>``. The following example test file for the ``cleaning_robots_2.sgrk`` benchmark can be found in ``benchmarks/R2R/cleaning_robots/cleaning_robots_2.test``:
 
 ```
 in:room0 in:room1 in:clean0 in:clean1 in:done out:room0 out:room1 out:clean0 out:clean1

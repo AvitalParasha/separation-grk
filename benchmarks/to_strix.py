@@ -3,7 +3,7 @@ import sys
 from formulas import *
 
 if len(sys.argv) < 2:
-    print "Usage: " + sys.argv[0] + " <filename>"
+    print("Usage: " + sys.argv[0] + " <filename>")
 else:
     filename = sys.argv[1]
     
@@ -11,7 +11,7 @@ else:
         components = in_file.read().replace("\n", " ").split(";")
 
         if len(components) != 5:
-            print "Error: Expected 5 formulas, found " + len(components)
+            print("Error: Expected 5 formulas, found " + str(len(components)))
         else:
             parenthesize = lambda s : "(" + s.strip(" ") + ")"
             

@@ -25,6 +25,7 @@ Examples of specification files can be found in the ``benchmarks`` subdirectory,
   * ``stabilize_lock/`` — One-way latch stabilization (i = number of locks, realizable for all i)
   * ``forced_oscillation/`` — Contradiction between safety oscillation and persistence (i = number of bits, unrealizable for all i)
   * ``alive_region_pruning/`` — Absorbing vs. trap states requiring region pruning (i = number of (a,b) pairs, realizable for all i)
+  * ``cleaning_robots/`` — R2P version of the R2R cleaning robots benchmark (i = number of rooms, realizable for all i). Same initial/safety constraints, but with ``FG`` persistence guarantees instead of ``GF`` recurrence.
 
 The following R2R example can be found in ``R2R/cleaning_robots/cleaning_robots_1.sgrk``:
 
@@ -117,15 +118,19 @@ benchmarks/
     rotating_robots/        Hand-written .sgrk file
   R2P/
     run_r2p_tests.sh       Runs all R2P benchmarks and checks realizability
+    sgrk_r2p.py             R2P formatting helper (GF→FG)
     stabilize_lock.py       Generator (param: number of locks)
     stabilize_lock.sh       Generates stabilize_lock_1..10.sgrk
     forced_oscillation.py   Generator (param: number of bits)
     forced_oscillation.sh   Generates forced_oscillation_1..10.sgrk
     alive_region_pruning.py Generator (param: number of (a,b) pairs)
     alive_region_pruning.sh Generates alive_region_pruning_1..10.sgrk
+    cleaning_robots.py      Generator (param: number of rooms, R2P version)
+    cleaning_robots.sh      Generates cleaning_robots_1..10.sgrk
     stabilize_lock/         Generated .sgrk files + README.md
     forced_oscillation/     Generated .sgrk files + README.md
     alive_region_pruning/   Generated .sgrk files + README.md
+    cleaning_robots/        Generated .sgrk files + README.md
 ```
 
 ### Generating benchmarks
@@ -142,6 +147,7 @@ bash benchmarks/R2R/railway_signaling.sh
 bash benchmarks/R2P/stabilize_lock.sh
 bash benchmarks/R2P/forced_oscillation.sh
 bash benchmarks/R2P/alive_region_pruning.sh
+bash benchmarks/R2P/cleaning_robots.sh
 ```
 
 ### Running tests

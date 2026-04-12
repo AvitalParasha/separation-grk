@@ -1,0 +1,11 @@
+Test                                                Seconds          ms            us  Result
+----                                                -------          --            --  ------
+railway_signaling_3_10.sgrk                         SKIPPED     SKIPPED       SKIPPED  SKIPPED (>5h)
+railway_signaling_3_2.sgrk                           0.030s        29ms       29570us  Realizable
+railway_signaling_3_3.sgrk                           0.230s       230ms      230000us  Realizable
+railway_signaling_3_4.sgrk                           1.274s      1273ms     1273660us  Realizable
+railway_signaling_3_5.sgrk                           5.295s      5295ms     5295059us  Realizable
+railway_signaling_3_6.sgrk                          15.945s     15944ms    15944589us  Realizable
+railway_signaling_3_7.sgrk                          19.414s     19413ms    19413990us  Realizable
+railway_signaling_3_8.sgrk                          42.474s     42473ms    42473629us  Realizable
+railway_signaling_3_9.sgrk                      212676.578s  212676578ms  212676578220us  Realizable

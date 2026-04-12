@@ -111,7 +111,7 @@ benchmarks/
   formulas.py              Shared LTL formula building library
   to_strix.py              Shared converter: SGRK → Strix format
   to_strix.sh              Runs to_strix.py over a benchmark family
-  run_all_tests.sh         Runs all R2R and R2P tests
+  run_all_tests.sh         Runs all R2R, R2P, and P2R tests
   R2R/
     run_r2r_tests.sh       Runs all R2R benchmarks and checks realizability
     cleaning_robots.py      Generator (param: number of rooms)
@@ -139,6 +139,16 @@ benchmarks/
     forced_oscillation/     Single .sgrk file + README.md
     alive_region_pruning/   Generated .sgrk files + README.md
     cleaning_robots/        Generated .sgrk files + README.md
+  P2R/
+    run_p2r_tests.sh       Runs all P2R benchmarks and checks realizability
+    sgrk_p2r.py             P2R formatting helper (FG→GF)
+    cleaning_robots.py      Generator (param: number of rooms, P2R version)
+    cleaning_robots.sh      Generates cleaning_robots_1..10.sgrk
+    responsive_toggle.py    Generator (param: number of bits)
+    responsive_toggle.sh    Generates responsive_toggle_1..10.sgrk
+    cleaning_robots/        Generated .sgrk files + README.md
+    responsive_toggle/      Generated .sgrk files + README.md
+    forced_stability/       Single .sgrk file + README.md
 ```
 
 ### Generating benchmarks
@@ -155,6 +165,10 @@ bash benchmarks/R2R/railway_signaling.sh
 bash benchmarks/R2P/stabilize_lock.sh
 bash benchmarks/R2P/alive_region_pruning.sh
 bash benchmarks/R2P/cleaning_robots.sh
+
+# P2R benchmarks
+bash benchmarks/P2R/cleaning_robots.sh
+bash benchmarks/P2R/responsive_toggle.sh
 ```
 
 ### Running tests
@@ -168,6 +182,7 @@ bash benchmarks/run_all_tests.sh
 # Or individually
 bash benchmarks/R2R/run_r2r_tests.sh
 bash benchmarks/R2P/run_r2p_tests.sh
+bash benchmarks/P2R/run_p2r_tests.sh
 ```
 
 ### Converting to Strix format

@@ -1,0 +1,5 @@
+"in:trigger" ;
+"out:bit0" ;
+1 ;
+("out:bit0" -> X "out:bit0") ;
+((FG "in:trigger") -> (GF !"out:bit0"))

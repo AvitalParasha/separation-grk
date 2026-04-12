@@ -1,0 +1,11 @@
+Test                                                Seconds          ms            us  Result
+----                                                -------          --            --  ------
+railway_signaling_2_10.sgrk                        322.078s    322078ms   322078480us  Realizable
+railway_signaling_2_2.sgrk                           0.035s        35ms       35089us  Realizable
+railway_signaling_2_3.sgrk                           0.083s        82ms       82650us  Realizable
+railway_signaling_2_4.sgrk                           0.429s       428ms      428940us  Realizable
+railway_signaling_2_5.sgrk                           2.103s      2102ms     2102809us  Realizable
+railway_signaling_2_6.sgrk                           7.719s      7719ms     7719340us  Realizable
+railway_signaling_2_7.sgrk                          11.374s     11374ms    11374339us  Realizable
+railway_signaling_2_8.sgrk                          19.294s     19294ms    19294380us  Realizable
+railway_signaling_2_9.sgrk                         283.545s    283545ms   283545310us  Realizable

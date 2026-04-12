@@ -1,0 +1,10 @@
+Test                                             Seconds         ms           us  Result         
+----                                             -------         --           --  ------         
+alive_region_pruning_1.sgrk                       0.053s       53ms      53358us  Realizable     
+alive_region_pruning_2.sgrk                       0.041s       40ms      40501us  Realizable     
+alive_region_pruning_3.sgrk                       0.035s       35ms      35118us  Realizable     
+alive_region_pruning_4.sgrk                       0.038s       37ms      37984us  Realizable     
+alive_region_pruning_5.sgrk                       0.039s       38ms      38770us  Realizable     
+alive_region_pruning_6.sgrk                       0.041s       40ms      40796us  Realizable     
+alive_region_pruning_7.sgrk                       0.068s       68ms      68140us  Realizable     
+alive_region_pruning_8.sgrk                       0.061s       60ms      60680us  Realizable     

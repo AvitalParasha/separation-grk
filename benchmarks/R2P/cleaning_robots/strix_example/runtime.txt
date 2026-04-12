@@ -1,0 +1,14 @@
+# Strix runtime results for cleaning_robots
+# Format: filename | result | time
+# Timeout: 1800s (30 minutes)
+
+cleaning_robots_1.sgrk.strix | REALIZABLE | 0.925s
+cleaning_robots_10.sgrk.strix | TIMEOUT | 40398.167s
+cleaning_robots_2.sgrk.strix | SKIPPED | -
+cleaning_robots_3.sgrk.strix | SKIPPED | -
+cleaning_robots_4.sgrk.strix | SKIPPED | -
+cleaning_robots_5.sgrk.strix | SKIPPED | -
+cleaning_robots_6.sgrk.strix | SKIPPED | -
+cleaning_robots_7.sgrk.strix | SKIPPED | -
+cleaning_robots_8.sgrk.strix | SKIPPED | -
+cleaning_robots_9.sgrk.strix | SKIPPED | -

@@ -1,0 +1,14 @@
+# Strix runtime results for stabilize_lock
+# Format: filename | result | time
+# Timeout: 1800s (30 minutes)
+
+stabilize_lock_1.sgrk.strix | REALIZABLE | 0.164s
+stabilize_lock_10.sgrk.strix | REALIZABLE | 329.134s
+stabilize_lock_2.sgrk.strix | REALIZABLE | 0.180s
+stabilize_lock_3.sgrk.strix | REALIZABLE | 0.170s
+stabilize_lock_4.sgrk.strix | REALIZABLE | 0.210s
+stabilize_lock_5.sgrk.strix | REALIZABLE | 0.270s
+stabilize_lock_6.sgrk.strix | REALIZABLE | 0.468s
+stabilize_lock_7.sgrk.strix | REALIZABLE | 1.257s
+stabilize_lock_8.sgrk.strix | REALIZABLE | 3.008s
+stabilize_lock_9.sgrk.strix | REALIZABLE | 30.733s

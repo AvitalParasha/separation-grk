@@ -1,0 +1,11 @@
+Test                                             Seconds         ms           us  Result         
+----                                             -------         --           --  ------         
+multi_mode_1.sgrk                                 0.031s       31ms      31049us  Realizable     
+multi_mode_2.sgrk                                 0.032s       31ms      31684us  Realizable     
+multi_mode_3.sgrk                                 0.031s       31ms      31394us  Realizable     
+multi_mode_4.sgrk                                 0.033s       32ms      32776us  Realizable     
+multi_mode_5.sgrk                                 0.037s       36ms      36688us  Realizable     
+multi_mode_6.sgrk                                 0.050s       49ms      49597us  Realizable     
+multi_mode_7.sgrk                                 0.067s       66ms      66854us  Realizable     
+multi_mode_8.sgrk                                 0.120s      120ms     120057us  Realizable     
+multi_mode_9.sgrk                                 0.283s      282ms     282681us  Realizable     

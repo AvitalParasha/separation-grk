@@ -28,13 +28,13 @@ done
 echo "Settings: timeout=${TIMEOUT}s, skip-heavy=${SKIP_HEAVY}"
 echo ""
 
-# Mixed R2R/R2P rejection test
-echo "=== Mixed R2R/R2P Rejection Test ==="
+# Mixed type rejection test
+echo "=== Mixed Type Rejection Test ==="
 
 MIXED_PASS=0
 MIXED_FAIL=0
 
-for f in "${MYDIR}/R2R/mixed_r2r_r2p.sgrk" "${MYDIR}/R2P/mixed_r2r_r2p.sgrk"; do
+for f in "${MYDIR}/R2R/mixed_r2r_r2p.sgrk" "${MYDIR}/R2P/mixed_r2r_r2p.sgrk" "${MYDIR}/P2R/mixed_p2r_r2r.sgrk"; do
     if [[ ! -f "$f" ]]; then
         continue
     fi
@@ -59,3 +59,7 @@ echo ""
 
 # Run R2P tests
 bash "${MYDIR}/R2P/run_r2p_tests.sh"
+echo ""
+
+# Run P2R tests
+bash "${MYDIR}/P2R/run_p2r_tests.sh"

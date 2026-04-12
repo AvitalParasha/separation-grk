@@ -1,0 +1,3 @@
+Test                                             Seconds         ms           us  Result         
+----                                             -------         --           --  ------         
+forced_stability.sgrk                             0.031s       31ms      31285us  Unrealizable   

@@ -1,0 +1,5 @@
+# Strix runtime results for forced_oscillation
+# Format: filename | result | time
+# Timeout: 1800s (30 minutes)
+
+forced_oscillation.sgrk.strix | UNREALIZABLE | 1.561s

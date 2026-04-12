@@ -19,3 +19,10 @@ output.png
 
 # Local notes
 installation_changes_made.txt
+
+# Play test files
+play_*.txt
+
+# Thesis documents
+R2P_updated_NoC_example.txt
+bib_file.txt

@@ -1,0 +1,14 @@
+# Strix runtime results for alive_region_pruning
+# Format: filename | result | time
+# Timeout: 1800s (30 minutes)
+
+alive_region_pruning_1.sgrk.strix | REALIZABLE | 0.124s
+alive_region_pruning_10.sgrk.strix | TIMEOUT | 1800.164s
+alive_region_pruning_2.sgrk.strix | SKIPPED | -
+alive_region_pruning_3.sgrk.strix | SKIPPED | -
+alive_region_pruning_4.sgrk.strix | SKIPPED | -
+alive_region_pruning_5.sgrk.strix | SKIPPED | -
+alive_region_pruning_6.sgrk.strix | SKIPPED | -
+alive_region_pruning_7.sgrk.strix | SKIPPED | -
+alive_region_pruning_8.sgrk.strix | SKIPPED | -
+alive_region_pruning_9.sgrk.strix | SKIPPED | -

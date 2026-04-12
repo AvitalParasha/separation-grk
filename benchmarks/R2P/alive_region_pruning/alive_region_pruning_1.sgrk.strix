@@ -1,0 +1,1 @@
+((1) -> ((!"out:a0" & !"out:b0") & (((("out:a0" & !"out:b0") -> !X "out:a0") & (("out:a0" & "out:b0") -> X "out:a0") & (("out:a0" & "out:b0") -> X "out:b0")) W !(1)) & (G (1) -> (((GF "in:trigger") -> (FG "out:a0"))))))

@@ -41,7 +41,7 @@ for f in "${MYDIR}/R2R/mixed_r2r_r2p.sgrk" "${MYDIR}/R2P/mixed_r2r_r2p.sgrk"; do
     echo -n "$(basename "$f") (from $(basename "$(dirname "$f")")): "
     result=$("$SGRK" "$f" 2>&1)
     exit_code=$?
-    if [[ $exit_code -eq 1 ]] && echo "$result" | grep -q "mixed R2R.*R2P"; then
+    if [[ $exit_code -eq 1 ]] && echo "$result" | grep -q "mixed implication types"; then
         echo "correctly rejected"
         MIXED_PASS=$((MIXED_PASS + 1))
     else

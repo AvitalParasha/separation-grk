@@ -27,6 +27,7 @@ Examples of specification files can be found in the ``benchmarks`` subdirectory,
   * ``alive_region_pruning/`` — Absorbing vs. trap states requiring region pruning (i = number of (a,b) pairs, realizable for all i)
   * ``cleaning_robots/`` — R2P version of the R2R cleaning robots benchmark (i = number of rooms, realizable for all i). Same initial/safety constraints, but with ``FG`` persistence guarantees instead of ``GF`` recurrence.
 
+* **``benchmarks/P2R/``** — Persistence-to-Recurrence benchmarks using the ``FG`` → ``GF`` fairness pattern (the dual of R2P). Assumptions use persistence (eventually hold forever) and guarantees use recurrence (hold infinitely often).
 The following R2R example can be found in ``R2R/cleaning_robots/cleaning_robots_1.sgrk``:
 
 ```
@@ -74,6 +75,15 @@ For R2P benchmarks, the fairness section uses ``FG`` (persistence) on the guaran
 ...
 ```
 
+For P2R benchmarks, the fairness section uses ``FG`` (persistence) on the assumption side and ``GF`` (recurrence) on the guarantee side:
+
+```
+((FG <persistence-assumption>) -> (GF <justice-guarantee>)) &
+...
+```
+
+All implications in a specification must use the same fairness pattern — mixing R2R, R2P, and P2R implications is not supported.
+
 Boolean formulas use the operators ``!`` (not), ``&`` (and), ``|`` (or), ``->`` (implies), ``<->`` (iff) and ``^`` (xor), and the constants ``0`` and ``1``. In the safety assumptions and guarantees variables can also be preceded by the temporal operator ``X`` (next).
 
 Whitespace and newlines are used for readability, but ignored by the parser.
@@ -90,7 +100,7 @@ The implicit semantics of a specification in the format above are given by the f
           ((GF <justice-assumption> & ... & GF <justice-assumption>) -> (GF <justice-guarantee> & ... & GF <justice-guarantee>)))))
 ```
 
-In this formula, ``W`` denotes the "weak until" operator, ``G`` the "globally" operator and ``F`` the "eventually" operator.
+In this formula, ``W`` denotes the "weak until" operator, ``G`` the "globally" operator and ``F`` the "eventually" operator. For R2P specifications, the ``GF`` on the guarantee side is replaced by ``FG``. For P2R specifications, the ``GF`` on the assumption side is replaced by ``FG``.
 
 ## Benchmarks
 

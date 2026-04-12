@@ -123,8 +123,9 @@ int main(int argc, char* argv[]) {
 		SGrk::ImplicationType expected_type = implications[0].Type();
 		for (std::size_t i = 1; i < implications.size(); ++i) {
 			if (implications[i].Type() != expected_type) {
-				std::cerr << "Error: mixed R2R (GF->GF) and R2P (GF->FG) "
-				          << "implications are not supported. "
+				std::cerr << "Error: mixed implication types "
+				          << "(R2R: GF->GF, R2P: GF->FG, P2R: FG->GF) "
+				          << "are not supported. "
 				          << "All implications must use the same type."
 				          << std::endl;
 				return 1;

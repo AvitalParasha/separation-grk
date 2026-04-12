@@ -64,6 +64,7 @@ class Driver;
 %nterm <std::vector<CUDD::BDD>> out_justices
 %nterm <CUDD::BDD> justice
 %nterm <std::vector<CUDD::BDD>> persistences
+%nterm <std::vector<CUDD::BDD>> in_persistences
 %nterm <std::vector<CUDD::BDD>> out_persistences
 %nterm <CUDD::BDD> persistence
 %nterm <SGrk::SeparationGrkSpec> sgrk_spec
@@ -147,6 +148,10 @@ justice_implication: LEFT LEFT in_justices RIGHT IFTHEN LEFT out_justices RIGHT 
 | LEFT LEFT in_justices RIGHT IFTHEN LEFT out_persistences RIGHT RIGHT
 {
 	$$ = SGrk::SeparationGrkImplication(SGrk::ImplicationType::R2P, $3, $7);
+}
+| LEFT LEFT in_persistences RIGHT IFTHEN LEFT out_justices RIGHT RIGHT
+{
+	$$ = SGrk::SeparationGrkImplication(SGrk::ImplicationType::P2R, $3, $7);
 };
 
 in_justices: justices { $$ = std::move($1); };
@@ -167,6 +172,8 @@ justice: ALWAYS EVENTUAL formula { $$ = $3; };
 persistence: EVENTUAL ALWAYS formula { $$ = $3; };
 
 out_persistences: persistences { $$ = std::move($1); };
+
+in_persistences: persistences { $$ = std::move($1); };
 
 persistences: persistence { $$ = std::vector<CUDD::BDD>({ $1 }); }
 | persistence AND persistences

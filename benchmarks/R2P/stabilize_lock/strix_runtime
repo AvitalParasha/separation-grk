@@ -1,0 +1,12 @@
+Test                                             Seconds         ms           us  Result         
+----                                             -------         --           --  ------         
+stabilize_lock_1.sgrk                             0.059s       58ms      58953us  REALIZABLE     
+stabilize_lock_2.sgrk                             0.059s       58ms      58508us  REALIZABLE     
+stabilize_lock_3.sgrk                             0.064s       63ms      63888us  REALIZABLE     
+stabilize_lock_4.sgrk                             0.067s       67ms      67399us  REALIZABLE     
+stabilize_lock_5.sgrk                             0.086s       85ms      85716us  REALIZABLE     
+stabilize_lock_6.sgrk                             0.161s      160ms     160794us  REALIZABLE     
+stabilize_lock_7.sgrk                             0.377s      377ms     377074us  REALIZABLE     
+stabilize_lock_8.sgrk                             0.936s      936ms     936066us  REALIZABLE     
+stabilize_lock_9.sgrk                            13.625s    13624ms   13624670us  REALIZABLE     
+stabilize_lock_10.sgrk                           10.368s    10367ms   10367720us  REALIZABLE     

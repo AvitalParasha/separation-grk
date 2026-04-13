@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="694.08" height="184" viewBox="0 0 694.08 184">
+<rect width="694.08" height="184" fill="white" rx="4"/>
+<text x="347.04" y="25.2" font-family="Menlo, Consolas, monospace" font-size="15" font-weight="bold" text-anchor="middle" fill="#222">R2P Benchmark Summary: sgrk vs Strix</text>
+<rect x="1" y="36" width="692.08" height="32" fill="#2c3e50"/>
+<text x="13" y="57.760000000000005" font-family="Menlo, Consolas, monospace" font-size="13" font-weight="bold" text-anchor="start" fill="white">Family</text>
+<text x="238.5" y="57.760000000000005" font-family="Menlo, Consolas, monospace" font-size="13" font-weight="bold" text-anchor="end" fill="white">Tests</text>
+<text x="302.8" y="57.760000000000005" font-family="Menlo, Consolas, monospace" font-size="13" font-weight="bold" text-anchor="end" fill="white">Match</text>
+<text x="399.34000000000003" y="57.760000000000005" font-family="Menlo, Consolas, monospace" font-size="13" font-weight="bold" text-anchor="end" fill="white">Strix T/O</text>
+<text x="536.1800000000001" y="57.760000000000005" font-family="Menlo, Consolas, monospace" font-size="13" font-weight="bold" text-anchor="end" fill="white">sgrk Range (s)</text>
+<text x="681.08" y="57.760000000000005" font-family="Menlo, Consolas, monospace" font-size="13" font-weight="bold" text-anchor="end" fill="white">Strix Range (s)</text>
+<line x1="1" y1="68" x2="693.08" y2="68" stroke="#bdc3c7" stroke-width="2"/>
+<rect x="1" y="68" width="692.08" height="28" fill="#f8f9fa"/>
+<text x="13" y="87.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="start" fill="#2c3e50">alive region pruning</text>
+<text x="238.5" y="87.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">10</text>
+<text x="302.8" y="87.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">7</text>
+<text x="399.34000000000003" y="87.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">3</text>
+<text x="536.1800000000001" y="87.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.035 - 0.088</text>
+<text x="681.08" y="87.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.064 - 41.106</text>
+<line x1="1" y1="96" x2="693.08" y2="96" stroke="#ecf0f1" stroke-width="0.5"/>
+<text x="13" y="115.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="start" fill="#2c3e50">cleaning robots</text>
+<text x="238.5" y="115.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">10</text>
+<text x="302.8" y="115.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">4</text>
+<text x="399.34000000000003" y="115.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">6</text>
+<text x="536.1800000000001" y="115.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.013 - 2.122</text>
+<text x="681.08" y="115.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.244 - 954.946</text>
+<line x1="1" y1="124" x2="693.08" y2="124" stroke="#ecf0f1" stroke-width="0.5"/>
+<rect x="1" y="124" width="692.08" height="28" fill="#f8f9fa"/>
+<text x="13" y="143.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="start" fill="#2c3e50">forced oscillation</text>
+<text x="238.5" y="143.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">1</text>
+<text x="302.8" y="143.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">1</text>
+<text x="399.34000000000003" y="143.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0</text>
+<text x="536.1800000000001" y="143.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.011</text>
+<text x="681.08" y="143.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.978</text>
+<line x1="1" y1="152" x2="693.08" y2="152" stroke="#ecf0f1" stroke-width="0.5"/>
+<text x="13" y="171.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="start" fill="#2c3e50">stabilize lock</text>
+<text x="238.5" y="171.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">10</text>
+<text x="302.8" y="171.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">10</text>
+<text x="399.34000000000003" y="171.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0</text>
+<text x="536.1800000000001" y="171.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.011 - 0.014</text>
+<text x="681.08" y="171.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.059 - 13.625</text>
+<line x1="1" y1="180" x2="693.08" y2="180" stroke="#ecf0f1" stroke-width="0.5"/>
+<line x1="1" y1="182" x2="693.08" y2="182" stroke="#bdc3c7" stroke-width="2"/>
+</svg>

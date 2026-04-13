@@ -95,11 +95,70 @@ if [[ "$USE_CACHE" == true ]]; then
     echo ""
 fi
 
+# Escape underscores for LaTeX
+latex_escape() { echo "$1" | sed 's/_/\\_/g'; }
+
+# Format a time value for LaTeX (strip trailing 's', add \,s)
+latex_time() {
+    local t="$1"
+    if [[ "$t" == "-" ]]; then
+        echo "---"
+    else
+        echo "${t%s}"
+    fi
+}
+
+# Compute speedup string for LaTeX
+latex_speedup() {
+    local sgrk_t="$1" strix_t="$2" strix_r="$3"
+    if [[ "$strix_r" == "TIMEOUT" ]]; then
+        # Compute lower bound: timeout / sgrk_time
+        local sgrk_num="${sgrk_t%s}"
+        if [[ "$sgrk_num" != "-" ]]; then
+            local bound
+            bound=$(python3 -c "print(f'{${STRIX_TIMEOUT} / ${sgrk_num}:,.0f}')" 2>/dev/null)
+            echo ">\$${bound}\\times\$"
+        else
+            echo "---"
+        fi
+    elif [[ "$strix_r" == "SKIPPED" || "$strix_r" == "CONVERT_ERROR" || "$sgrk_t" == "-" || "$strix_t" == "-" ]]; then
+        echo "---"
+    else
+        local sgrk_num="${sgrk_t%s}"
+        local strix_num="${strix_t%s}"
+        local speedup
+        speedup=$(python3 -c "
+s = ${strix_num} / ${sgrk_num}
+if s >= 100:
+    print(f'{s:,.0f}')
+elif s >= 10:
+    print(f'{s:.1f}')
+else:
+    print(f'{s:.1f}')
+" 2>/dev/null)
+        echo "\$${speedup}\\times\$"
+    fi
+}
+
 for cat in "${CATEGORIES[@]}"; do
     cat_dir="${MYDIR}/${cat}"
     if [[ ! -d "$cat_dir" ]]; then
         continue
     fi
+
+    # Create results directory for LaTeX output
+    results_dir="${MYDIR}/results/${cat}"
+    mkdir -p "$results_dir"
+
+    # Accumulate summary data for the category
+    summary_families=()
+    summary_tests=()
+    summary_matches=()
+    summary_timeouts=()
+    summary_sgrk_min=()
+    summary_sgrk_max=()
+    summary_strix_min=()
+    summary_strix_max=()
 
     echo "========================================"
     echo "  ${cat} Comparison (sgrk vs Strix)"
@@ -132,6 +191,13 @@ for cat in "${CATEGORIES[@]}"; do
         family_mismatch=0
         family_skip=0
         strix_hit_timeout=false
+
+        # Arrays to collect per-test data for LaTeX generation
+        tex_names=()
+        tex_sgrk_times=()
+        tex_strix_times=()
+        tex_sgrk_results=()
+        tex_strix_results=()
 
         # Save existing runtime files as cache before overwriting
         sgrk_runtime_file="${family_dir}/runtime"
@@ -244,6 +310,13 @@ for cat in "${CATEGORIES[@]}"; do
                 fi
             fi
 
+            # --- Collect data for LaTeX ---
+            tex_names+=("$name")
+            tex_sgrk_times+=("$sgrk_time")
+            tex_strix_times+=("$strix_time")
+            tex_sgrk_results+=("$sgrk_result")
+            tex_strix_results+=("$strix_result")
+
             # --- Compare ---
             sgrk_norm=$(normalize_result "$sgrk_result")
             strix_norm=$(normalize_result "$strix_result")
@@ -272,15 +345,155 @@ for cat in "${CATEGORIES[@]}"; do
         echo "  Summary: ${family_match} MATCH, ${family_mismatch} MISMATCH, ${family_skip} SKIP"
         echo ""
 
+        # --- Generate per-family LaTeX table ---
+        family_tex="${results_dir}/${family}.tex"
+        family_label="tab:${cat}_${family}"
+        family_pretty=$(echo "$family" | sed 's/_/ /g')
+
+        {
+            echo "\\begin{table}[htbp]"
+            echo "\\centering"
+            echo "\\caption{${cat}: $(latex_escape "$family_pretty") -- sgrk vs.\\ Strix runtime comparison.}"
+            echo "\\label{${family_label}}"
+            echo "\\begin{tabular}{r r r r l}"
+            echo "\\toprule"
+            echo "\\# & sgrk (s) & Strix (s) & Speedup & Result \\\\"
+            echo "\\midrule"
+
+            for i in "${!tex_names[@]}"; do
+                # Extract instance number from name (e.g., cleaning_robots_3.sgrk -> 3)
+                instance=$(echo "${tex_names[$i]}" | sed 's/.*_\([0-9]*\)\.sgrk/\1/')
+                # If no number found (single instance), use 1
+                if [[ "$instance" == "${tex_names[$i]}" ]]; then
+                    instance="1"
+                fi
+
+                st=$(latex_time "${tex_sgrk_times[$i]}")
+                xt=$(latex_time "${tex_strix_times[$i]}")
+                speedup=$(latex_speedup "${tex_sgrk_times[$i]}" "${tex_strix_times[$i]}" "${tex_strix_results[$i]}")
+
+                # Normalize result for display
+                res_norm=$(normalize_result "${tex_sgrk_results[$i]}")
+                if [[ "$res_norm" == "REALIZABLE" ]]; then
+                    res_display="Realizable"
+                elif [[ "$res_norm" == "UNREALIZABLE" ]]; then
+                    res_display="Unrealizable"
+                else
+                    res_display="${tex_sgrk_results[$i]}"
+                fi
+
+                # Mark Strix timeout/skipped
+                if [[ "${tex_strix_results[$i]}" == "TIMEOUT" ]]; then
+                    xt="T/O"
+                elif [[ "${tex_strix_results[$i]}" == "SKIPPED" ]]; then
+                    xt="---"
+                fi
+
+                echo "${instance} & ${st} & ${xt} & ${speedup} & ${res_display} \\\\"
+            done
+
+            echo "\\bottomrule"
+            echo "\\end{tabular}"
+            echo "\\end{table}"
+        } > "$family_tex"
+
+        echo "  LaTeX: ${family_tex}"
+
+        # Accumulate summary data
+        summary_families+=("$family")
+        summary_tests+=("${#tex_names[@]}")
+        summary_matches+=("$family_match")
+        family_timeouts=$((family_skip))
+        summary_timeouts+=("$family_timeouts")
+
+        # Compute sgrk min/max
+        sgrk_min="" ; sgrk_max=""
+        for t in "${tex_sgrk_times[@]}"; do
+            [[ "$t" == "-" ]] && continue
+            val="${t%s}"
+            if [[ -z "$sgrk_min" ]]; then
+                sgrk_min="$val"; sgrk_max="$val"
+            else
+                sgrk_min=$(python3 -c "print(min($sgrk_min, $val))")
+                sgrk_max=$(python3 -c "print(max($sgrk_max, $val))")
+            fi
+        done
+        summary_sgrk_min+=("${sgrk_min:-N/A}")
+        summary_sgrk_max+=("${sgrk_max:-N/A}")
+
+        # Compute strix min/max (only completed tests)
+        strix_min="" ; strix_max=""
+        for i in "${!tex_strix_times[@]}"; do
+            [[ "${tex_strix_times[$i]}" == "-" ]] && continue
+            [[ "${tex_strix_results[$i]}" == "TIMEOUT" || "${tex_strix_results[$i]}" == "SKIPPED" ]] && continue
+            val="${tex_strix_times[$i]%s}"
+            if [[ -z "$strix_min" ]]; then
+                strix_min="$val"; strix_max="$val"
+            else
+                strix_min=$(python3 -c "print(min($strix_min, $val))")
+                strix_max=$(python3 -c "print(max($strix_max, $val))")
+            fi
+        done
+        summary_strix_min+=("${strix_min:-N/A}")
+        summary_strix_max+=("${strix_max:-N/A}")
+
         TOTAL_MATCH=$((TOTAL_MATCH + family_match))
         TOTAL_MISMATCH=$((TOTAL_MISMATCH + family_mismatch))
         TOTAL_SKIP=$((TOTAL_SKIP + family_skip))
     done
+
+    # --- Generate category summary LaTeX table ---
+    summary_tex="${results_dir}/summary.tex"
+    {
+        echo "\\begin{table}[htbp]"
+        echo "\\centering"
+        echo "\\caption{${cat} benchmark summary: sgrk vs.\\ Strix.}"
+        echo "\\label{tab:${cat}_summary}"
+        echo "\\begin{tabular}{l r r r r r}"
+        echo "\\toprule"
+        echo "Family & Tests & Match & Strix T/O & sgrk Range (s) & Strix Range (s) \\\\"
+        echo "\\midrule"
+
+        for i in "${!summary_families[@]}"; do
+            fname=$(latex_escape "$(echo "${summary_families[$i]}" | sed 's/_/ /g')")
+            tests="${summary_tests[$i]}"
+            matches="${summary_matches[$i]}"
+            timeouts="${summary_timeouts[$i]}"
+
+            if [[ "${summary_sgrk_min[$i]}" == "${summary_sgrk_max[$i]}" ]]; then
+                sgrk_range="${summary_sgrk_min[$i]}"
+            else
+                sgrk_range="${summary_sgrk_min[$i]}--${summary_sgrk_max[$i]}"
+            fi
+
+            if [[ "${summary_strix_min[$i]}" == "N/A" ]]; then
+                strix_range="N/A"
+            elif [[ "${summary_strix_min[$i]}" == "${summary_strix_max[$i]}" ]]; then
+                strix_range="${summary_strix_min[$i]}"
+            else
+                strix_range="${summary_strix_min[$i]}--${summary_strix_max[$i]}"
+            fi
+
+            echo "${fname} & ${tests} & ${matches} & ${timeouts} & ${sgrk_range} & ${strix_range} \\\\"
+        done
+
+        echo "\\bottomrule"
+        echo "\\end{tabular}"
+        echo "\\end{table}"
+    } > "$summary_tex"
+
+    echo "  LaTeX summary: ${summary_tex}"
+    echo ""
 done
 
 echo "========================================"
 echo "Overall: ${TOTAL_MATCH} MATCH, ${TOTAL_MISMATCH} MISMATCH, ${TOTAL_SKIP} SKIP"
 echo "========================================"
+
+# Generate SVG images and HTML slideshow
+echo ""
+echo "Generating SVG tables and slideshow..."
+python3 "${MYDIR}/generate_table_images.py" "$CATEGORY"
 
 if [[ "$HAS_MISMATCH" == true ]]; then
     echo ""

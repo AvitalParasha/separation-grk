@@ -7,3 +7,6 @@ alive_region_pruning_4.sgrk                       0.184s      183ms     183543us
 alive_region_pruning_5.sgrk                       0.807s      807ms     807172us  REALIZABLE     
 alive_region_pruning_6.sgrk                       3.734s     3734ms    3734244us  REALIZABLE     
 alive_region_pruning_7.sgrk                      41.106s    41105ms   41105538us  REALIZABLE     
+alive_region_pruning_8.sgrk                            -          -            -  TIMEOUT        
+alive_region_pruning_9.sgrk                            -          -            -  SKIPPED        
+alive_region_pruning_10.sgrk                           -          -            -  SKIPPED        

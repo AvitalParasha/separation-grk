@@ -46,6 +46,11 @@ class CycleCover {
 	    const CUDD::BDD& bipath_relation,
 	    const CUDD::BDD& alive_region) const;
 
+	CUDD::BDD ComputeStateDependentAliveRegion(
+	    const CUDD::BDD& safety_constraint,
+	    const CUDD::BDD& demanded,
+	    const CUDD::BDD& primed_quantification_vars) const;
+
 	CUDD::BDD ComputeCoveredRegion(const SeparationGrkSpec& spec,
 	                               const SpaceConnectivity& connectivity) const;
 	

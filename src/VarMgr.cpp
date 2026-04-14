@@ -80,6 +80,16 @@ Var VarMgr::NewVar(VarType var_type, const std::string& name) {
 	unprimed_to_temp_.push_back(primed);
 	unprimed_to_temp_.push_back(temp);
 
+	if (var_type == VarType::INPUT) {
+		output_unprimed_to_primed_.push_back(unprimed);  // input: identity
+		output_unprimed_to_primed_.push_back(primed);
+		output_unprimed_to_primed_.push_back(temp);
+	} else {
+		output_unprimed_to_primed_.push_back(primed);    // output: unprimed→primed
+		output_unprimed_to_primed_.push_back(primed);
+		output_unprimed_to_primed_.push_back(temp);
+	}
+
 	var_labels_.push_back(name);
 	var_labels_.push_back(name + "'");
 	var_labels_.push_back(name + "*");
@@ -150,6 +160,10 @@ CUDD::BDD VarMgr::TempVars() const {
 
 CUDD::BDD VarMgr::UnprimedToPrimed(const CUDD::BDD& bdd) const {
 	return bdd.VectorCompose(unprimed_to_primed_);
+}
+
+CUDD::BDD VarMgr::OutputUnprimedToPrimed(const CUDD::BDD& bdd) const {
+	return bdd.VectorCompose(output_unprimed_to_primed_);
 }
 
 CUDD::BDD VarMgr::PrimedToUnprimed(const CUDD::BDD& bdd) const {

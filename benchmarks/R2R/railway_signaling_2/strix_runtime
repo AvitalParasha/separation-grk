@@ -1,0 +1,4 @@
+Test                                             Seconds         ms           us  Result         
+----                                             -------         --           --  ------         
+railway_signaling_2_2.sgrk                        1.012s     1012ms    1012087us  REALIZABLE     
+railway_signaling_2_3.sgrk                       14.354s    14353ms   14353912us  REALIZABLE     

@@ -1,9 +1,9 @@
 Test                                             Seconds         ms           us  Result         
 ----                                             -------         --           --  ------         
-cleaning_robots_1.sgrk                            1.058s     1058ms    1058358us  REALIZABLE     
-cleaning_robots_2.sgrk                            0.244s      243ms     243952us  REALIZABLE     
-cleaning_robots_3.sgrk                           10.718s    10718ms   10718494us  REALIZABLE     
-cleaning_robots_4.sgrk                          954.946s   954946ms  954946470us  REALIZABLE     
+cleaning_robots_1.sgrk                            0.872s      871ms     871909us  REALIZABLE     
+cleaning_robots_2.sgrk                            0.240s      239ms     239951us  REALIZABLE     
+cleaning_robots_3.sgrk                           10.377s    10377ms   10377143us  REALIZABLE     
+cleaning_robots_4.sgrk                         1675.251s  1675250ms 1675250771us  REALIZABLE     
 cleaning_robots_5.sgrk                                 -          -            -  TIMEOUT        
 cleaning_robots_6.sgrk                                 -          -            -  SKIPPED        
 cleaning_robots_7.sgrk                                 -          -            -  SKIPPED        

@@ -1,0 +1,20 @@
+"in:alert" &
+!"in:brownout" &
+!"in:critical" &
+!"in:disaster" ;
+
+!"out:load_balanced" &
+!"out:emergency_power" &
+!"out:backup" ;
+
+("in:brownout" -> "in:alert") &
+("in:brownout" -> "in:critical") &
+(("in:alert" & "in:brownout" & "in:critical") -> (X "in:alert" & X "in:brownout" & X "in:critical")) &
+((!("in:alert") & !("in:brownout") & "in:critical") -> (!X "in:alert" & !X "in:brownout" & X "in:critical")) &
+(!"in:disaster") ;
+
+(("out:load_balanced" & "out:emergency_power") -> (X "out:load_balanced" & X "out:emergency_power")) ;
+
+((GF "in:alert" & GF "in:critical") -> (FG "out:load_balanced")) &
+((GF "in:critical") -> (FG "out:emergency_power")) &
+((GF "in:disaster") -> (FG "out:backup"))

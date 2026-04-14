@@ -10,65 +10,65 @@
 <line x1="1" y1="68" x2="419.22" y2="68" stroke="#bdc3c7" stroke-width="2"/>
 <rect x="1" y="68" width="418.22" height="28" fill="#f8f9fa"/>
 <text x="29.120000000000005" y="87.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">1</text>
-<text x="117.60000000000002" y="87.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.013</text>
-<text x="214.14000000000004" y="87.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">1.058</text>
-<text x="302.62000000000006" y="87.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">81.4x</text>
+<text x="117.60000000000002" y="87.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.039</text>
+<text x="214.14000000000004" y="87.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.872</text>
+<text x="302.62000000000006" y="87.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">22.4x</text>
 <text x="326.62000000000006" y="87.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="start" fill="#2c3e50">Realizable</text>
 <line x1="1" y1="96" x2="419.22" y2="96" stroke="#ecf0f1" stroke-width="0.5"/>
 <text x="29.120000000000005" y="115.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">2</text>
-<text x="117.60000000000002" y="115.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.014</text>
-<text x="214.14000000000004" y="115.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.244</text>
-<text x="302.62000000000006" y="115.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">17.4x</text>
+<text x="117.60000000000002" y="115.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.043</text>
+<text x="214.14000000000004" y="115.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.240</text>
+<text x="302.62000000000006" y="115.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">5.6x</text>
 <text x="326.62000000000006" y="115.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="start" fill="#2c3e50">Realizable</text>
 <line x1="1" y1="124" x2="419.22" y2="124" stroke="#ecf0f1" stroke-width="0.5"/>
 <rect x="1" y="124" width="418.22" height="28" fill="#f8f9fa"/>
 <text x="29.120000000000005" y="143.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">3</text>
-<text x="117.60000000000002" y="143.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.018</text>
-<text x="214.14000000000004" y="143.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">10.718</text>
-<text x="302.62000000000006" y="143.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">595x</text>
+<text x="117.60000000000002" y="143.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.052</text>
+<text x="214.14000000000004" y="143.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">10.377</text>
+<text x="302.62000000000006" y="143.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">200x</text>
 <text x="326.62000000000006" y="143.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="start" fill="#2c3e50">Realizable</text>
 <line x1="1" y1="152" x2="419.22" y2="152" stroke="#ecf0f1" stroke-width="0.5"/>
 <text x="29.120000000000005" y="171.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">4</text>
-<text x="117.60000000000002" y="171.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.051</text>
-<text x="214.14000000000004" y="171.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">954.946</text>
-<text x="302.62000000000006" y="171.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">18,724x</text>
+<text x="117.60000000000002" y="171.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.096</text>
+<text x="214.14000000000004" y="171.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">1675.251</text>
+<text x="302.62000000000006" y="171.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">17,451x</text>
 <text x="326.62000000000006" y="171.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="start" fill="#2c3e50">Realizable</text>
 <line x1="1" y1="180" x2="419.22" y2="180" stroke="#ecf0f1" stroke-width="0.5"/>
 <rect x="1" y="180" width="418.22" height="28" fill="#f8f9fa"/>
 <text x="29.120000000000005" y="199.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">5</text>
-<text x="117.60000000000002" y="199.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.099</text>
+<text x="117.60000000000002" y="199.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.182</text>
 <text x="214.14000000000004" y="199.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#e74c3c">T/O</text>
-<text x="302.62000000000006" y="199.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#e67e22">&gt;54,545x</text>
+<text x="302.62000000000006" y="199.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#e67e22">&gt;29,670x</text>
 <text x="326.62000000000006" y="199.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="start" fill="#2c3e50">Realizable</text>
 <line x1="1" y1="208" x2="419.22" y2="208" stroke="#ecf0f1" stroke-width="0.5"/>
 <text x="29.120000000000005" y="227.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">6</text>
-<text x="117.60000000000002" y="227.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.169</text>
+<text x="117.60000000000002" y="227.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.411</text>
 <text x="214.14000000000004" y="227.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#95a5a6">---</text>
 <text x="302.62000000000006" y="227.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#95a5a6">---</text>
 <text x="326.62000000000006" y="227.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="start" fill="#2c3e50">Realizable</text>
 <line x1="1" y1="236" x2="419.22" y2="236" stroke="#ecf0f1" stroke-width="0.5"/>
 <rect x="1" y="236" width="418.22" height="28" fill="#f8f9fa"/>
 <text x="29.120000000000005" y="255.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">7</text>
-<text x="117.60000000000002" y="255.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.350</text>
+<text x="117.60000000000002" y="255.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">1.115</text>
 <text x="214.14000000000004" y="255.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#95a5a6">---</text>
 <text x="302.62000000000006" y="255.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#95a5a6">---</text>
 <text x="326.62000000000006" y="255.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="start" fill="#2c3e50">Realizable</text>
 <line x1="1" y1="264" x2="419.22" y2="264" stroke="#ecf0f1" stroke-width="0.5"/>
 <text x="29.120000000000005" y="283.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">8</text>
-<text x="117.60000000000002" y="283.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.612</text>
+<text x="117.60000000000002" y="283.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">1.435</text>
 <text x="214.14000000000004" y="283.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#95a5a6">---</text>
 <text x="302.62000000000006" y="283.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#95a5a6">---</text>
 <text x="326.62000000000006" y="283.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="start" fill="#2c3e50">Realizable</text>
 <line x1="1" y1="292" x2="419.22" y2="292" stroke="#ecf0f1" stroke-width="0.5"/>
 <rect x="1" y="292" width="418.22" height="28" fill="#f8f9fa"/>
 <text x="29.120000000000005" y="311.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">9</text>
-<text x="117.60000000000002" y="311.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.873</text>
+<text x="117.60000000000002" y="311.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">3.157</text>
 <text x="214.14000000000004" y="311.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#95a5a6">---</text>
 <text x="302.62000000000006" y="311.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#95a5a6">---</text>
 <text x="326.62000000000006" y="311.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="start" fill="#2c3e50">Realizable</text>
 <line x1="1" y1="320" x2="419.22" y2="320" stroke="#ecf0f1" stroke-width="0.5"/>
 <text x="29.120000000000005" y="339.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">10</text>
-<text x="117.60000000000002" y="339.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">2.122</text>
+<text x="117.60000000000002" y="339.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">4.441</text>
 <text x="214.14000000000004" y="339.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#95a5a6">---</text>
 <text x="302.62000000000006" y="339.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#95a5a6">---</text>
 <text x="326.62000000000006" y="339.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="start" fill="#2c3e50">Realizable</text>

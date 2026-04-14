@@ -52,6 +52,7 @@ class VarMgr {
 	std::vector<CUDD::BDD> swap_primed_and_unprimed_;
 	std::vector<CUDD::BDD> primed_to_temp_;
 	std::vector<CUDD::BDD> unprimed_to_temp_;
+	std::vector<CUDD::BDD> output_unprimed_to_primed_;
 	std::vector<std::string> var_labels_;
 
 	CUDD::BDD reflexive_;
@@ -80,6 +81,7 @@ class VarMgr {
 	CUDD::BDD TempVars() const;
 	
 	CUDD::BDD UnprimedToPrimed(const CUDD::BDD& bdd) const;
+	CUDD::BDD OutputUnprimedToPrimed(const CUDD::BDD& bdd) const;
 	CUDD::BDD PrimedToUnprimed(const CUDD::BDD& bdd) const;
 	CUDD::BDD SwapPrimedAndUnprimed(const CUDD::BDD& bdd) const;
 	CUDD::BDD PrimedToTemp(const CUDD::BDD& bdd) const;

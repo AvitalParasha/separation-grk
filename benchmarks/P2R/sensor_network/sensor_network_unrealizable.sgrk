@@ -1,0 +1,12 @@
+!"in:sensor_a" &
+!"in:sensor_b" ;
+
+!"out:mode" ;
+
+("in:sensor_a" -> X "in:sensor_a") &
+("in:sensor_b" -> X "in:sensor_b") ;
+
+("out:mode" -> X "out:mode") ;
+
+((FG "in:sensor_a") -> (GF "out:mode")) &
+((FG "in:sensor_b") -> (GF !"out:mode"))

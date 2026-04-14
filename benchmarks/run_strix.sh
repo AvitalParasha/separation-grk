@@ -41,6 +41,9 @@ else
     CATEGORIES=("$CATEGORY")
 fi
 
+# Portable timeout (works on macOS without coreutils)
+source "${MYDIR}/timeout_helper.sh"
+
 for cat in "${CATEGORIES[@]}"; do
     cat_dir="${MYDIR}/${cat}"
     if [[ ! -d "$cat_dir" ]]; then
@@ -104,8 +107,9 @@ for cat in "${CATEGORIES[@]}"; do
 
             # Run Strix with timing
             start_time=$(python3 -c "import time; print(time.time())")
-            result=$(perl -e 'alarm shift; exec @ARGV' "$TIMEOUT" "$STRIX" -r -F "$strix_file" --ins "$ins" --outs "$outs" 2>&1)
-            exit_code=$?
+            run_with_timeout "$TIMEOUT" "$STRIX" -r -F "$strix_file" --ins "$ins" --outs "$outs"
+            result="$_timeout_output"
+            exit_code=$_timeout_exit
             end_time=$(python3 -c "import time; print(time.time())")
 
             if [[ $exit_code -eq 142 ]]; then

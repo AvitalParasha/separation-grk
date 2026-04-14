@@ -15,6 +15,9 @@ fi
 
 TIMEOUT=1800
 
+# Portable timeout (works on macOS without coreutils)
+source "${MYDIR}/../timeout_helper.sh"
+
 for example_dir in "${MYDIR}"/*/; do
     dir_name="$(basename "$example_dir")"
     strix_dir="${example_dir}strix_example"
@@ -61,8 +64,9 @@ for example_dir in "${MYDIR}"/*/; do
 
         # Run Strix with timing
         start_time=$(python3 -c "import time; print(time.time())")
-        result=$(perl -e 'alarm shift; exec @ARGV' "$TIMEOUT" "$STRIX" -r -F "$strix_file" --ins "$ins" --outs "$outs" 2>&1)
-        exit_code=$?
+        run_with_timeout "$TIMEOUT" "$STRIX" -r -F "$strix_file" --ins "$ins" --outs "$outs"
+        result="$_timeout_output"
+        exit_code=$_timeout_exit
         end_time=$(python3 -c "import time; print(time.time())")
 
         elapsed=$(python3 -c "print(f'{${end_time} - ${start_time}:.3f}')")

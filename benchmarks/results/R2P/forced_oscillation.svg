@@ -10,9 +10,9 @@
 <line x1="1" y1="68" x2="419.22" y2="68" stroke="#bdc3c7" stroke-width="2"/>
 <rect x="1" y="68" width="418.22" height="28" fill="#f8f9fa"/>
 <text x="21.060000000000002" y="87.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">1</text>
-<text x="109.54" y="87.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.011</text>
-<text x="206.08" y="87.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.978</text>
-<text x="286.5" y="87.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">88.9x</text>
+<text x="109.54" y="87.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.051</text>
+<text x="206.08" y="87.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.996</text>
+<text x="286.5" y="87.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">19.5x</text>
 <text x="310.5" y="87.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="start" fill="#2c3e50">Unrealizable</text>
 <line x1="1" y1="96" x2="419.22" y2="96" stroke="#ecf0f1" stroke-width="0.5"/>
 <line x1="1" y1="98" x2="419.22" y2="98" stroke="#bdc3c7" stroke-width="2"/>

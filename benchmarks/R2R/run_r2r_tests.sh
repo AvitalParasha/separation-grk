@@ -16,6 +16,9 @@ is_heavy() {
     esac
 }
 
+# Portable timeout (works on macOS without coreutils)
+source "${MYDIR}/../timeout_helper.sh"
+
 echo "=== R2R Benchmarks ==="
 PASS=0
 FAIL=0
@@ -38,8 +41,9 @@ for f in "${MYDIR}"/**/*.sgrk; do
     echo -n "${name}: "
 
     if [[ "$TIMEOUT" -gt 0 ]]; then
-        result=$(perl -e 'alarm shift; exec @ARGV' "$TIMEOUT" "$SGRK" "$f" 2>&1)
-        exit_code=$?
+        run_with_timeout "$TIMEOUT" "$SGRK" "$f"
+        result="$_timeout_output"
+        exit_code=$_timeout_exit
         if [[ $exit_code -eq 142 ]]; then
             echo "TIMEOUT (${TIMEOUT}s)"
             SKIP=$((SKIP + 1))

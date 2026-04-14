@@ -53,6 +53,9 @@ if [[ ! -x "$STRIX" ]]; then
     exit 1
 fi
 
+# Portable timeout (works on macOS without coreutils)
+source "${MYDIR}/timeout_helper.sh"
+
 # Normalize result strings for comparison (case-insensitive)
 normalize_result() {
     local r="$1"
@@ -238,8 +241,9 @@ for cat in "${CATEGORIES[@]}"; do
                 # Run sgrk
                 start_time=$(python3 -c "import time; print(time.time())")
                 if [[ "$TIMEOUT" -gt 0 ]]; then
-                    sgrk_result=$(perl -e 'alarm shift; exec @ARGV' "$TIMEOUT" "$SGRK" "$f" 2>&1)
-                    sgrk_exit=$?
+                    run_with_timeout "$TIMEOUT" "$SGRK" "$f"
+                    sgrk_result="$_timeout_output"
+                    sgrk_exit=$_timeout_exit
                 else
                     sgrk_result=$("$SGRK" "$f" 2>&1)
                     sgrk_exit=$?
@@ -291,8 +295,9 @@ for cat in "${CATEGORIES[@]}"; do
                     outs=$(grep -o '"out:[^"]*"' "$f" | sort -u | sed 's/"//g' | paste -sd, -)
 
                     start_time=$(python3 -c "import time; print(time.time())")
-                    strix_result=$(perl -e 'alarm shift; exec @ARGV' "$STRIX_TIMEOUT" "$STRIX" -r -F "$strix_file" --ins "$ins" --outs "$outs" 2>&1)
-                    strix_exit=$?
+                    run_with_timeout "$STRIX_TIMEOUT" "$STRIX" -r -F "$strix_file" --ins "$ins" --outs "$outs"
+                    strix_result="$_timeout_output"
+                    strix_exit=$_timeout_exit
                     end_time=$(python3 -c "import time; print(time.time())")
 
                     if [[ $strix_exit -eq 142 ]]; then

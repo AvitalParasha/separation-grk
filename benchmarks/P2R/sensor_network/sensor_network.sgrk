@@ -1,0 +1,14 @@
+!"in:sensor_a" &
+!"in:sensor_b" ;
+
+!"out:report_a" &
+!"out:report_b" ;
+
+!("in:sensor_a" & "in:sensor_b") &
+("in:sensor_a" -> X "in:sensor_a") &
+("in:sensor_b" -> X "in:sensor_b") ;
+
+1 ;
+
+((FG "in:sensor_a") -> (GF "out:report_a")) &
+((FG "in:sensor_b") -> (GF "out:report_b"))

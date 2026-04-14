@@ -32,6 +32,9 @@ if [[ ! -x "$SGRK" ]]; then
     exit 1
 fi
 
+# Portable timeout (works on macOS without coreutils)
+source "${MYDIR}/timeout_helper.sh"
+
 # Determine which categories to run
 if [[ "$CATEGORY" == "all" ]]; then
     CATEGORIES=(R2R R2P P2R)
@@ -83,8 +86,9 @@ for cat in "${CATEGORIES[@]}"; do
 
             if [[ "$TIMEOUT" -gt 0 ]]; then
                 start_time=$(python3 -c "import time; print(time.time())")
-                result=$(perl -e 'alarm shift; exec @ARGV' "$TIMEOUT" "$SGRK" "$f" 2>&1)
-                exit_code=$?
+                run_with_timeout "$TIMEOUT" "$SGRK" "$f"
+                result="$_timeout_output"
+                exit_code=$_timeout_exit
                 end_time=$(python3 -c "import time; print(time.time())")
 
                 if [[ $exit_code -eq 142 ]]; then

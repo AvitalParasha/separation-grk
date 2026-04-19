@@ -1,0 +1,15 @@
+!"in:a" & !"in:b" & !"in:c" ;
+
+!"out:x" & !"out:y" ;
+
+(!("in:b") | "in:a") & (!("in:c") | "in:a") & !("in:b" & "in:c") &
+(!(X "in:b") | X "in:a") & (!(X "in:c") | X "in:a") & !(X "in:b" & X "in:c") &
+(!("in:a" & "in:b") | (X "in:a" & X "in:b" & !X "in:c")) &
+(!("in:a" & "in:c") | (X "in:a" & X "in:c" & !X "in:b")) ;
+
+!(X "out:x" & X "out:y") &
+(!("out:x") | X "out:x") &
+(!("out:y") | X "out:y") ;
+
+((FG ("in:a" & "in:b")) -> (GF "out:x")) &
+((FG ("in:a" & "in:c")) -> (GF "out:y"))

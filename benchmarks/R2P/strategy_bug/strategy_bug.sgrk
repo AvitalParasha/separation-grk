@@ -1,0 +1,9 @@
+1 ;
+
+!"out:x" & !"out:y" ;
+
+1 ;
+
+!(X "out:x" & X "out:y") ;
+
+((GF "in:trigger") -> (FG "out:y"))

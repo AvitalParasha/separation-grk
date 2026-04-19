@@ -1,0 +1,15 @@
+1 ;
+
+!"out:bound_injection" & !"out:revoke_grant" &
+!"out:bypass_faulty_block" & !"out:reconfigure_spare_block" ;
+
+1 ;
+
+!(X "out:bound_injection" & X "out:revoke_grant") ;
+
+((GF "in:high_priority_preempt") -> (FG "out:bound_injection")) &
+((GF "in:vc_timeout") -> (FG "out:bound_injection")) &
+((GF "in:hready_stall_violation") -> (FG "out:revoke_grant")) &
+((GF "in:unauthorized_access") -> (FG "out:revoke_grant")) &
+((GF "in:bist_fault_detected" & GF "in:spare_resource_available") -> (FG "out:bypass_faulty_block" & FG "out:reconfigure_spare_block")) &
+((GF "in:ecc_uncorrectable_error" & GF "in:flow_control_violation") -> (FG "out:revoke_grant" & FG "out:bound_injection"))

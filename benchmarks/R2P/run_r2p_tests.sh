@@ -42,8 +42,12 @@ for f in "${MYDIR}"/**/*.sgrk; do
 
     # Determine expected result from directory and filename
     case "$dir" in
-        forced_oscillation)
-            expected="Unrealizable" ;;
+        forced_oscillation|noc_enforcement)
+            if [[ "$name" == *"realizable"* ]]; then
+                expected="Realizable"
+            else
+                expected="Unrealizable"
+            fi ;;
         power_grid)
             if [[ "$name" == *"realizable"* ]]; then
                 expected="Realizable"

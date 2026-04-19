@@ -199,7 +199,12 @@ PathStrategy CycleCover::ComputeR2PPathStrategy(
 		mgr_->bddZero()   // Phase 1 NEVER stops (stay forever)
 	};
 
-	CUDD::BDD realizable = reach_strategy.RealizableRegion() &
+	// OR (not AND) because the two phases operate in disjoint state regions:
+	// Phase 0 (reach) activates OUTSIDE alive, Phase 1 (maintain) activates INSIDE.
+	// AND would restrict the realizable region to just alive (dominated by maintain),
+	// making the reach phase dead code — the cycle strategy would never activate it
+	// from states outside alive, falling back to idle instead of driving toward alive.
+	CUDD::BDD realizable = reach_strategy.RealizableRegion() |
 	                        maintain_strategy.RealizableRegion();
 	return PathStrategy(realizable, std::move(parts), std::move(stops));
 }

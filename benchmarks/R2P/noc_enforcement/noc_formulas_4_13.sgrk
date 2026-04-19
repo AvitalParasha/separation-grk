@@ -1,0 +1,10 @@
+1 ;
+
+!"out:bound_injection" & !"out:revoke_grant" ;
+
+1 ;
+
+!(X "out:bound_injection" & X "out:revoke_grant") ;
+
+((GF "in:high_priority_preempt") -> (FG "out:bound_injection")) &
+((GF "in:hready_stall_violation") -> (FG "out:revoke_grant"))

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="597.1800000000001" height="100" viewBox="0 0 597.1800000000001 100">
+<rect width="597.1800000000001" height="100" fill="white" rx="4"/>
+<text x="298.59000000000003" y="25.2" font-family="Menlo, Consolas, monospace" font-size="15" font-weight="bold" text-anchor="middle" fill="#222">R2P: strategy bug</text>
+<rect x="1" y="36" width="595.1800000000001" height="32" fill="#2c3e50"/>
+<text x="21.060000000000002" y="57.760000000000005" font-family="Menlo, Consolas, monospace" font-size="13" font-weight="bold" text-anchor="end" fill="white">#</text>
+<text x="109.54" y="57.760000000000005" font-family="Menlo, Consolas, monospace" font-size="13" font-weight="bold" text-anchor="end" fill="white">sgrk (s)</text>
+<text x="206.08" y="57.760000000000005" font-family="Menlo, Consolas, monospace" font-size="13" font-weight="bold" text-anchor="end" fill="white">Strix (s)</text>
+<text x="294.56" y="57.760000000000005" font-family="Menlo, Consolas, monospace" font-size="13" font-weight="bold" text-anchor="end" fill="white">Spot (s)</text>
+<text x="391.1" y="57.760000000000005" font-family="Menlo, Consolas, monospace" font-size="13" font-weight="bold" text-anchor="end" fill="white">Strix Sp.</text>
+<text x="479.58000000000004" y="57.760000000000005" font-family="Menlo, Consolas, monospace" font-size="13" font-weight="bold" text-anchor="end" fill="white">Spot Sp.</text>
+<text x="503.58000000000004" y="57.760000000000005" font-family="Menlo, Consolas, monospace" font-size="13" font-weight="bold" text-anchor="start" fill="white">Result</text>
+<line x1="1" y1="68" x2="596.1800000000001" y2="68" stroke="#bdc3c7" stroke-width="2"/>
+<rect x="1" y="68" width="595.1800000000001" height="28" fill="#f8f9fa"/>
+<text x="21.060000000000002" y="87.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">1</text>
+<text x="109.54" y="87.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.040</text>
+<text x="206.08" y="87.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.054</text>
+<text x="294.56" y="87.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.045</text>
+<text x="391.1" y="87.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">1.3x</text>
+<text x="479.58000000000004" y="87.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">1.1x</text>
+<text x="503.58000000000004" y="87.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="start" fill="#2c3e50">Realizable</text>
+<line x1="1" y1="96" x2="596.1800000000001" y2="96" stroke="#ecf0f1" stroke-width="0.5"/>
+<line x1="1" y1="98" x2="596.1800000000001" y2="98" stroke="#bdc3c7" stroke-width="2"/>
+</svg>

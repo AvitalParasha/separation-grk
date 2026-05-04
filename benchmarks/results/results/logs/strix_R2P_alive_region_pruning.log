@@ -1,0 +1,13 @@
+=== strix on R2P/alive_region_pruning (10 tests, timeout=5400s) ===
+  alive_region_pruning_1.sgrk: 0.062s  REALIZABLE
+  alive_region_pruning_2.sgrk: 0.078s  REALIZABLE
+  alive_region_pruning_3.sgrk: 0.142s  REALIZABLE
+  alive_region_pruning_4.sgrk: 0.498s  REALIZABLE
+  alive_region_pruning_5.sgrk: 2.501s  REALIZABLE
+  alive_region_pruning_6.sgrk: 12.949s  REALIZABLE
+  alive_region_pruning_7.sgrk: 96.688s  REALIZABLE
+  alive_region_pruning_8.sgrk: TIMEOUT
+  alive_region_pruning_9.sgrk: SKIPPED (cascade)
+  alive_region_pruning_10.sgrk: SKIPPED (cascade)
+=== Done: strix on R2P/alive_region_pruning ===
+Results: /RG/rg-fried/avitalpa/separation-grk/benchmarks/R2P/alive_region_pruning//strix_runtime

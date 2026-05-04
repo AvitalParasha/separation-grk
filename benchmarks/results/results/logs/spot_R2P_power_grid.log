@@ -1,0 +1,8 @@
+=== spot on R2P/power_grid (5 tests, timeout=5400s) ===
+  power_grid.sgrk: 0.091s  UNREALIZABLE
+  power_grid_3state.sgrk: 0.060s  UNREALIZABLE
+  power_grid_realizable.sgrk: 0.152s  REALIZABLE
+  power_grid_realizable_vacuous.sgrk: 6.746s  REALIZABLE
+  power_grid_vacuous.sgrk: 2.607s  UNREALIZABLE
+=== Done: spot on R2P/power_grid ===
+Results: /RG/rg-fried/avitalpa/separation-grk/benchmarks/R2P/power_grid//spot_runtime

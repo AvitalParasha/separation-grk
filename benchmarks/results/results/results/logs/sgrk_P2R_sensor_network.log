@@ -1,0 +1,7 @@
+=== sgrk on P2R/sensor_network (4 tests, timeout=5400s) ===
+  sensor_network.sgrk: 0.052s  Realizable
+  sensor_network_bug.sgrk: 0.044s  Realizable
+  sensor_network_unrealizable.sgrk: 0.043s  Unrealizable
+  sensor_network_vacuous.sgrk: 0.043s  Realizable
+=== Done: sgrk on P2R/sensor_network ===
+Results: /RG/rg-fried/avitalpa/separation-grk/benchmarks/P2R/sensor_network//runtime

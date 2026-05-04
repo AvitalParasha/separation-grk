@@ -1,0 +1,3 @@
+Test                                             Seconds         ms           us  Result         
+----                                             -------         --           --  ------         
+forced_oscillation.sgrk                           0.042s       42ms      42261us  UNREALIZABLE   

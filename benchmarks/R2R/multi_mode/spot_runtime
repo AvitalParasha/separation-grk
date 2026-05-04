@@ -1,0 +1,12 @@
+Test                                             Seconds         ms           us  Result         
+----                                             -------         --           --  ------         
+multi_mode_1.sgrk                                 0.041s       41ms      41461us  REALIZABLE     
+multi_mode_2.sgrk                                      -          -            -  TIMEOUT        
+multi_mode_3.sgrk                                      -          -            -  SKIPPED        
+multi_mode_4.sgrk                                      -          -            -  SKIPPED        
+multi_mode_5.sgrk                                      -          -            -  SKIPPED        
+multi_mode_6.sgrk                                      -          -            -  SKIPPED        
+multi_mode_7.sgrk                                      -          -            -  SKIPPED        
+multi_mode_8.sgrk                                      -          -            -  SKIPPED        
+multi_mode_9.sgrk                                      -          -            -  SKIPPED        
+multi_mode_10.sgrk                                     -          -            -  SKIPPED        

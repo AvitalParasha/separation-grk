@@ -2,3 +2,9 @@ Test                                             Seconds         ms           us
 ----                                             -------         --           --  ------         
 railway_signaling_2_2.sgrk                        1.012s     1012ms    1012087us  REALIZABLE     
 railway_signaling_2_3.sgrk                       14.354s    14353ms   14353912us  REALIZABLE     
+railway_signaling_2_5.sgrk                             -          -            -  TIMEOUT        
+railway_signaling_2_6.sgrk                             -          -            -  SKIPPED        
+railway_signaling_2_7.sgrk                             -          -            -  SKIPPED        
+railway_signaling_2_8.sgrk                             -          -            -  SKIPPED        
+railway_signaling_2_9.sgrk                             -          -            -  SKIPPED        
+railway_signaling_2_10.sgrk                            -          -            -  SKIPPED        

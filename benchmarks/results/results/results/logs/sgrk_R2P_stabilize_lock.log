@@ -1,0 +1,13 @@
+=== sgrk on R2P/stabilize_lock (10 tests, timeout=5400s) ===
+  stabilize_lock_1.sgrk: 0.051s  Realizable
+  stabilize_lock_2.sgrk: 0.044s  Realizable
+  stabilize_lock_3.sgrk: 0.043s  Realizable
+  stabilize_lock_4.sgrk: 0.043s  Realizable
+  stabilize_lock_5.sgrk: 0.062s  Realizable
+  stabilize_lock_6.sgrk: 0.044s  Realizable
+  stabilize_lock_7.sgrk: 0.044s  Realizable
+  stabilize_lock_8.sgrk: 0.044s  Realizable
+  stabilize_lock_9.sgrk: 0.044s  Realizable
+  stabilize_lock_10.sgrk: 0.060s  Realizable
+=== Done: sgrk on R2P/stabilize_lock ===
+Results: /RG/rg-fried/avitalpa/separation-grk/benchmarks/R2P/stabilize_lock//runtime

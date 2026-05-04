@@ -1,0 +1,8 @@
+=== sgrk on R2P/power_grid (5 tests, timeout=5400s) ===
+  power_grid.sgrk: 0.042s  Unrealizable
+  power_grid_3state.sgrk: 0.041s  Unrealizable
+  power_grid_realizable.sgrk: 0.041s  Realizable
+  power_grid_realizable_vacuous.sgrk: 0.041s  Realizable
+  power_grid_vacuous.sgrk: 0.041s  Unrealizable
+=== Done: sgrk on R2P/power_grid ===
+Results: /RG/rg-fried/avitalpa/separation-grk/benchmarks/R2P/power_grid//runtime

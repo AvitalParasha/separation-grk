@@ -1,0 +1,13 @@
+=== sgrk on R2R/multi_mode (10 tests, timeout=5400s) ===
+  multi_mode_1.sgrk: 0.041s  Realizable
+  multi_mode_2.sgrk: 0.040s  Realizable
+  multi_mode_3.sgrk: 0.043s  Realizable
+  multi_mode_4.sgrk: 0.046s  Realizable
+  multi_mode_5.sgrk: 0.055s  Realizable
+  multi_mode_6.sgrk: 0.088s  Realizable
+  multi_mode_7.sgrk: 0.139s  Realizable
+  multi_mode_8.sgrk: 0.286s  Realizable
+  multi_mode_9.sgrk: 0.734s  Realizable
+  multi_mode_10.sgrk: 1.910s  Realizable
+=== Done: sgrk on R2R/multi_mode ===
+Results: /RG/rg-fried/avitalpa/separation-grk/benchmarks/R2R/multi_mode//runtime

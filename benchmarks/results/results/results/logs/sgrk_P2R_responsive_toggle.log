@@ -1,0 +1,13 @@
+=== sgrk on P2R/responsive_toggle (10 tests, timeout=5400s) ===
+  responsive_toggle_1.sgrk: 0.053s  Realizable
+  responsive_toggle_2.sgrk: 0.043s  Realizable
+  responsive_toggle_3.sgrk: 0.044s  Realizable
+  responsive_toggle_4.sgrk: 0.043s  Realizable
+  responsive_toggle_5.sgrk: 0.043s  Realizable
+  responsive_toggle_6.sgrk: 0.043s  Realizable
+  responsive_toggle_7.sgrk: 0.043s  Realizable
+  responsive_toggle_8.sgrk: 0.043s  Realizable
+  responsive_toggle_9.sgrk: 0.045s  Realizable
+  responsive_toggle_10.sgrk: 0.045s  Realizable
+=== Done: sgrk on P2R/responsive_toggle ===
+Results: /RG/rg-fried/avitalpa/separation-grk/benchmarks/P2R/responsive_toggle//runtime

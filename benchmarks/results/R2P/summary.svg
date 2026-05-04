@@ -1,51 +1,110 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="702.1400000000001" height="212" viewBox="0 0 702.1400000000001 212">
-<rect width="702.1400000000001" height="212" fill="white" rx="4"/>
-<text x="351.07000000000005" y="25.2" font-family="Menlo, Consolas, monospace" font-size="15" font-weight="bold" text-anchor="middle" fill="#222">R2P Benchmark Summary: sgrk vs Strix</text>
-<rect x="1" y="36" width="700.1400000000001" height="32" fill="#2c3e50"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="927.4600000000002" height="352" viewBox="0 0 927.4600000000002 352">
+<rect width="927.4600000000002" height="352" fill="white" rx="4"/>
+<text x="463.7300000000001" y="25.2" font-family="Menlo, Consolas, monospace" font-size="15" font-weight="bold" text-anchor="middle" fill="#222">R2P Benchmark Summary: sgrk vs Strix vs Spot</text>
+<rect x="1" y="36" width="925.4600000000002" height="32" fill="#2c3e50"/>
 <text x="13" y="57.760000000000005" font-family="Menlo, Consolas, monospace" font-size="13" font-weight="bold" text-anchor="start" fill="white">Family</text>
 <text x="238.5" y="57.760000000000005" font-family="Menlo, Consolas, monospace" font-size="13" font-weight="bold" text-anchor="end" fill="white">Tests</text>
 <text x="302.8" y="57.760000000000005" font-family="Menlo, Consolas, monospace" font-size="13" font-weight="bold" text-anchor="end" fill="white">Match</text>
 <text x="399.34000000000003" y="57.760000000000005" font-family="Menlo, Consolas, monospace" font-size="13" font-weight="bold" text-anchor="end" fill="white">Strix T/O</text>
-<text x="536.1800000000001" y="57.760000000000005" font-family="Menlo, Consolas, monospace" font-size="13" font-weight="bold" text-anchor="end" fill="white">sgrk Range (s)</text>
-<text x="689.1400000000001" y="57.760000000000005" font-family="Menlo, Consolas, monospace" font-size="13" font-weight="bold" text-anchor="end" fill="white">Strix Range (s)</text>
-<line x1="1" y1="68" x2="701.1400000000001" y2="68" stroke="#bdc3c7" stroke-width="2"/>
-<rect x="1" y="68" width="700.1400000000001" height="28" fill="#f8f9fa"/>
+<text x="487.82000000000005" y="57.760000000000005" font-family="Menlo, Consolas, monospace" font-size="13" font-weight="bold" text-anchor="end" fill="white">Spot T/O</text>
+<text x="624.6600000000001" y="57.760000000000005" font-family="Menlo, Consolas, monospace" font-size="13" font-weight="bold" text-anchor="end" fill="white">sgrk Range (s)</text>
+<text x="777.6200000000001" y="57.760000000000005" font-family="Menlo, Consolas, monospace" font-size="13" font-weight="bold" text-anchor="end" fill="white">Strix Range (s)</text>
+<text x="914.4600000000002" y="57.760000000000005" font-family="Menlo, Consolas, monospace" font-size="13" font-weight="bold" text-anchor="end" fill="white">Spot Range (s)</text>
+<line x1="1" y1="68" x2="926.4600000000002" y2="68" stroke="#bdc3c7" stroke-width="2"/>
+<rect x="1" y="68" width="925.4600000000002" height="28" fill="#f8f9fa"/>
 <text x="13" y="87.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="start" fill="#2c3e50">alive region pruning</text>
 <text x="238.5" y="87.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">10</text>
 <text x="302.8" y="87.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">7</text>
 <text x="399.34000000000003" y="87.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">3</text>
-<text x="536.1800000000001" y="87.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.039 - 0.078</text>
-<text x="689.1400000000001" y="87.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.072 - 35.445</text>
-<line x1="1" y1="96" x2="701.1400000000001" y2="96" stroke="#ecf0f1" stroke-width="0.5"/>
+<text x="487.82000000000005" y="87.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">1</text>
+<text x="624.6600000000001" y="87.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.039 - 0.078</text>
+<text x="777.6200000000001" y="87.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.066 - 35.939</text>
+<text x="914.4600000000002" y="87.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.037 - 25.169</text>
+<line x1="1" y1="96" x2="926.4600000000002" y2="96" stroke="#ecf0f1" stroke-width="0.5"/>
 <text x="13" y="115.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="start" fill="#2c3e50">cleaning robots</text>
 <text x="238.5" y="115.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">10</text>
 <text x="302.8" y="115.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">4</text>
 <text x="399.34000000000003" y="115.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">6</text>
-<text x="536.1800000000001" y="115.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.039 - 4.441</text>
-<text x="689.1400000000001" y="115.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.240 - 1675.251</text>
-<line x1="1" y1="124" x2="701.1400000000001" y2="124" stroke="#ecf0f1" stroke-width="0.5"/>
-<rect x="1" y="124" width="700.1400000000001" height="28" fill="#f8f9fa"/>
+<text x="487.82000000000005" y="115.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">9</text>
+<text x="624.6600000000001" y="115.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.039 - 4.441</text>
+<text x="777.6200000000001" y="115.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.119 - 1287.619</text>
+<text x="914.4600000000002" y="115.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.054</text>
+<line x1="1" y1="124" x2="926.4600000000002" y2="124" stroke="#ecf0f1" stroke-width="0.5"/>
+<rect x="1" y="124" width="925.4600000000002" height="28" fill="#f8f9fa"/>
 <text x="13" y="143.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="start" fill="#2c3e50">forced oscillation</text>
 <text x="238.5" y="143.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">1</text>
 <text x="302.8" y="143.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">1</text>
 <text x="399.34000000000003" y="143.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0</text>
-<text x="536.1800000000001" y="143.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.051</text>
-<text x="689.1400000000001" y="143.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.996</text>
-<line x1="1" y1="152" x2="701.1400000000001" y2="152" stroke="#ecf0f1" stroke-width="0.5"/>
-<text x="13" y="171.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="start" fill="#2c3e50">power grid</text>
-<text x="238.5" y="171.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">4</text>
+<text x="487.82000000000005" y="143.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0</text>
+<text x="624.6600000000001" y="143.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.051</text>
+<text x="777.6200000000001" y="143.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.072</text>
+<text x="914.4600000000002" y="143.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.042</text>
+<line x1="1" y1="152" x2="926.4600000000002" y2="152" stroke="#ecf0f1" stroke-width="0.5"/>
+<text x="13" y="171.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="start" fill="#2c3e50">noc router r2p</text>
+<text x="238.5" y="171.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">10</text>
 <text x="302.8" y="171.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">4</text>
-<text x="399.34000000000003" y="171.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0</text>
-<text x="536.1800000000001" y="171.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.051 - 0.055</text>
-<text x="689.1400000000001" y="171.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.105 - 0.110</text>
-<line x1="1" y1="180" x2="701.1400000000001" y2="180" stroke="#ecf0f1" stroke-width="0.5"/>
-<rect x="1" y="180" width="700.1400000000001" height="28" fill="#f8f9fa"/>
-<text x="13" y="199.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="start" fill="#2c3e50">stabilize lock</text>
+<text x="399.34000000000003" y="171.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">6</text>
+<text x="487.82000000000005" y="171.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">9</text>
+<text x="624.6600000000001" y="171.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.041 - 1.880</text>
+<text x="777.6200000000001" y="171.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.134 - 134.834</text>
+<text x="914.4600000000002" y="171.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.055</text>
+<line x1="1" y1="180" x2="926.4600000000002" y2="180" stroke="#ecf0f1" stroke-width="0.5"/>
+<rect x="1" y="180" width="925.4600000000002" height="28" fill="#f8f9fa"/>
+<text x="13" y="199.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="start" fill="#2c3e50">noc router r2p</text>
 <text x="238.5" y="199.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">10</text>
-<text x="302.8" y="199.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">10</text>
-<text x="399.34000000000003" y="199.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0</text>
-<text x="536.1800000000001" y="199.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.050 - 0.057</text>
-<text x="689.1400000000001" y="199.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.079 - 17.626</text>
-<line x1="1" y1="208" x2="701.1400000000001" y2="208" stroke="#ecf0f1" stroke-width="0.5"/>
-<line x1="1" y1="210" x2="701.1400000000001" y2="210" stroke="#bdc3c7" stroke-width="2"/>
+<text x="302.8" y="199.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">4</text>
+<text x="399.34000000000003" y="199.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">6</text>
+<text x="487.82000000000005" y="199.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">9</text>
+<text x="624.6600000000001" y="199.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.042 - 3.406</text>
+<text x="777.6200000000001" y="199.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.463 - 1298.128</text>
+<text x="914.4600000000002" y="199.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">2.972</text>
+<line x1="1" y1="208" x2="926.4600000000002" y2="208" stroke="#ecf0f1" stroke-width="0.5"/>
+<text x="13" y="227.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="start" fill="#2c3e50">noc router r2p</text>
+<text x="238.5" y="227.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">10</text>
+<text x="302.8" y="227.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">4</text>
+<text x="399.34000000000003" y="227.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">6</text>
+<text x="487.82000000000005" y="227.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">9</text>
+<text x="624.6600000000001" y="227.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.043 - 3.024</text>
+<text x="777.6200000000001" y="227.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">1.051 - 3769.862</text>
+<text x="914.4600000000002" y="227.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">3047.418</text>
+<line x1="1" y1="236" x2="926.4600000000002" y2="236" stroke="#ecf0f1" stroke-width="0.5"/>
+<rect x="1" y="236" width="925.4600000000002" height="28" fill="#f8f9fa"/>
+<text x="13" y="255.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="start" fill="#2c3e50">noc router r2p</text>
+<text x="238.5" y="255.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">10</text>
+<text x="302.8" y="255.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">3</text>
+<text x="399.34000000000003" y="255.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">7</text>
+<text x="487.82000000000005" y="255.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">10</text>
+<text x="624.6600000000001" y="255.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.044 - 3.671</text>
+<text x="777.6200000000001" y="255.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">2.058 - 695.636</text>
+<text x="914.4600000000002" y="255.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">N/A</text>
+<line x1="1" y1="264" x2="926.4600000000002" y2="264" stroke="#ecf0f1" stroke-width="0.5"/>
+<text x="13" y="283.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="start" fill="#2c3e50">power grid</text>
+<text x="238.5" y="283.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">5</text>
+<text x="302.8" y="283.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">5</text>
+<text x="399.34000000000003" y="283.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0</text>
+<text x="487.82000000000005" y="283.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0</text>
+<text x="624.6600000000001" y="283.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.039 - 0.049</text>
+<text x="777.6200000000001" y="283.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.092 - 0.135</text>
+<text x="914.4600000000002" y="283.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.061 - 6.759</text>
+<line x1="1" y1="292" x2="926.4600000000002" y2="292" stroke="#ecf0f1" stroke-width="0.5"/>
+<rect x="1" y="292" width="925.4600000000002" height="28" fill="#f8f9fa"/>
+<text x="13" y="311.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="start" fill="#2c3e50">stabilize lock</text>
+<text x="238.5" y="311.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">10</text>
+<text x="302.8" y="311.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">10</text>
+<text x="399.34000000000003" y="311.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0</text>
+<text x="487.82000000000005" y="311.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0</text>
+<text x="624.6600000000001" y="311.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.038 - 0.053</text>
+<text x="777.6200000000001" y="311.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.056 - 45.324</text>
+<text x="914.4600000000002" y="311.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.041 - 0.649</text>
+<line x1="1" y1="320" x2="926.4600000000002" y2="320" stroke="#ecf0f1" stroke-width="0.5"/>
+<text x="13" y="339.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="start" fill="#2c3e50">strategy bug</text>
+<text x="238.5" y="339.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">1</text>
+<text x="302.8" y="339.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">1</text>
+<text x="399.34000000000003" y="339.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0</text>
+<text x="487.82000000000005" y="339.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0</text>
+<text x="624.6600000000001" y="339.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.040</text>
+<text x="777.6200000000001" y="339.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.054</text>
+<text x="914.4600000000002" y="339.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.045</text>
+<line x1="1" y1="348" x2="926.4600000000002" y2="348" stroke="#ecf0f1" stroke-width="0.5"/>
+<line x1="1" y1="350" x2="926.4600000000002" y2="350" stroke="#bdc3c7" stroke-width="2"/>
 </svg>

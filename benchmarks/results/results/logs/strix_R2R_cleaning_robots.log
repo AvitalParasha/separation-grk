@@ -1,0 +1,13 @@
+=== strix on R2R/cleaning_robots (10 tests, timeout=5400s) ===
+  cleaning_robots_1.sgrk: 0.117s  REALIZABLE
+  cleaning_robots_2.sgrk: 0.419s  REALIZABLE
+  cleaning_robots_3.sgrk: 19.647s  REALIZABLE
+  cleaning_robots_4.sgrk: 1197.312s  REALIZABLE
+  cleaning_robots_5.sgrk: TIMEOUT
+  cleaning_robots_6.sgrk: SKIPPED (cascade)
+  cleaning_robots_7.sgrk: SKIPPED (cascade)
+  cleaning_robots_8.sgrk: SKIPPED (cascade)
+  cleaning_robots_9.sgrk: SKIPPED (cascade)
+  cleaning_robots_10.sgrk: SKIPPED (cascade)
+=== Done: strix on R2R/cleaning_robots ===
+Results: /RG/rg-fried/avitalpa/separation-grk/benchmarks/R2R/cleaning_robots//strix_runtime

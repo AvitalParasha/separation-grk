@@ -1,0 +1,12 @@
+=== sgrk on R2R/railway_signaling_2 (9 tests, timeout=5400s) ===
+  railway_signaling_2_2.sgrk: 0.100s  Realizable
+  railway_signaling_2_3.sgrk: 0.176s  Realizable
+  railway_signaling_2_4.sgrk: 0.826s  Realizable
+  railway_signaling_2_5.sgrk: 3.783s  Realizable
+  railway_signaling_2_6.sgrk: 12.648s  Realizable
+  railway_signaling_2_7.sgrk: 20.507s  Realizable
+  railway_signaling_2_8.sgrk: 43.428s  Realizable
+  railway_signaling_2_9.sgrk: 439.097s  Realizable
+  railway_signaling_2_10.sgrk: TIMEOUT
+=== Done: sgrk on R2R/railway_signaling_2 ===
+Results: /RG/rg-fried/avitalpa/separation-grk/benchmarks/R2R/railway_signaling_2//runtime

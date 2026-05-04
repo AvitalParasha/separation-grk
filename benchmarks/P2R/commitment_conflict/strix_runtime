@@ -1,0 +1,3 @@
+Test                                             Seconds         ms           us  Result         
+----                                             -------         --           --  ------         
+commitment_conflict.sgrk                          0.067s       67ms      67412us  REALIZABLE     

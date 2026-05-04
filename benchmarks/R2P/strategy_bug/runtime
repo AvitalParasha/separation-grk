@@ -1,0 +1,3 @@
+Test                                             Seconds         ms           us  Result         
+----                                             -------         --           --  ------         
+strategy_bug.sgrk                                 0.040s       39ms      39561us  Realizable     

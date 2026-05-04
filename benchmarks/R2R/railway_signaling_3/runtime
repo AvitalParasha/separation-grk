@@ -9,3 +9,5 @@ railway_signaling_3_6.sgrk                          15.945s     15944ms    15944
 railway_signaling_3_7.sgrk                          19.414s     19413ms    19413990us  Realizable
 railway_signaling_3_8.sgrk                          42.474s     42473ms    42473629us  Realizable
 railway_signaling_3_9.sgrk                      212676.578s  212676578ms  212676578220us  Realizable
+railway_signaling_3_9.sgrk                             -          -            -  TIMEOUT        
+railway_signaling_3_10.sgrk                            -          -            -  SKIPPED        

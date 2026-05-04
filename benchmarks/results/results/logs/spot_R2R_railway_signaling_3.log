@@ -1,0 +1,12 @@
+=== spot on R2R/railway_signaling_3 (9 tests, timeout=5400s) ===
+  railway_signaling_3_2.sgrk: TIMEOUT
+  railway_signaling_3_3.sgrk: SKIPPED (cascade)
+  railway_signaling_3_4.sgrk: SKIPPED (cascade)
+  railway_signaling_3_5.sgrk: SKIPPED (cascade)
+  railway_signaling_3_6.sgrk: SKIPPED (cascade)
+  railway_signaling_3_7.sgrk: SKIPPED (cascade)
+  railway_signaling_3_8.sgrk: SKIPPED (cascade)
+  railway_signaling_3_9.sgrk: SKIPPED (cascade)
+  railway_signaling_3_10.sgrk: SKIPPED (cascade)
+=== Done: spot on R2R/railway_signaling_3 ===
+Results: /RG/rg-fried/avitalpa/separation-grk/benchmarks/R2R/railway_signaling_3//spot_runtime

@@ -1,0 +1,12 @@
+Test                                             Seconds         ms           us  Result         
+----                                             -------         --           --  ------         
+alive_region_pruning_1.sgrk                       0.048s       47ms      47821us  REALIZABLE     
+alive_region_pruning_2.sgrk                       0.038s       37ms      37798us  REALIZABLE     
+alive_region_pruning_3.sgrk                       0.037s       37ms      37249us  REALIZABLE     
+alive_region_pruning_4.sgrk                       0.039s       38ms      38641us  REALIZABLE     
+alive_region_pruning_5.sgrk                       0.049s       49ms      49268us  REALIZABLE     
+alive_region_pruning_6.sgrk                       0.106s      106ms     106415us  REALIZABLE     
+alive_region_pruning_7.sgrk                       0.525s      525ms     525386us  REALIZABLE     
+alive_region_pruning_8.sgrk                       3.408s     3407ms    3407827us  REALIZABLE     
+alive_region_pruning_9.sgrk                      25.169s    25168ms   25168608us  REALIZABLE     
+alive_region_pruning_10.sgrk                           -          -            -  TIMEOUT        

@@ -1,0 +1,12 @@
+Test                                             Seconds         ms           us  Result         
+----                                             -------         --           --  ------         
+responsive_toggle_1.sgrk                          0.028s       28ms      28324us  REALIZABLE     
+responsive_toggle_2.sgrk                          0.027s       27ms      27031us  REALIZABLE     
+responsive_toggle_3.sgrk                          0.027s       26ms      26615us  REALIZABLE     
+responsive_toggle_4.sgrk                          0.028s       27ms      27648us  REALIZABLE     
+responsive_toggle_5.sgrk                          0.028s       28ms      28410us  REALIZABLE     
+responsive_toggle_6.sgrk                          0.029s       28ms      28588us  REALIZABLE     
+responsive_toggle_7.sgrk                          0.029s       29ms      29168us  REALIZABLE     
+responsive_toggle_8.sgrk                          0.028s       28ms      28211us  REALIZABLE     
+responsive_toggle_9.sgrk                          0.029s       28ms      28646us  REALIZABLE     
+responsive_toggle_10.sgrk                         0.029s       29ms      29277us  REALIZABLE     

@@ -1,0 +1,6 @@
+Test                                             Seconds         ms           us  Result         
+----                                             -------         --           --  ------         
+sensor_network.sgrk                               0.030s       29ms      29929us  Realizable     
+sensor_network_bug.sgrk                           0.030s       29ms      29963us  Realizable     
+sensor_network_unrealizable.sgrk                  0.030s       29ms      29557us  Unrealizable   
+sensor_network_vacuous.sgrk                       0.030s       29ms      29512us  Realizable     

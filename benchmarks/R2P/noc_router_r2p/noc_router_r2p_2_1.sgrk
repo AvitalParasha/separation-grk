@@ -1,0 +1,59 @@
+1 ;
+!"out:bound_injection0" &
+!"out:revoke_grant0" &
+!"out:bypass_faulty_block0" &
+!"out:bound_injection1" &
+!"out:revoke_grant1" &
+!"out:bypass_faulty_block1" &
+!"out:reconfigure_spare_o0" ;
+!("in:bist_fault_detected0" & "in:ecc_uncorrectable_error0") &
+!("in:bist_fault_detected1" & "in:ecc_uncorrectable_error1") ;
+(X "out:bypass_faulty_block0" -> X "out:revoke_grant0") &
+("out:revoke_grant0" -> X "out:revoke_grant0") &
+("out:bound_injection0" -> X "out:bound_injection0") &
+("out:bypass_faulty_block0" -> X "out:bypass_faulty_block0") &
+(X "out:bypass_faulty_block1" -> X "out:revoke_grant1") &
+("out:revoke_grant1" -> X "out:revoke_grant1") &
+("out:bound_injection1" -> X "out:bound_injection1") &
+("out:bypass_faulty_block1" -> X "out:bypass_faulty_block1") &
+(X "out:revoke_grant1" -> X "out:revoke_grant0") &
+(X "out:bound_injection1" -> X "out:bound_injection0") &
+(X "out:bypass_faulty_block1" -> X "out:bypass_faulty_block0") &
+("out:reconfigure_spare_o0" -> X "out:reconfigure_spare_o0") &
+!((!"out:bound_injection0" & X "out:bound_injection0") & (!"out:revoke_grant0" & X "out:revoke_grant0")) &
+!((!"out:bound_injection0" & X "out:bound_injection0") & (!"out:bypass_faulty_block0" & X "out:bypass_faulty_block0")) &
+!((!"out:bound_injection0" & X "out:bound_injection0") & (!"out:bound_injection1" & X "out:bound_injection1")) &
+!((!"out:bound_injection0" & X "out:bound_injection0") & (!"out:revoke_grant1" & X "out:revoke_grant1")) &
+!((!"out:bound_injection0" & X "out:bound_injection0") & (!"out:bypass_faulty_block1" & X "out:bypass_faulty_block1")) &
+!((!"out:bound_injection0" & X "out:bound_injection0") & (!"out:reconfigure_spare_o0" & X "out:reconfigure_spare_o0")) &
+!((!"out:revoke_grant0" & X "out:revoke_grant0") & (!"out:bypass_faulty_block0" & X "out:bypass_faulty_block0")) &
+!((!"out:revoke_grant0" & X "out:revoke_grant0") & (!"out:bound_injection1" & X "out:bound_injection1")) &
+!((!"out:revoke_grant0" & X "out:revoke_grant0") & (!"out:revoke_grant1" & X "out:revoke_grant1")) &
+!((!"out:revoke_grant0" & X "out:revoke_grant0") & (!"out:bypass_faulty_block1" & X "out:bypass_faulty_block1")) &
+!((!"out:revoke_grant0" & X "out:revoke_grant0") & (!"out:reconfigure_spare_o0" & X "out:reconfigure_spare_o0")) &
+!((!"out:bypass_faulty_block0" & X "out:bypass_faulty_block0") & (!"out:bound_injection1" & X "out:bound_injection1")) &
+!((!"out:bypass_faulty_block0" & X "out:bypass_faulty_block0") & (!"out:revoke_grant1" & X "out:revoke_grant1")) &
+!((!"out:bypass_faulty_block0" & X "out:bypass_faulty_block0") & (!"out:bypass_faulty_block1" & X "out:bypass_faulty_block1")) &
+!((!"out:bypass_faulty_block0" & X "out:bypass_faulty_block0") & (!"out:reconfigure_spare_o0" & X "out:reconfigure_spare_o0")) &
+!((!"out:bound_injection1" & X "out:bound_injection1") & (!"out:revoke_grant1" & X "out:revoke_grant1")) &
+!((!"out:bound_injection1" & X "out:bound_injection1") & (!"out:bypass_faulty_block1" & X "out:bypass_faulty_block1")) &
+!((!"out:bound_injection1" & X "out:bound_injection1") & (!"out:reconfigure_spare_o0" & X "out:reconfigure_spare_o0")) &
+!((!"out:revoke_grant1" & X "out:revoke_grant1") & (!"out:bypass_faulty_block1" & X "out:bypass_faulty_block1")) &
+!((!"out:revoke_grant1" & X "out:revoke_grant1") & (!"out:reconfigure_spare_o0" & X "out:reconfigure_spare_o0")) &
+!((!"out:bypass_faulty_block1" & X "out:bypass_faulty_block1") & (!"out:reconfigure_spare_o0" & X "out:reconfigure_spare_o0")) ;
+((G F "in:high_priority_preempt0") -> (F G "out:bound_injection0")) &
+((G F "in:vc_timeout0_rd") -> (F G "out:bound_injection0")) &
+((G F "in:vc_timeout0_wr") -> (F G "out:bound_injection0")) &
+((G F "in:vc_timeout0_ll") -> (F G "out:bound_injection0")) &
+((G F "in:hready_stall_violation0") -> (F G "out:revoke_grant0")) &
+((G F "in:unauthorized_access0") -> (F G "out:revoke_grant0")) &
+((G F "in:bist_fault_detected0" & G F "in:spare_resource_available_o0") -> (F G "out:bypass_faulty_block0" & F G "out:reconfigure_spare_o0")) &
+((G F "in:ecc_uncorrectable_error0" & G F "in:flow_control_violation0") -> (F G "out:revoke_grant0" & F G "out:bound_injection0")) &
+((G F "in:high_priority_preempt1") -> (F G "out:bound_injection1")) &
+((G F "in:vc_timeout0_rd") -> (F G "out:bound_injection1")) &
+((G F "in:vc_timeout0_wr") -> (F G "out:bound_injection1")) &
+((G F "in:vc_timeout0_ll") -> (F G "out:bound_injection1")) &
+((G F "in:hready_stall_violation1") -> (F G "out:revoke_grant1")) &
+((G F "in:unauthorized_access1") -> (F G "out:revoke_grant1")) &
+((G F "in:bist_fault_detected1" & G F "in:spare_resource_available_o0") -> (F G "out:bypass_faulty_block1" & F G "out:reconfigure_spare_o0")) &
+((G F "in:ecc_uncorrectable_error1" & G F "in:flow_control_violation1") -> (F G "out:revoke_grant1" & F G "out:bound_injection1"))

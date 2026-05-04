@@ -1,0 +1,4 @@
+=== strix on R2R/rotating_robots (1 tests, timeout=5400s) ===
+  rotating_robots.sgrk: 4.088s  REALIZABLE
+=== Done: strix on R2R/rotating_robots ===
+Results: /RG/rg-fried/avitalpa/separation-grk/benchmarks/R2R/rotating_robots//strix_runtime

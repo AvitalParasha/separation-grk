@@ -1,6 +1,7 @@
 Test                                             Seconds         ms           us  Result         
 ----                                             -------         --           --  ------         
-power_grid.sgrk                                   0.105s      105ms     105132us  UNREALIZABLE   
-power_grid_realizable.sgrk                        0.107s      107ms     107041us  REALIZABLE     
-power_grid_realizable_vacuous.sgrk                0.110s      109ms     109836us  REALIZABLE     
-power_grid_vacuous.sgrk                           0.106s      105ms     105923us  UNREALIZABLE   
+power_grid.sgrk                                   0.135s      135ms     135300us  UNREALIZABLE   
+power_grid_3state.sgrk                            0.092s       92ms      92226us  UNREALIZABLE   
+power_grid_realizable.sgrk                        0.109s      108ms     108603us  REALIZABLE     
+power_grid_realizable_vacuous.sgrk                0.120s      119ms     119787us  REALIZABLE     
+power_grid_vacuous.sgrk                           0.106s      105ms     105909us  UNREALIZABLE   

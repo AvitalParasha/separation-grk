@@ -1,0 +1,4 @@
+=== spot on P2R/forced_stability (1 tests, timeout=5400s) ===
+  forced_stability.sgrk: 0.043s  UNREALIZABLE
+=== Done: spot on P2R/forced_stability ===
+Results: /RG/rg-fried/avitalpa/separation-grk/benchmarks/P2R/forced_stability//spot_runtime

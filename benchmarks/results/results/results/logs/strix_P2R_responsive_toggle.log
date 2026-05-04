@@ -1,0 +1,13 @@
+=== strix on P2R/responsive_toggle (10 tests, timeout=5400s) ===
+  responsive_toggle_1.sgrk: 0.080s  REALIZABLE
+  responsive_toggle_2.sgrk: 0.065s  REALIZABLE
+  responsive_toggle_3.sgrk: 0.068s  REALIZABLE
+  responsive_toggle_4.sgrk: 0.071s  REALIZABLE
+  responsive_toggle_5.sgrk: 0.074s  REALIZABLE
+  responsive_toggle_6.sgrk: 0.078s  REALIZABLE
+  responsive_toggle_7.sgrk: 0.085s  REALIZABLE
+  responsive_toggle_8.sgrk: 0.088s  REALIZABLE
+  responsive_toggle_9.sgrk: 0.093s  REALIZABLE
+  responsive_toggle_10.sgrk: 0.100s  REALIZABLE
+=== Done: strix on P2R/responsive_toggle ===
+Results: /RG/rg-fried/avitalpa/separation-grk/benchmarks/P2R/responsive_toggle//strix_runtime

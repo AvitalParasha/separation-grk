@@ -232,6 +232,27 @@ def extract_instance_number(name):
     return m.group(1) if m else "1"
 
 
+def extract_nk(name):
+    """Extract (n, k) from e.g. 'noc_router_r2r_3_4.sgrk' -> ('3', '4')."""
+    m = re.search(r'_(\d+)_(\d+)\.sgrk$', name)
+    if m:
+        return m.group(1), m.group(2)
+    return None, None
+
+
+def is_nk_family(test_names):
+    """Check if this family uses n_k naming convention (multiple distinct n AND k values)."""
+    n_vals = set()
+    k_vals = set()
+    for name in test_names:
+        n, k = extract_nk(name)
+        if n is not None:
+            n_vals.add(n)
+            k_vals.add(k)
+    # Only treat as n,k if there are multiple n values AND multiple k values
+    return len(n_vals) > 1 and len(k_vals) > 1
+
+
 def format_time(time_str):
     """Format time for display: strip trailing 's'."""
     if time_str == '-':
@@ -250,20 +271,34 @@ def format_strix_time(time_str, result):
 # --- Main ---
 
 def generate_family_svg(cat, family, family_dir, results_dir, timeout):
-    """Generate per-family SVG table."""
+    """Generate per-family SVG table(s). Returns list of info dicts for nk families."""
     sgrk_data = parse_runtime_file(os.path.join(family_dir, 'runtime'))
     strix_data = parse_runtime_file(os.path.join(family_dir, 'strix_runtime'))
+    spot_data = parse_runtime_file(os.path.join(family_dir, 'spot_runtime'))
 
-    if not sgrk_data or not strix_data:
+    if not sgrk_data:
         return None
 
-    # Sort by instance number
+    has_spot = bool(spot_data)
+
     test_names = sorted(sgrk_data.keys(), key=lambda n: (
-        int(re.search(r'_(\d+)\.sgrk$', n).group(1)) if re.search(r'_(\d+)\.sgrk$', n) else 0
+        [int(x) for x in re.findall(r'\d+', n)]
     ))
 
-    headers = ['#', 'sgrk (s)', 'Strix (s)', 'Speedup', 'Result']
-    col_aligns = ['r', 'r', 'r', 'r', 'l']
+    # Check if this is an n,k family (like noc_router)
+    if is_nk_family(test_names):
+        return _generate_nk_family_svgs(
+            cat, family, family_dir, results_dir, timeout,
+            sgrk_data, strix_data, spot_data, has_spot, test_names
+        )
+
+    # Standard single-table family
+    if has_spot:
+        headers = ['#', 'sgrk (s)', 'Strix (s)', 'Spot (s)', 'Strix Sp.', 'Spot Sp.', 'Result']
+        col_aligns = ['r', 'r', 'r', 'r', 'r', 'r', 'l']
+    else:
+        headers = ['#', 'sgrk (s)', 'Strix (s)', 'Speedup', 'Result']
+        col_aligns = ['r', 'r', 'r', 'r', 'l']
     rows = []
 
     for name in test_names:
@@ -271,16 +306,29 @@ def generate_family_svg(cat, family, family_dir, results_dir, timeout):
         sgrk_time, sgrk_result = sgrk_data[name]
         strix_time, strix_result = strix_data.get(name, ('-', 'N/A'))
 
-        speedup = compute_speedup(sgrk_time, strix_time, strix_result, timeout)
+        strix_speedup = compute_speedup(sgrk_time, strix_time, strix_result, timeout)
         result_display = sgrk_result if sgrk_result != 'TIMEOUT' else 'TIMEOUT'
 
-        rows.append([
-            inst,
-            format_time(sgrk_time),
-            format_strix_time(strix_time, strix_result),
-            speedup,
-            result_display,
-        ])
+        if has_spot:
+            spot_time, spot_result = spot_data.get(name, ('-', 'N/A'))
+            spot_speedup = compute_speedup(sgrk_time, spot_time, spot_result, timeout)
+            rows.append([
+                inst,
+                format_time(sgrk_time),
+                format_strix_time(strix_time, strix_result),
+                format_strix_time(spot_time, spot_result),
+                strix_speedup,
+                spot_speedup,
+                result_display,
+            ])
+        else:
+            rows.append([
+                inst,
+                format_time(sgrk_time),
+                format_strix_time(strix_time, strix_result),
+                strix_speedup,
+                result_display,
+            ])
 
     family_pretty = family.replace('_', ' ')
     title = f"{cat}: {family_pretty}"
@@ -289,19 +337,109 @@ def generate_family_svg(cat, family, family_dir, results_dir, timeout):
     out_path = os.path.join(results_dir, f"{family}.svg")
     with open(out_path, 'w') as f:
         f.write(svg)
-    return {
+    return [{
         'family': family,
         'tests': len(rows),
         'sgrk_data': sgrk_data,
         'strix_data': strix_data,
+        'spot_data': spot_data,
         'test_names': test_names,
-    }
+        'is_nk_sub': False,
+    }]
+
+
+def _generate_nk_family_svgs(cat, family, family_dir, results_dir, timeout,
+                              sgrk_data, strix_data, spot_data, has_spot, test_names):
+    """Generate one SVG per k-value for n,k families (e.g., noc_router)."""
+    from collections import OrderedDict
+    k_groups = OrderedDict()
+    for name in test_names:
+        n, k = extract_nk(name)
+        if k is None:
+            continue
+        k_int = int(k)
+        if k_int not in k_groups:
+            k_groups[k_int] = []
+        k_groups[k_int].append((name, n))
+
+    results = []
+    for k_val, entries in sorted(k_groups.items()):
+        # Sort entries by n
+        entries.sort(key=lambda x: int(x[1]))
+
+        if has_spot:
+            headers = ['n', 'sgrk (s)', 'Strix (s)', 'Spot (s)', 'Strix Sp.', 'Spot Sp.', 'Result']
+            col_aligns = ['r', 'r', 'r', 'r', 'r', 'r', 'l']
+        else:
+            headers = ['n', 'sgrk (s)', 'Strix (s)', 'Speedup', 'Result']
+            col_aligns = ['r', 'r', 'r', 'r', 'l']
+        rows = []
+
+        sub_test_names = []
+        for name, n in entries:
+            sub_test_names.append(name)
+            sgrk_time, sgrk_result = sgrk_data[name]
+            strix_time, strix_result = strix_data.get(name, ('-', 'N/A'))
+
+            strix_speedup = compute_speedup(sgrk_time, strix_time, strix_result, timeout)
+            result_display = sgrk_result if sgrk_result != 'TIMEOUT' else 'TIMEOUT'
+
+            if has_spot:
+                spot_time, spot_result = spot_data.get(name, ('-', 'N/A'))
+                spot_speedup = compute_speedup(sgrk_time, spot_time, spot_result, timeout)
+                rows.append([
+                    n,
+                    format_time(sgrk_time),
+                    format_strix_time(strix_time, strix_result),
+                    format_strix_time(spot_time, spot_result),
+                    strix_speedup,
+                    spot_speedup,
+                    result_display,
+                ])
+            else:
+                rows.append([
+                    n,
+                    format_time(sgrk_time),
+                    format_strix_time(strix_time, strix_result),
+                    strix_speedup,
+                    result_display,
+                ])
+
+        family_pretty = family.replace('_', ' ')
+        title = f"{cat}: {family_pretty} (k={k_val})"
+        svg = render_table_svg(title, headers, rows, col_aligns)
+
+        svg_name = f"{family}_k{k_val}"
+        out_path = os.path.join(results_dir, f"{svg_name}.svg")
+        with open(out_path, 'w') as f:
+            f.write(svg)
+
+        results.append({
+            'family': family,
+            'svg_name': svg_name,
+            'k_val': k_val,
+            'tests': len(rows),
+            'sgrk_data': {n: sgrk_data[n] for n in sub_test_names},
+            'strix_data': {n: strix_data.get(n, ('-', 'N/A')) for n in sub_test_names},
+            'spot_data': {n: spot_data.get(n, ('-', 'N/A')) for n in sub_test_names} if spot_data else {},
+            'test_names': sub_test_names,
+            'is_nk_sub': True,
+        })
+
+    return results
 
 
 def generate_summary_svg(cat, family_infos, results_dir, timeout):
     """Generate category summary SVG table."""
-    headers = ['Family', 'Tests', 'Match', 'Strix T/O', 'sgrk Range (s)', 'Strix Range (s)']
-    col_aligns = ['l', 'r', 'r', 'r', 'r', 'r']
+    has_any_spot = any(bool(info.get('spot_data')) for info in family_infos)
+
+    if has_any_spot:
+        headers = ['Family', 'Tests', 'Match', 'Strix T/O', 'Spot T/O',
+                   'sgrk Range (s)', 'Strix Range (s)', 'Spot Range (s)']
+        col_aligns = ['l', 'r', 'r', 'r', 'r', 'r', 'r', 'r']
+    else:
+        headers = ['Family', 'Tests', 'Match', 'Strix T/O', 'sgrk Range (s)', 'Strix Range (s)']
+        col_aligns = ['l', 'r', 'r', 'r', 'r', 'r']
     rows = []
 
     for info in family_infos:
@@ -309,9 +447,11 @@ def generate_summary_svg(cat, family_infos, results_dir, timeout):
         n_tests = info['tests']
 
         matches = 0
-        timeouts = 0
+        strix_timeouts = 0
+        spot_timeouts = 0
         sgrk_vals = []
         strix_vals = []
+        spot_vals = []
 
         for name in info['test_names']:
             sgrk_time, sgrk_result = info['sgrk_data'][name]
@@ -321,7 +461,7 @@ def generate_summary_svg(cat, family_infos, results_dir, timeout):
             strix_norm = strix_result.upper()
 
             if strix_norm in ('TIMEOUT', 'SKIPPED'):
-                timeouts += 1
+                strix_timeouts += 1
             elif sgrk_norm == strix_norm:
                 matches += 1
 
@@ -336,32 +476,38 @@ def generate_summary_svg(cat, family_infos, results_dir, timeout):
                 except ValueError:
                     pass
 
-        if sgrk_vals:
-            if min(sgrk_vals) == max(sgrk_vals):
-                sgrk_range = f"{min(sgrk_vals):.3f}"
-            else:
-                sgrk_range = f"{min(sgrk_vals):.3f} - {max(sgrk_vals):.3f}"
+            if info.get('spot_data'):
+                spot_time, spot_result = info['spot_data'].get(name, ('-', 'N/A'))
+                if spot_result in ('TIMEOUT', 'SKIPPED'):
+                    spot_timeouts += 1
+                if spot_time != '-' and spot_result not in ('TIMEOUT', 'SKIPPED'):
+                    try:
+                        spot_vals.append(float(spot_time.rstrip('s')))
+                    except ValueError:
+                        pass
+
+        def _range_str(vals):
+            if not vals:
+                return "N/A"
+            if min(vals) == max(vals):
+                return f"{min(vals):.3f}"
+            return f"{min(vals):.3f} - {max(vals):.3f}"
+
+        if has_any_spot:
+            rows.append([
+                family_pretty, str(n_tests), str(matches),
+                str(strix_timeouts), str(spot_timeouts),
+                _range_str(sgrk_vals), _range_str(strix_vals), _range_str(spot_vals),
+            ])
         else:
-            sgrk_range = "N/A"
+            rows.append([
+                family_pretty, str(n_tests), str(matches),
+                str(strix_timeouts),
+                _range_str(sgrk_vals), _range_str(strix_vals),
+            ])
 
-        if strix_vals:
-            if min(strix_vals) == max(strix_vals):
-                strix_range = f"{min(strix_vals):.3f}"
-            else:
-                strix_range = f"{min(strix_vals):.3f} - {max(strix_vals):.3f}"
-        else:
-            strix_range = "N/A"
-
-        rows.append([
-            family_pretty,
-            str(n_tests),
-            str(matches),
-            str(timeouts),
-            sgrk_range,
-            strix_range,
-        ])
-
-    title = f"{cat} Benchmark Summary: sgrk vs Strix"
+    tool_list = "sgrk vs Strix vs Spot" if has_any_spot else "sgrk vs Strix"
+    title = f"{cat} Benchmark Summary: {tool_list}"
     svg = render_table_svg(title, headers, rows, col_aligns)
 
     out_path = os.path.join(results_dir, "summary.svg")
@@ -369,7 +515,7 @@ def generate_summary_svg(cat, family_infos, results_dir, timeout):
         f.write(svg)
 
 
-def generate_slideshow(all_slides, results_base_dir):
+def generate_slideshow(all_slides, results_base_dir, slideshow_name="slideshow.html"):
     """Generate an HTML slideshow from all SVG slides."""
     slides_js = []
     for s in all_slides:
@@ -386,7 +532,7 @@ def generate_slideshow(all_slides, results_base_dir):
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>sgrk vs Strix — Benchmark Results</title>
+<title>sgrk vs Strix vs Spot — Benchmark Results</title>
 <style>
   * {{ margin: 0; padding: 0; box-sizing: border-box; }}
   body {{
@@ -527,7 +673,7 @@ showSlide(0);
 </body>
 </html>'''
 
-    out_path = os.path.join(results_base_dir, "slideshow.html")
+    out_path = os.path.join(results_base_dir, slideshow_name)
     with open(out_path, 'w') as f:
         f.write(html)
     print(f"  Slideshow: {out_path}")
@@ -535,6 +681,7 @@ showSlide(0);
 
 def main():
     category = sys.argv[1] if len(sys.argv) > 1 else "all"
+    slideshow_name = sys.argv[2] if len(sys.argv) > 2 else "slideshow.html"
 
     if category == "all":
         categories = ["R2R", "R2P", "P2R"]
@@ -560,10 +707,12 @@ def main():
             if not os.path.isdir(family_dir):
                 continue
 
-            info = generate_family_svg(cat, family, family_dir, results_dir, timeout)
-            if info:
-                family_infos.append(info)
-                print(f"  SVG: {results_dir}/{family}.svg")
+            result = generate_family_svg(cat, family, family_dir, results_dir, timeout)
+            if result:
+                for info in result:
+                    family_infos.append(info)
+                    svg_name = info.get('svg_name', family)
+                    print(f"  SVG: {results_dir}/{svg_name}.svg")
 
         if family_infos:
             generate_summary_svg(cat, family_infos, results_dir, timeout)
@@ -577,10 +726,16 @@ def main():
                 'summary': True,
             })
             for info in family_infos:
+                if info.get('is_nk_sub'):
+                    svg_name = info['svg_name']
+                    slide_name = f"{info['family']} k={info['k_val']}"
+                else:
+                    svg_name = info['family']
+                    slide_name = info['family']
                 all_slides.append({
                     'category': cat,
-                    'name': info['family'],
-                    'file': f'{cat}/{info["family"]}.svg',
+                    'name': slide_name,
+                    'file': f'{cat}/{svg_name}.svg',
                     'summary': False,
                 })
 
@@ -588,7 +743,7 @@ def main():
 
     # Generate slideshow with all slides
     if all_slides:
-        generate_slideshow(all_slides, results_base_dir)
+        generate_slideshow(all_slides, results_base_dir, slideshow_name)
 
 
 if __name__ == '__main__':

@@ -1,0 +1,4 @@
+Test                                             Seconds         ms           us  Result         
+----                                             -------         --           --  ------         
+rotating_robots.sgrk                             12.026s    12026ms   12026456us                 
+rotating_robots.sgrk                                   -          -            -  TIMEOUT        

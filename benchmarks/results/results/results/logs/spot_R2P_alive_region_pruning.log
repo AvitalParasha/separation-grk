@@ -1,0 +1,13 @@
+=== spot on R2P/alive_region_pruning (10 tests, timeout=5400s) ===
+  alive_region_pruning_1.sgrk: 0.059s  REALIZABLE
+  alive_region_pruning_2.sgrk: 0.047s  REALIZABLE
+  alive_region_pruning_3.sgrk: 0.049s  REALIZABLE
+  alive_region_pruning_4.sgrk: 0.059s  REALIZABLE
+  alive_region_pruning_5.sgrk: 0.103s  REALIZABLE
+  alive_region_pruning_6.sgrk: 0.357s  REALIZABLE
+  alive_region_pruning_7.sgrk: 2.047s  REALIZABLE
+  alive_region_pruning_8.sgrk: 13.256s  REALIZABLE
+  alive_region_pruning_9.sgrk: 92.033s  REALIZABLE
+  alive_region_pruning_10.sgrk: 602.142s  REALIZABLE
+=== Done: spot on R2P/alive_region_pruning ===
+Results: /RG/rg-fried/avitalpa/separation-grk/benchmarks/R2P/alive_region_pruning//spot_runtime

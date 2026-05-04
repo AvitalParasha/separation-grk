@@ -1,0 +1,13 @@
+=== sgrk on R2R/cleaning_robots (10 tests, timeout=5400s) ===
+  cleaning_robots_1.sgrk: 0.041s  Realizable
+  cleaning_robots_2.sgrk: 0.042s  Realizable
+  cleaning_robots_3.sgrk: 0.052s  Realizable
+  cleaning_robots_4.sgrk: 0.109s  Realizable
+  cleaning_robots_5.sgrk: 0.200s  Realizable
+  cleaning_robots_6.sgrk: 0.334s  Realizable
+  cleaning_robots_7.sgrk: 0.627s  Realizable
+  cleaning_robots_8.sgrk: 1.107s  Realizable
+  cleaning_robots_9.sgrk: 2.465s  Realizable
+  cleaning_robots_10.sgrk: 2.951s  Realizable
+=== Done: sgrk on R2R/cleaning_robots ===
+Results: /RG/rg-fried/avitalpa/separation-grk/benchmarks/R2R/cleaning_robots//runtime

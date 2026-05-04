@@ -1,0 +1,622 @@
+1 ;
+!"out:nack_response0" &
+!"out:nack_cooldown0" &
+!"out:nack_response1" &
+!"out:nack_cooldown1" &
+!"out:nack_response2" &
+!"out:nack_cooldown2" &
+!"out:nack_response3" &
+!"out:nack_cooldown3" &
+!"out:nack_response4" &
+!"out:nack_cooldown4" &
+!"out:nack_response5" &
+!"out:nack_cooldown5" &
+!"out:nack_response6" &
+!"out:nack_cooldown6" &
+!"out:transmit_flit0" &
+!"out:locked0_rd" &
+!"out:release_lock0_rd" &
+!"out:locked0_wr" &
+!"out:release_lock0_wr" &
+!"out:locked0_ll" &
+!"out:release_lock0_ll" &
+!"out:transmit_flit1" &
+!"out:locked1_rd" &
+!"out:release_lock1_rd" &
+!"out:locked1_wr" &
+!"out:release_lock1_wr" &
+!"out:locked1_ll" &
+!"out:release_lock1_ll" &
+!"out:transmit_flit2" &
+!"out:locked2_rd" &
+!"out:release_lock2_rd" &
+!"out:locked2_wr" &
+!"out:release_lock2_wr" &
+!"out:locked2_ll" &
+!"out:release_lock2_ll" &
+!"out:forward_packet0_0" &
+!"out:backpressure_data0_0" &
+!"out:forward_packet0_1" &
+!"out:backpressure_data0_1" &
+!"out:forward_packet0_2" &
+!"out:backpressure_data0_2" &
+!"out:forward_packet1_0" &
+!"out:backpressure_data1_0" &
+!"out:forward_packet1_1" &
+!"out:backpressure_data1_1" &
+!"out:forward_packet1_2" &
+!"out:backpressure_data1_2" &
+!"out:forward_packet2_0" &
+!"out:backpressure_data2_0" &
+!"out:forward_packet2_1" &
+!"out:backpressure_data2_1" &
+!"out:forward_packet2_2" &
+!"out:backpressure_data2_2" &
+!"out:forward_packet3_0" &
+!"out:backpressure_data3_0" &
+!"out:forward_packet3_1" &
+!"out:backpressure_data3_1" &
+!"out:forward_packet3_2" &
+!"out:backpressure_data3_2" &
+!"out:forward_packet4_0" &
+!"out:backpressure_data4_0" &
+!"out:forward_packet4_1" &
+!"out:backpressure_data4_1" &
+!"out:forward_packet4_2" &
+!"out:backpressure_data4_2" &
+!"out:forward_packet5_0" &
+!"out:backpressure_data5_0" &
+!"out:forward_packet5_1" &
+!"out:backpressure_data5_1" &
+!"out:forward_packet5_2" &
+!"out:backpressure_data5_2" &
+!"out:forward_packet6_0" &
+!"out:backpressure_data6_0" &
+!"out:forward_packet6_1" &
+!"out:backpressure_data6_1" &
+!"out:forward_packet6_2" &
+!"out:backpressure_data6_2" &
+!"out:rr_arbitrate0" &
+!"out:preempt_traffic0" &
+!"out:rr_arbitrate1" &
+!"out:preempt_traffic1" &
+!"out:rr_arbitrate2" &
+!"out:preempt_traffic2" &
+!"out:rr_arbitrate3" &
+!"out:preempt_traffic3" &
+!"out:rr_arbitrate4" &
+!"out:preempt_traffic4" &
+!"out:rr_arbitrate5" &
+!"out:preempt_traffic5" &
+"out:rr_ptr0" &
+!"out:rr_ptr1" &
+!"out:rr_ptr2" &
+!"out:rr_ptr3" &
+!"out:rr_ptr4" &
+!"out:rr_ptr5" &
+!"out:rr_ptr6" &
+!"out:rr_mode0" ;
+("in:credit_received0_rd" -> !"in:reset_active0") &
+("in:credit_received0_wr" -> !"in:reset_active0") &
+("in:credit_received0_ll" -> !"in:reset_active0") &
+("in:credit_received1_rd" -> !"in:reset_active1") &
+("in:credit_received1_wr" -> !"in:reset_active1") &
+("in:credit_received1_ll" -> !"in:reset_active1") &
+("in:credit_received2_rd" -> !"in:reset_active2") &
+("in:credit_received2_wr" -> !"in:reset_active2") &
+("in:credit_received2_ll" -> !"in:reset_active2") &
+("in:unauthorized_access0" -> "in:flit_ready0") &
+("in:unauthorized_access1" -> "in:flit_ready1") &
+("in:unauthorized_access2" -> "in:flit_ready2") &
+("in:unauthorized_access3" -> "in:flit_ready3") &
+("in:unauthorized_access4" -> "in:flit_ready4") &
+("in:unauthorized_access5" -> "in:flit_ready5") &
+("in:unauthorized_access6" -> "in:flit_ready6") &
+!("in:destined0_0" & "in:destined0_1") &
+!("in:destined0_0" & "in:destined0_2") &
+!("in:destined0_1" & "in:destined0_2") &
+!("in:destined1_0" & "in:destined1_1") &
+!("in:destined1_0" & "in:destined1_2") &
+!("in:destined1_1" & "in:destined1_2") &
+!("in:destined2_0" & "in:destined2_1") &
+!("in:destined2_0" & "in:destined2_2") &
+!("in:destined2_1" & "in:destined2_2") &
+!("in:destined3_0" & "in:destined3_1") &
+!("in:destined3_0" & "in:destined3_2") &
+!("in:destined3_1" & "in:destined3_2") &
+!("in:destined4_0" & "in:destined4_1") &
+!("in:destined4_0" & "in:destined4_2") &
+!("in:destined4_1" & "in:destined4_2") &
+!("in:destined5_0" & "in:destined5_1") &
+!("in:destined5_0" & "in:destined5_2") &
+!("in:destined5_1" & "in:destined5_2") &
+!("in:destined6_0" & "in:destined6_1") &
+!("in:destined6_0" & "in:destined6_2") &
+!("in:destined6_1" & "in:destined6_2") ;
+(("out:locked0_rd" & "out:release_lock0_rd") -> !X "out:locked0_rd") &
+(("out:locked0_rd" & !"out:release_lock0_rd") -> X "out:locked0_rd") &
+((!"out:locked0_rd" & !("out:forward_packet0_0" | "out:forward_packet1_0" | "out:forward_packet2_0" | "out:forward_packet3_0" | "out:forward_packet4_0" | "out:forward_packet5_0" | "out:forward_packet6_0")) -> !X "out:locked0_rd") &
+("out:release_lock0_rd" -> "out:locked0_rd") &
+("out:release_lock0_rd" -> "out:transmit_flit0") &
+(("out:locked0_wr" & "out:release_lock0_wr") -> !X "out:locked0_wr") &
+(("out:locked0_wr" & !"out:release_lock0_wr") -> X "out:locked0_wr") &
+((!"out:locked0_wr" & !("out:forward_packet0_0" | "out:forward_packet1_0" | "out:forward_packet2_0" | "out:forward_packet3_0" | "out:forward_packet4_0" | "out:forward_packet5_0" | "out:forward_packet6_0")) -> !X "out:locked0_wr") &
+("out:release_lock0_wr" -> "out:locked0_wr") &
+("out:release_lock0_wr" -> "out:transmit_flit0") &
+(("out:locked0_ll" & "out:release_lock0_ll") -> !X "out:locked0_ll") &
+(("out:locked0_ll" & !"out:release_lock0_ll") -> X "out:locked0_ll") &
+((!"out:locked0_ll" & !("out:forward_packet0_0" | "out:forward_packet1_0" | "out:forward_packet2_0" | "out:forward_packet3_0" | "out:forward_packet4_0" | "out:forward_packet5_0" | "out:forward_packet6_0")) -> !X "out:locked0_ll") &
+("out:release_lock0_ll" -> "out:locked0_ll") &
+("out:release_lock0_ll" -> "out:transmit_flit0") &
+(("out:forward_packet0_0" | "out:forward_packet1_0" | "out:forward_packet2_0" | "out:forward_packet3_0" | "out:forward_packet4_0" | "out:forward_packet5_0" | "out:forward_packet6_0") -> !"out:release_lock0_rd") &
+(("out:forward_packet0_0" | "out:forward_packet1_0" | "out:forward_packet2_0" | "out:forward_packet3_0" | "out:forward_packet4_0" | "out:forward_packet5_0" | "out:forward_packet6_0") -> !"out:release_lock0_wr") &
+(("out:forward_packet0_0" | "out:forward_packet1_0" | "out:forward_packet2_0" | "out:forward_packet3_0" | "out:forward_packet4_0" | "out:forward_packet5_0" | "out:forward_packet6_0") -> !"out:release_lock0_ll") &
+!(((!"out:locked0_rd" & X "out:locked0_rd") & (!"out:locked0_wr" & X "out:locked0_wr"))) &
+!(((!"out:locked0_rd" & X "out:locked0_rd") & (!"out:locked0_ll" & X "out:locked0_ll"))) &
+!(((!"out:locked0_wr" & X "out:locked0_wr") & (!"out:locked0_ll" & X "out:locked0_ll"))) &
+(("out:forward_packet0_0" | "out:forward_packet1_0" | "out:forward_packet2_0" | "out:forward_packet3_0" | "out:forward_packet4_0" | "out:forward_packet5_0" | "out:forward_packet6_0") -> ((!"out:locked0_rd" & X "out:locked0_rd") | (!"out:locked0_wr" & X "out:locked0_wr") | (!"out:locked0_ll" & X "out:locked0_ll"))) &
+(("out:locked0_rd" & "out:locked0_wr" & "out:locked0_ll") -> !"out:forward_packet0_0") &
+(("out:locked0_rd" & "out:locked0_wr" & "out:locked0_ll") -> !"out:forward_packet1_0") &
+(("out:locked0_rd" & "out:locked0_wr" & "out:locked0_ll") -> !"out:forward_packet2_0") &
+(("out:locked0_rd" & "out:locked0_wr" & "out:locked0_ll") -> !"out:forward_packet3_0") &
+(("out:locked0_rd" & "out:locked0_wr" & "out:locked0_ll") -> !"out:forward_packet4_0") &
+(("out:locked0_rd" & "out:locked0_wr" & "out:locked0_ll") -> !"out:forward_packet5_0") &
+(("out:locked0_rd" & "out:locked0_wr" & "out:locked0_ll") -> !"out:forward_packet6_0") &
+!("out:forward_packet0_0" & "out:transmit_flit0") &
+!("out:forward_packet1_0" & "out:transmit_flit0") &
+!("out:forward_packet2_0" & "out:transmit_flit0") &
+!("out:forward_packet3_0" & "out:transmit_flit0") &
+!("out:forward_packet4_0" & "out:transmit_flit0") &
+!("out:forward_packet5_0" & "out:transmit_flit0") &
+!("out:forward_packet6_0" & "out:transmit_flit0") &
+(("out:locked1_rd" & "out:release_lock1_rd") -> !X "out:locked1_rd") &
+(("out:locked1_rd" & !"out:release_lock1_rd") -> X "out:locked1_rd") &
+((!"out:locked1_rd" & !("out:forward_packet0_1" | "out:forward_packet1_1" | "out:forward_packet2_1" | "out:forward_packet3_1" | "out:forward_packet4_1" | "out:forward_packet5_1" | "out:forward_packet6_1")) -> !X "out:locked1_rd") &
+("out:release_lock1_rd" -> "out:locked1_rd") &
+("out:release_lock1_rd" -> "out:transmit_flit1") &
+(("out:locked1_wr" & "out:release_lock1_wr") -> !X "out:locked1_wr") &
+(("out:locked1_wr" & !"out:release_lock1_wr") -> X "out:locked1_wr") &
+((!"out:locked1_wr" & !("out:forward_packet0_1" | "out:forward_packet1_1" | "out:forward_packet2_1" | "out:forward_packet3_1" | "out:forward_packet4_1" | "out:forward_packet5_1" | "out:forward_packet6_1")) -> !X "out:locked1_wr") &
+("out:release_lock1_wr" -> "out:locked1_wr") &
+("out:release_lock1_wr" -> "out:transmit_flit1") &
+(("out:locked1_ll" & "out:release_lock1_ll") -> !X "out:locked1_ll") &
+(("out:locked1_ll" & !"out:release_lock1_ll") -> X "out:locked1_ll") &
+((!"out:locked1_ll" & !("out:forward_packet0_1" | "out:forward_packet1_1" | "out:forward_packet2_1" | "out:forward_packet3_1" | "out:forward_packet4_1" | "out:forward_packet5_1" | "out:forward_packet6_1")) -> !X "out:locked1_ll") &
+("out:release_lock1_ll" -> "out:locked1_ll") &
+("out:release_lock1_ll" -> "out:transmit_flit1") &
+(("out:forward_packet0_1" | "out:forward_packet1_1" | "out:forward_packet2_1" | "out:forward_packet3_1" | "out:forward_packet4_1" | "out:forward_packet5_1" | "out:forward_packet6_1") -> !"out:release_lock1_rd") &
+(("out:forward_packet0_1" | "out:forward_packet1_1" | "out:forward_packet2_1" | "out:forward_packet3_1" | "out:forward_packet4_1" | "out:forward_packet5_1" | "out:forward_packet6_1") -> !"out:release_lock1_wr") &
+(("out:forward_packet0_1" | "out:forward_packet1_1" | "out:forward_packet2_1" | "out:forward_packet3_1" | "out:forward_packet4_1" | "out:forward_packet5_1" | "out:forward_packet6_1") -> !"out:release_lock1_ll") &
+!(((!"out:locked1_rd" & X "out:locked1_rd") & (!"out:locked1_wr" & X "out:locked1_wr"))) &
+!(((!"out:locked1_rd" & X "out:locked1_rd") & (!"out:locked1_ll" & X "out:locked1_ll"))) &
+!(((!"out:locked1_wr" & X "out:locked1_wr") & (!"out:locked1_ll" & X "out:locked1_ll"))) &
+(("out:forward_packet0_1" | "out:forward_packet1_1" | "out:forward_packet2_1" | "out:forward_packet3_1" | "out:forward_packet4_1" | "out:forward_packet5_1" | "out:forward_packet6_1") -> ((!"out:locked1_rd" & X "out:locked1_rd") | (!"out:locked1_wr" & X "out:locked1_wr") | (!"out:locked1_ll" & X "out:locked1_ll"))) &
+(("out:locked1_rd" & "out:locked1_wr" & "out:locked1_ll") -> !"out:forward_packet0_1") &
+(("out:locked1_rd" & "out:locked1_wr" & "out:locked1_ll") -> !"out:forward_packet1_1") &
+(("out:locked1_rd" & "out:locked1_wr" & "out:locked1_ll") -> !"out:forward_packet2_1") &
+(("out:locked1_rd" & "out:locked1_wr" & "out:locked1_ll") -> !"out:forward_packet3_1") &
+(("out:locked1_rd" & "out:locked1_wr" & "out:locked1_ll") -> !"out:forward_packet4_1") &
+(("out:locked1_rd" & "out:locked1_wr" & "out:locked1_ll") -> !"out:forward_packet5_1") &
+(("out:locked1_rd" & "out:locked1_wr" & "out:locked1_ll") -> !"out:forward_packet6_1") &
+!("out:forward_packet0_1" & "out:transmit_flit1") &
+!("out:forward_packet1_1" & "out:transmit_flit1") &
+!("out:forward_packet2_1" & "out:transmit_flit1") &
+!("out:forward_packet3_1" & "out:transmit_flit1") &
+!("out:forward_packet4_1" & "out:transmit_flit1") &
+!("out:forward_packet5_1" & "out:transmit_flit1") &
+!("out:forward_packet6_1" & "out:transmit_flit1") &
+(("out:locked2_rd" & "out:release_lock2_rd") -> !X "out:locked2_rd") &
+(("out:locked2_rd" & !"out:release_lock2_rd") -> X "out:locked2_rd") &
+((!"out:locked2_rd" & !("out:forward_packet0_2" | "out:forward_packet1_2" | "out:forward_packet2_2" | "out:forward_packet3_2" | "out:forward_packet4_2" | "out:forward_packet5_2" | "out:forward_packet6_2")) -> !X "out:locked2_rd") &
+("out:release_lock2_rd" -> "out:locked2_rd") &
+("out:release_lock2_rd" -> "out:transmit_flit2") &
+(("out:locked2_wr" & "out:release_lock2_wr") -> !X "out:locked2_wr") &
+(("out:locked2_wr" & !"out:release_lock2_wr") -> X "out:locked2_wr") &
+((!"out:locked2_wr" & !("out:forward_packet0_2" | "out:forward_packet1_2" | "out:forward_packet2_2" | "out:forward_packet3_2" | "out:forward_packet4_2" | "out:forward_packet5_2" | "out:forward_packet6_2")) -> !X "out:locked2_wr") &
+("out:release_lock2_wr" -> "out:locked2_wr") &
+("out:release_lock2_wr" -> "out:transmit_flit2") &
+(("out:locked2_ll" & "out:release_lock2_ll") -> !X "out:locked2_ll") &
+(("out:locked2_ll" & !"out:release_lock2_ll") -> X "out:locked2_ll") &
+((!"out:locked2_ll" & !("out:forward_packet0_2" | "out:forward_packet1_2" | "out:forward_packet2_2" | "out:forward_packet3_2" | "out:forward_packet4_2" | "out:forward_packet5_2" | "out:forward_packet6_2")) -> !X "out:locked2_ll") &
+("out:release_lock2_ll" -> "out:locked2_ll") &
+("out:release_lock2_ll" -> "out:transmit_flit2") &
+(("out:forward_packet0_2" | "out:forward_packet1_2" | "out:forward_packet2_2" | "out:forward_packet3_2" | "out:forward_packet4_2" | "out:forward_packet5_2" | "out:forward_packet6_2") -> !"out:release_lock2_rd") &
+(("out:forward_packet0_2" | "out:forward_packet1_2" | "out:forward_packet2_2" | "out:forward_packet3_2" | "out:forward_packet4_2" | "out:forward_packet5_2" | "out:forward_packet6_2") -> !"out:release_lock2_wr") &
+(("out:forward_packet0_2" | "out:forward_packet1_2" | "out:forward_packet2_2" | "out:forward_packet3_2" | "out:forward_packet4_2" | "out:forward_packet5_2" | "out:forward_packet6_2") -> !"out:release_lock2_ll") &
+!(((!"out:locked2_rd" & X "out:locked2_rd") & (!"out:locked2_wr" & X "out:locked2_wr"))) &
+!(((!"out:locked2_rd" & X "out:locked2_rd") & (!"out:locked2_ll" & X "out:locked2_ll"))) &
+!(((!"out:locked2_wr" & X "out:locked2_wr") & (!"out:locked2_ll" & X "out:locked2_ll"))) &
+(("out:forward_packet0_2" | "out:forward_packet1_2" | "out:forward_packet2_2" | "out:forward_packet3_2" | "out:forward_packet4_2" | "out:forward_packet5_2" | "out:forward_packet6_2") -> ((!"out:locked2_rd" & X "out:locked2_rd") | (!"out:locked2_wr" & X "out:locked2_wr") | (!"out:locked2_ll" & X "out:locked2_ll"))) &
+(("out:locked2_rd" & "out:locked2_wr" & "out:locked2_ll") -> !"out:forward_packet0_2") &
+(("out:locked2_rd" & "out:locked2_wr" & "out:locked2_ll") -> !"out:forward_packet1_2") &
+(("out:locked2_rd" & "out:locked2_wr" & "out:locked2_ll") -> !"out:forward_packet2_2") &
+(("out:locked2_rd" & "out:locked2_wr" & "out:locked2_ll") -> !"out:forward_packet3_2") &
+(("out:locked2_rd" & "out:locked2_wr" & "out:locked2_ll") -> !"out:forward_packet4_2") &
+(("out:locked2_rd" & "out:locked2_wr" & "out:locked2_ll") -> !"out:forward_packet5_2") &
+(("out:locked2_rd" & "out:locked2_wr" & "out:locked2_ll") -> !"out:forward_packet6_2") &
+!("out:forward_packet0_2" & "out:transmit_flit2") &
+!("out:forward_packet1_2" & "out:transmit_flit2") &
+!("out:forward_packet2_2" & "out:transmit_flit2") &
+!("out:forward_packet3_2" & "out:transmit_flit2") &
+!("out:forward_packet4_2" & "out:transmit_flit2") &
+!("out:forward_packet5_2" & "out:transmit_flit2") &
+!("out:forward_packet6_2" & "out:transmit_flit2") &
+!("out:forward_packet0_0" & "out:forward_packet0_1") &
+!("out:forward_packet0_0" & "out:forward_packet0_2") &
+!("out:forward_packet0_1" & "out:forward_packet0_2") &
+!("out:forward_packet1_0" & "out:forward_packet1_1") &
+!("out:forward_packet1_0" & "out:forward_packet1_2") &
+!("out:forward_packet1_1" & "out:forward_packet1_2") &
+!("out:forward_packet2_0" & "out:forward_packet2_1") &
+!("out:forward_packet2_0" & "out:forward_packet2_2") &
+!("out:forward_packet2_1" & "out:forward_packet2_2") &
+!("out:forward_packet3_0" & "out:forward_packet3_1") &
+!("out:forward_packet3_0" & "out:forward_packet3_2") &
+!("out:forward_packet3_1" & "out:forward_packet3_2") &
+!("out:forward_packet4_0" & "out:forward_packet4_1") &
+!("out:forward_packet4_0" & "out:forward_packet4_2") &
+!("out:forward_packet4_1" & "out:forward_packet4_2") &
+!("out:forward_packet5_0" & "out:forward_packet5_1") &
+!("out:forward_packet5_0" & "out:forward_packet5_2") &
+!("out:forward_packet5_1" & "out:forward_packet5_2") &
+!("out:forward_packet6_0" & "out:forward_packet6_1") &
+!("out:forward_packet6_0" & "out:forward_packet6_2") &
+!("out:forward_packet6_1" & "out:forward_packet6_2") &
+!("out:backpressure_data0_0" & "out:forward_packet0_0") &
+!("out:backpressure_data0_1" & "out:forward_packet0_1") &
+!("out:backpressure_data0_2" & "out:forward_packet0_2") &
+!("out:backpressure_data1_0" & "out:forward_packet1_0") &
+!("out:backpressure_data1_1" & "out:forward_packet1_1") &
+!("out:backpressure_data1_2" & "out:forward_packet1_2") &
+!("out:backpressure_data2_0" & "out:forward_packet2_0") &
+!("out:backpressure_data2_1" & "out:forward_packet2_1") &
+!("out:backpressure_data2_2" & "out:forward_packet2_2") &
+!("out:backpressure_data3_0" & "out:forward_packet3_0") &
+!("out:backpressure_data3_1" & "out:forward_packet3_1") &
+!("out:backpressure_data3_2" & "out:forward_packet3_2") &
+!("out:backpressure_data4_0" & "out:forward_packet4_0") &
+!("out:backpressure_data4_1" & "out:forward_packet4_1") &
+!("out:backpressure_data4_2" & "out:forward_packet4_2") &
+!("out:backpressure_data5_0" & "out:forward_packet5_0") &
+!("out:backpressure_data5_1" & "out:forward_packet5_1") &
+!("out:backpressure_data5_2" & "out:forward_packet5_2") &
+!("out:backpressure_data6_0" & "out:forward_packet6_0") &
+!("out:backpressure_data6_1" & "out:forward_packet6_1") &
+!("out:backpressure_data6_2" & "out:forward_packet6_2") &
+("out:nack_response0" -> X "out:nack_cooldown0") &
+("out:nack_cooldown0" -> !X "out:nack_response0") &
+("out:nack_cooldown0" -> !X "out:nack_cooldown0") &
+((!"out:nack_response0" & !"out:nack_cooldown0") -> !X "out:nack_cooldown0") &
+("out:nack_response1" -> X "out:nack_cooldown1") &
+("out:nack_cooldown1" -> !X "out:nack_response1") &
+("out:nack_cooldown1" -> !X "out:nack_cooldown1") &
+((!"out:nack_response1" & !"out:nack_cooldown1") -> !X "out:nack_cooldown1") &
+("out:nack_response2" -> X "out:nack_cooldown2") &
+("out:nack_cooldown2" -> !X "out:nack_response2") &
+("out:nack_cooldown2" -> !X "out:nack_cooldown2") &
+((!"out:nack_response2" & !"out:nack_cooldown2") -> !X "out:nack_cooldown2") &
+("out:nack_response3" -> X "out:nack_cooldown3") &
+("out:nack_cooldown3" -> !X "out:nack_response3") &
+("out:nack_cooldown3" -> !X "out:nack_cooldown3") &
+((!"out:nack_response3" & !"out:nack_cooldown3") -> !X "out:nack_cooldown3") &
+("out:nack_response4" -> X "out:nack_cooldown4") &
+("out:nack_cooldown4" -> !X "out:nack_response4") &
+("out:nack_cooldown4" -> !X "out:nack_cooldown4") &
+((!"out:nack_response4" & !"out:nack_cooldown4") -> !X "out:nack_cooldown4") &
+("out:nack_response5" -> X "out:nack_cooldown5") &
+("out:nack_cooldown5" -> !X "out:nack_response5") &
+("out:nack_cooldown5" -> !X "out:nack_cooldown5") &
+((!"out:nack_response5" & !"out:nack_cooldown5") -> !X "out:nack_cooldown5") &
+("out:nack_response6" -> X "out:nack_cooldown6") &
+("out:nack_cooldown6" -> !X "out:nack_response6") &
+("out:nack_cooldown6" -> !X "out:nack_cooldown6") &
+((!"out:nack_response6" & !"out:nack_cooldown6") -> !X "out:nack_cooldown6") &
+!("out:nack_response0" & "out:forward_packet0_0") &
+!("out:nack_response0" & "out:forward_packet0_1") &
+!("out:nack_response0" & "out:forward_packet0_2") &
+!("out:nack_response1" & "out:forward_packet1_0") &
+!("out:nack_response1" & "out:forward_packet1_1") &
+!("out:nack_response1" & "out:forward_packet1_2") &
+!("out:nack_response2" & "out:forward_packet2_0") &
+!("out:nack_response2" & "out:forward_packet2_1") &
+!("out:nack_response2" & "out:forward_packet2_2") &
+!("out:nack_response3" & "out:forward_packet3_0") &
+!("out:nack_response3" & "out:forward_packet3_1") &
+!("out:nack_response3" & "out:forward_packet3_2") &
+!("out:nack_response4" & "out:forward_packet4_0") &
+!("out:nack_response4" & "out:forward_packet4_1") &
+!("out:nack_response4" & "out:forward_packet4_2") &
+!("out:nack_response5" & "out:forward_packet5_0") &
+!("out:nack_response5" & "out:forward_packet5_1") &
+!("out:nack_response5" & "out:forward_packet5_2") &
+!("out:nack_response6" & "out:forward_packet6_0") &
+!("out:nack_response6" & "out:forward_packet6_1") &
+!("out:nack_response6" & "out:forward_packet6_2") &
+!(X "out:forward_packet0_0" & X "out:forward_packet1_0") &
+!(X "out:forward_packet0_0" & X "out:forward_packet2_0") &
+!(X "out:forward_packet0_0" & X "out:forward_packet3_0") &
+!(X "out:forward_packet0_0" & X "out:forward_packet4_0") &
+!(X "out:forward_packet0_0" & X "out:forward_packet5_0") &
+!(X "out:forward_packet0_0" & X "out:forward_packet6_0") &
+!(X "out:forward_packet1_0" & X "out:forward_packet2_0") &
+!(X "out:forward_packet1_0" & X "out:forward_packet3_0") &
+!(X "out:forward_packet1_0" & X "out:forward_packet4_0") &
+!(X "out:forward_packet1_0" & X "out:forward_packet5_0") &
+!(X "out:forward_packet1_0" & X "out:forward_packet6_0") &
+!(X "out:forward_packet2_0" & X "out:forward_packet3_0") &
+!(X "out:forward_packet2_0" & X "out:forward_packet4_0") &
+!(X "out:forward_packet2_0" & X "out:forward_packet5_0") &
+!(X "out:forward_packet2_0" & X "out:forward_packet6_0") &
+!(X "out:forward_packet3_0" & X "out:forward_packet4_0") &
+!(X "out:forward_packet3_0" & X "out:forward_packet5_0") &
+!(X "out:forward_packet3_0" & X "out:forward_packet6_0") &
+!(X "out:forward_packet4_0" & X "out:forward_packet5_0") &
+!(X "out:forward_packet4_0" & X "out:forward_packet6_0") &
+!(X "out:forward_packet5_0" & X "out:forward_packet6_0") &
+!(X "out:forward_packet0_1" & X "out:forward_packet1_1") &
+!(X "out:forward_packet0_1" & X "out:forward_packet2_1") &
+!(X "out:forward_packet0_1" & X "out:forward_packet3_1") &
+!(X "out:forward_packet0_1" & X "out:forward_packet4_1") &
+!(X "out:forward_packet0_1" & X "out:forward_packet5_1") &
+!(X "out:forward_packet0_1" & X "out:forward_packet6_1") &
+!(X "out:forward_packet1_1" & X "out:forward_packet2_1") &
+!(X "out:forward_packet1_1" & X "out:forward_packet3_1") &
+!(X "out:forward_packet1_1" & X "out:forward_packet4_1") &
+!(X "out:forward_packet1_1" & X "out:forward_packet5_1") &
+!(X "out:forward_packet1_1" & X "out:forward_packet6_1") &
+!(X "out:forward_packet2_1" & X "out:forward_packet3_1") &
+!(X "out:forward_packet2_1" & X "out:forward_packet4_1") &
+!(X "out:forward_packet2_1" & X "out:forward_packet5_1") &
+!(X "out:forward_packet2_1" & X "out:forward_packet6_1") &
+!(X "out:forward_packet3_1" & X "out:forward_packet4_1") &
+!(X "out:forward_packet3_1" & X "out:forward_packet5_1") &
+!(X "out:forward_packet3_1" & X "out:forward_packet6_1") &
+!(X "out:forward_packet4_1" & X "out:forward_packet5_1") &
+!(X "out:forward_packet4_1" & X "out:forward_packet6_1") &
+!(X "out:forward_packet5_1" & X "out:forward_packet6_1") &
+!(X "out:forward_packet0_2" & X "out:forward_packet1_2") &
+!(X "out:forward_packet0_2" & X "out:forward_packet2_2") &
+!(X "out:forward_packet0_2" & X "out:forward_packet3_2") &
+!(X "out:forward_packet0_2" & X "out:forward_packet4_2") &
+!(X "out:forward_packet0_2" & X "out:forward_packet5_2") &
+!(X "out:forward_packet0_2" & X "out:forward_packet6_2") &
+!(X "out:forward_packet1_2" & X "out:forward_packet2_2") &
+!(X "out:forward_packet1_2" & X "out:forward_packet3_2") &
+!(X "out:forward_packet1_2" & X "out:forward_packet4_2") &
+!(X "out:forward_packet1_2" & X "out:forward_packet5_2") &
+!(X "out:forward_packet1_2" & X "out:forward_packet6_2") &
+!(X "out:forward_packet2_2" & X "out:forward_packet3_2") &
+!(X "out:forward_packet2_2" & X "out:forward_packet4_2") &
+!(X "out:forward_packet2_2" & X "out:forward_packet5_2") &
+!(X "out:forward_packet2_2" & X "out:forward_packet6_2") &
+!(X "out:forward_packet3_2" & X "out:forward_packet4_2") &
+!(X "out:forward_packet3_2" & X "out:forward_packet5_2") &
+!(X "out:forward_packet3_2" & X "out:forward_packet6_2") &
+!(X "out:forward_packet4_2" & X "out:forward_packet5_2") &
+!(X "out:forward_packet4_2" & X "out:forward_packet6_2") &
+!(X "out:forward_packet5_2" & X "out:forward_packet6_2") &
+(("out:rr_mode0" & "out:rr_ptr0" & "out:rr_arbitrate0") -> X "out:rr_ptr1") &
+(("out:rr_ptr0" & !"out:rr_mode0") -> X "out:rr_ptr0") &
+(("out:rr_mode0" & "out:rr_ptr1" & "out:rr_arbitrate1") -> X "out:rr_ptr2") &
+(("out:rr_ptr1" & !"out:rr_mode0") -> X "out:rr_ptr1") &
+(("out:rr_mode0" & "out:rr_ptr2" & "out:rr_arbitrate2") -> X "out:rr_ptr3") &
+(("out:rr_ptr2" & !"out:rr_mode0") -> X "out:rr_ptr2") &
+(("out:rr_mode0" & "out:rr_ptr3" & "out:rr_arbitrate3") -> X "out:rr_ptr4") &
+(("out:rr_ptr3" & !"out:rr_mode0") -> X "out:rr_ptr3") &
+(("out:rr_mode0" & "out:rr_ptr4" & "out:rr_arbitrate4") -> X "out:rr_ptr5") &
+(("out:rr_ptr4" & !"out:rr_mode0") -> X "out:rr_ptr4") &
+(("out:rr_mode0" & "out:rr_ptr5" & "out:rr_arbitrate5") -> X "out:rr_ptr6") &
+(("out:rr_ptr5" & !"out:rr_mode0") -> X "out:rr_ptr5") &
+(("out:rr_ptr6" & !"out:rr_mode0") -> X "out:rr_ptr6") &
+!(X "out:rr_ptr0" & X "out:rr_ptr1") &
+!(X "out:rr_ptr0" & X "out:rr_ptr2") &
+!(X "out:rr_ptr0" & X "out:rr_ptr3") &
+!(X "out:rr_ptr0" & X "out:rr_ptr4") &
+!(X "out:rr_ptr0" & X "out:rr_ptr5") &
+!(X "out:rr_ptr0" & X "out:rr_ptr6") &
+!(X "out:rr_ptr1" & X "out:rr_ptr2") &
+!(X "out:rr_ptr1" & X "out:rr_ptr3") &
+!(X "out:rr_ptr1" & X "out:rr_ptr4") &
+!(X "out:rr_ptr1" & X "out:rr_ptr5") &
+!(X "out:rr_ptr1" & X "out:rr_ptr6") &
+!(X "out:rr_ptr2" & X "out:rr_ptr3") &
+!(X "out:rr_ptr2" & X "out:rr_ptr4") &
+!(X "out:rr_ptr2" & X "out:rr_ptr5") &
+!(X "out:rr_ptr2" & X "out:rr_ptr6") &
+!(X "out:rr_ptr3" & X "out:rr_ptr4") &
+!(X "out:rr_ptr3" & X "out:rr_ptr5") &
+!(X "out:rr_ptr3" & X "out:rr_ptr6") &
+!(X "out:rr_ptr4" & X "out:rr_ptr5") &
+!(X "out:rr_ptr4" & X "out:rr_ptr6") &
+!(X "out:rr_ptr5" & X "out:rr_ptr6") &
+(X "out:rr_ptr0" | X "out:rr_ptr1" | X "out:rr_ptr2" | X "out:rr_ptr3" | X "out:rr_ptr4" | X "out:rr_ptr5" | X "out:rr_ptr6") &
+(("out:rr_mode0" & "out:rr_arbitrate0") -> "out:rr_ptr0") &
+(("out:rr_mode0" & "out:rr_arbitrate1") -> "out:rr_ptr1") &
+(("out:rr_mode0" & "out:rr_arbitrate2") -> "out:rr_ptr2") &
+(("out:rr_mode0" & "out:rr_arbitrate3") -> "out:rr_ptr3") &
+(("out:rr_mode0" & "out:rr_arbitrate4") -> "out:rr_ptr4") &
+(("out:rr_mode0" & "out:rr_arbitrate5") -> "out:rr_ptr5") ;
+((G F ("in:flit_ready0" & "in:destined0_0" & "in:credit_received0_rd")) -> (G F "out:forward_packet0_0" & G F "out:transmit_flit0")) &
+((G F ("in:flit_ready0" & "in:destined0_0" & "in:credit_received0_wr")) -> (G F "out:forward_packet0_0" & G F "out:transmit_flit0")) &
+((G F ("in:flit_ready0" & "in:destined0_0" & "in:credit_received0_ll")) -> (G F "out:forward_packet0_0" & G F "out:transmit_flit0")) &
+((G F ("in:flit_ready0" & "in:destined0_0" & "in:reset_active0")) -> (G F "out:backpressure_data0_0")) &
+((G F ("in:flit_ready0" & "in:destined0_1" & "in:credit_received1_rd")) -> (G F "out:forward_packet0_1" & G F "out:transmit_flit1")) &
+((G F ("in:flit_ready0" & "in:destined0_1" & "in:credit_received1_wr")) -> (G F "out:forward_packet0_1" & G F "out:transmit_flit1")) &
+((G F ("in:flit_ready0" & "in:destined0_1" & "in:credit_received1_ll")) -> (G F "out:forward_packet0_1" & G F "out:transmit_flit1")) &
+((G F ("in:flit_ready0" & "in:destined0_1" & "in:reset_active1")) -> (G F "out:backpressure_data0_1")) &
+((G F ("in:flit_ready0" & "in:destined0_2" & "in:credit_received2_rd")) -> (G F "out:forward_packet0_2" & G F "out:transmit_flit2")) &
+((G F ("in:flit_ready0" & "in:destined0_2" & "in:credit_received2_wr")) -> (G F "out:forward_packet0_2" & G F "out:transmit_flit2")) &
+((G F ("in:flit_ready0" & "in:destined0_2" & "in:credit_received2_ll")) -> (G F "out:forward_packet0_2" & G F "out:transmit_flit2")) &
+((G F ("in:flit_ready0" & "in:destined0_2" & "in:reset_active2")) -> (G F "out:backpressure_data0_2")) &
+((G F ("in:flit_ready1" & "in:destined1_0" & "in:credit_received0_rd")) -> (G F "out:forward_packet1_0" & G F "out:transmit_flit0")) &
+((G F ("in:flit_ready1" & "in:destined1_0" & "in:credit_received0_wr")) -> (G F "out:forward_packet1_0" & G F "out:transmit_flit0")) &
+((G F ("in:flit_ready1" & "in:destined1_0" & "in:credit_received0_ll")) -> (G F "out:forward_packet1_0" & G F "out:transmit_flit0")) &
+((G F ("in:flit_ready1" & "in:destined1_0" & "in:reset_active0")) -> (G F "out:backpressure_data1_0")) &
+((G F ("in:flit_ready1" & "in:destined1_1" & "in:credit_received1_rd")) -> (G F "out:forward_packet1_1" & G F "out:transmit_flit1")) &
+((G F ("in:flit_ready1" & "in:destined1_1" & "in:credit_received1_wr")) -> (G F "out:forward_packet1_1" & G F "out:transmit_flit1")) &
+((G F ("in:flit_ready1" & "in:destined1_1" & "in:credit_received1_ll")) -> (G F "out:forward_packet1_1" & G F "out:transmit_flit1")) &
+((G F ("in:flit_ready1" & "in:destined1_1" & "in:reset_active1")) -> (G F "out:backpressure_data1_1")) &
+((G F ("in:flit_ready1" & "in:destined1_2" & "in:credit_received2_rd")) -> (G F "out:forward_packet1_2" & G F "out:transmit_flit2")) &
+((G F ("in:flit_ready1" & "in:destined1_2" & "in:credit_received2_wr")) -> (G F "out:forward_packet1_2" & G F "out:transmit_flit2")) &
+((G F ("in:flit_ready1" & "in:destined1_2" & "in:credit_received2_ll")) -> (G F "out:forward_packet1_2" & G F "out:transmit_flit2")) &
+((G F ("in:flit_ready1" & "in:destined1_2" & "in:reset_active2")) -> (G F "out:backpressure_data1_2")) &
+((G F ("in:flit_ready2" & "in:destined2_0" & "in:credit_received0_rd")) -> (G F "out:forward_packet2_0" & G F "out:transmit_flit0")) &
+((G F ("in:flit_ready2" & "in:destined2_0" & "in:credit_received0_wr")) -> (G F "out:forward_packet2_0" & G F "out:transmit_flit0")) &
+((G F ("in:flit_ready2" & "in:destined2_0" & "in:credit_received0_ll")) -> (G F "out:forward_packet2_0" & G F "out:transmit_flit0")) &
+((G F ("in:flit_ready2" & "in:destined2_0" & "in:reset_active0")) -> (G F "out:backpressure_data2_0")) &
+((G F ("in:flit_ready2" & "in:destined2_1" & "in:credit_received1_rd")) -> (G F "out:forward_packet2_1" & G F "out:transmit_flit1")) &
+((G F ("in:flit_ready2" & "in:destined2_1" & "in:credit_received1_wr")) -> (G F "out:forward_packet2_1" & G F "out:transmit_flit1")) &
+((G F ("in:flit_ready2" & "in:destined2_1" & "in:credit_received1_ll")) -> (G F "out:forward_packet2_1" & G F "out:transmit_flit1")) &
+((G F ("in:flit_ready2" & "in:destined2_1" & "in:reset_active1")) -> (G F "out:backpressure_data2_1")) &
+((G F ("in:flit_ready2" & "in:destined2_2" & "in:credit_received2_rd")) -> (G F "out:forward_packet2_2" & G F "out:transmit_flit2")) &
+((G F ("in:flit_ready2" & "in:destined2_2" & "in:credit_received2_wr")) -> (G F "out:forward_packet2_2" & G F "out:transmit_flit2")) &
+((G F ("in:flit_ready2" & "in:destined2_2" & "in:credit_received2_ll")) -> (G F "out:forward_packet2_2" & G F "out:transmit_flit2")) &
+((G F ("in:flit_ready2" & "in:destined2_2" & "in:reset_active2")) -> (G F "out:backpressure_data2_2")) &
+((G F ("in:flit_ready3" & "in:destined3_0" & "in:credit_received0_rd")) -> (G F "out:forward_packet3_0" & G F "out:transmit_flit0")) &
+((G F ("in:flit_ready3" & "in:destined3_0" & "in:credit_received0_wr")) -> (G F "out:forward_packet3_0" & G F "out:transmit_flit0")) &
+((G F ("in:flit_ready3" & "in:destined3_0" & "in:credit_received0_ll")) -> (G F "out:forward_packet3_0" & G F "out:transmit_flit0")) &
+((G F ("in:flit_ready3" & "in:destined3_0" & "in:reset_active0")) -> (G F "out:backpressure_data3_0")) &
+((G F ("in:flit_ready3" & "in:destined3_1" & "in:credit_received1_rd")) -> (G F "out:forward_packet3_1" & G F "out:transmit_flit1")) &
+((G F ("in:flit_ready3" & "in:destined3_1" & "in:credit_received1_wr")) -> (G F "out:forward_packet3_1" & G F "out:transmit_flit1")) &
+((G F ("in:flit_ready3" & "in:destined3_1" & "in:credit_received1_ll")) -> (G F "out:forward_packet3_1" & G F "out:transmit_flit1")) &
+((G F ("in:flit_ready3" & "in:destined3_1" & "in:reset_active1")) -> (G F "out:backpressure_data3_1")) &
+((G F ("in:flit_ready3" & "in:destined3_2" & "in:credit_received2_rd")) -> (G F "out:forward_packet3_2" & G F "out:transmit_flit2")) &
+((G F ("in:flit_ready3" & "in:destined3_2" & "in:credit_received2_wr")) -> (G F "out:forward_packet3_2" & G F "out:transmit_flit2")) &
+((G F ("in:flit_ready3" & "in:destined3_2" & "in:credit_received2_ll")) -> (G F "out:forward_packet3_2" & G F "out:transmit_flit2")) &
+((G F ("in:flit_ready3" & "in:destined3_2" & "in:reset_active2")) -> (G F "out:backpressure_data3_2")) &
+((G F ("in:flit_ready4" & "in:destined4_0" & "in:credit_received0_rd")) -> (G F "out:forward_packet4_0" & G F "out:transmit_flit0")) &
+((G F ("in:flit_ready4" & "in:destined4_0" & "in:credit_received0_wr")) -> (G F "out:forward_packet4_0" & G F "out:transmit_flit0")) &
+((G F ("in:flit_ready4" & "in:destined4_0" & "in:credit_received0_ll")) -> (G F "out:forward_packet4_0" & G F "out:transmit_flit0")) &
+((G F ("in:flit_ready4" & "in:destined4_0" & "in:reset_active0")) -> (G F "out:backpressure_data4_0")) &
+((G F ("in:flit_ready4" & "in:destined4_1" & "in:credit_received1_rd")) -> (G F "out:forward_packet4_1" & G F "out:transmit_flit1")) &
+((G F ("in:flit_ready4" & "in:destined4_1" & "in:credit_received1_wr")) -> (G F "out:forward_packet4_1" & G F "out:transmit_flit1")) &
+((G F ("in:flit_ready4" & "in:destined4_1" & "in:credit_received1_ll")) -> (G F "out:forward_packet4_1" & G F "out:transmit_flit1")) &
+((G F ("in:flit_ready4" & "in:destined4_1" & "in:reset_active1")) -> (G F "out:backpressure_data4_1")) &
+((G F ("in:flit_ready4" & "in:destined4_2" & "in:credit_received2_rd")) -> (G F "out:forward_packet4_2" & G F "out:transmit_flit2")) &
+((G F ("in:flit_ready4" & "in:destined4_2" & "in:credit_received2_wr")) -> (G F "out:forward_packet4_2" & G F "out:transmit_flit2")) &
+((G F ("in:flit_ready4" & "in:destined4_2" & "in:credit_received2_ll")) -> (G F "out:forward_packet4_2" & G F "out:transmit_flit2")) &
+((G F ("in:flit_ready4" & "in:destined4_2" & "in:reset_active2")) -> (G F "out:backpressure_data4_2")) &
+((G F ("in:flit_ready5" & "in:destined5_0" & "in:credit_received0_rd")) -> (G F "out:forward_packet5_0" & G F "out:transmit_flit0")) &
+((G F ("in:flit_ready5" & "in:destined5_0" & "in:credit_received0_wr")) -> (G F "out:forward_packet5_0" & G F "out:transmit_flit0")) &
+((G F ("in:flit_ready5" & "in:destined5_0" & "in:credit_received0_ll")) -> (G F "out:forward_packet5_0" & G F "out:transmit_flit0")) &
+((G F ("in:flit_ready5" & "in:destined5_0" & "in:reset_active0")) -> (G F "out:backpressure_data5_0")) &
+((G F ("in:flit_ready5" & "in:destined5_1" & "in:credit_received1_rd")) -> (G F "out:forward_packet5_1" & G F "out:transmit_flit1")) &
+((G F ("in:flit_ready5" & "in:destined5_1" & "in:credit_received1_wr")) -> (G F "out:forward_packet5_1" & G F "out:transmit_flit1")) &
+((G F ("in:flit_ready5" & "in:destined5_1" & "in:credit_received1_ll")) -> (G F "out:forward_packet5_1" & G F "out:transmit_flit1")) &
+((G F ("in:flit_ready5" & "in:destined5_1" & "in:reset_active1")) -> (G F "out:backpressure_data5_1")) &
+((G F ("in:flit_ready5" & "in:destined5_2" & "in:credit_received2_rd")) -> (G F "out:forward_packet5_2" & G F "out:transmit_flit2")) &
+((G F ("in:flit_ready5" & "in:destined5_2" & "in:credit_received2_wr")) -> (G F "out:forward_packet5_2" & G F "out:transmit_flit2")) &
+((G F ("in:flit_ready5" & "in:destined5_2" & "in:credit_received2_ll")) -> (G F "out:forward_packet5_2" & G F "out:transmit_flit2")) &
+((G F ("in:flit_ready5" & "in:destined5_2" & "in:reset_active2")) -> (G F "out:backpressure_data5_2")) &
+((G F ("in:flit_ready6" & "in:destined6_0" & "in:credit_received0_rd")) -> (G F "out:forward_packet6_0" & G F "out:transmit_flit0")) &
+((G F ("in:flit_ready6" & "in:destined6_0" & "in:credit_received0_wr")) -> (G F "out:forward_packet6_0" & G F "out:transmit_flit0")) &
+((G F ("in:flit_ready6" & "in:destined6_0" & "in:credit_received0_ll")) -> (G F "out:forward_packet6_0" & G F "out:transmit_flit0")) &
+((G F ("in:flit_ready6" & "in:destined6_0" & "in:reset_active0")) -> (G F "out:backpressure_data6_0")) &
+((G F ("in:flit_ready6" & "in:destined6_1" & "in:credit_received1_rd")) -> (G F "out:forward_packet6_1" & G F "out:transmit_flit1")) &
+((G F ("in:flit_ready6" & "in:destined6_1" & "in:credit_received1_wr")) -> (G F "out:forward_packet6_1" & G F "out:transmit_flit1")) &
+((G F ("in:flit_ready6" & "in:destined6_1" & "in:credit_received1_ll")) -> (G F "out:forward_packet6_1" & G F "out:transmit_flit1")) &
+((G F ("in:flit_ready6" & "in:destined6_1" & "in:reset_active1")) -> (G F "out:backpressure_data6_1")) &
+((G F ("in:flit_ready6" & "in:destined6_2" & "in:credit_received2_rd")) -> (G F "out:forward_packet6_2" & G F "out:transmit_flit2")) &
+((G F ("in:flit_ready6" & "in:destined6_2" & "in:credit_received2_wr")) -> (G F "out:forward_packet6_2" & G F "out:transmit_flit2")) &
+((G F ("in:flit_ready6" & "in:destined6_2" & "in:credit_received2_ll")) -> (G F "out:forward_packet6_2" & G F "out:transmit_flit2")) &
+((G F ("in:flit_ready6" & "in:destined6_2" & "in:reset_active2")) -> (G F "out:backpressure_data6_2")) &
+((G F ("in:flit_ready0" & "in:unauthorized_access0")) -> (G F "out:nack_response0")) &
+((G F ("in:flit_ready1" & "in:unauthorized_access1")) -> (G F "out:nack_response1")) &
+((G F ("in:flit_ready2" & "in:unauthorized_access2")) -> (G F "out:nack_response2")) &
+((G F ("in:flit_ready3" & "in:unauthorized_access3")) -> (G F "out:nack_response3")) &
+((G F ("in:flit_ready4" & "in:unauthorized_access4")) -> (G F "out:nack_response4")) &
+((G F ("in:flit_ready5" & "in:unauthorized_access5")) -> (G F "out:nack_response5")) &
+((G F ("in:flit_ready6" & "in:unauthorized_access6")) -> (G F "out:nack_response6")) &
+((G F ("in:flit_ready0" & "in:destined0_0" & "in:vc_timeout0_rd")) -> (G F "out:nack_response0")) &
+((G F ("in:flit_ready0" & "in:destined0_0" & "in:vc_timeout0_wr")) -> (G F "out:nack_response0")) &
+((G F ("in:flit_ready0" & "in:destined0_0" & "in:vc_timeout0_ll")) -> (G F "out:nack_response0")) &
+((G F ("in:flit_ready0" & "in:destined0_1" & "in:vc_timeout1_rd")) -> (G F "out:nack_response0")) &
+((G F ("in:flit_ready0" & "in:destined0_1" & "in:vc_timeout1_wr")) -> (G F "out:nack_response0")) &
+((G F ("in:flit_ready0" & "in:destined0_1" & "in:vc_timeout1_ll")) -> (G F "out:nack_response0")) &
+((G F ("in:flit_ready0" & "in:destined0_2" & "in:vc_timeout2_rd")) -> (G F "out:nack_response0")) &
+((G F ("in:flit_ready0" & "in:destined0_2" & "in:vc_timeout2_wr")) -> (G F "out:nack_response0")) &
+((G F ("in:flit_ready0" & "in:destined0_2" & "in:vc_timeout2_ll")) -> (G F "out:nack_response0")) &
+((G F ("in:flit_ready1" & "in:destined1_0" & "in:vc_timeout0_rd")) -> (G F "out:nack_response1")) &
+((G F ("in:flit_ready1" & "in:destined1_0" & "in:vc_timeout0_wr")) -> (G F "out:nack_response1")) &
+((G F ("in:flit_ready1" & "in:destined1_0" & "in:vc_timeout0_ll")) -> (G F "out:nack_response1")) &
+((G F ("in:flit_ready1" & "in:destined1_1" & "in:vc_timeout1_rd")) -> (G F "out:nack_response1")) &
+((G F ("in:flit_ready1" & "in:destined1_1" & "in:vc_timeout1_wr")) -> (G F "out:nack_response1")) &
+((G F ("in:flit_ready1" & "in:destined1_1" & "in:vc_timeout1_ll")) -> (G F "out:nack_response1")) &
+((G F ("in:flit_ready1" & "in:destined1_2" & "in:vc_timeout2_rd")) -> (G F "out:nack_response1")) &
+((G F ("in:flit_ready1" & "in:destined1_2" & "in:vc_timeout2_wr")) -> (G F "out:nack_response1")) &
+((G F ("in:flit_ready1" & "in:destined1_2" & "in:vc_timeout2_ll")) -> (G F "out:nack_response1")) &
+((G F ("in:flit_ready2" & "in:destined2_0" & "in:vc_timeout0_rd")) -> (G F "out:nack_response2")) &
+((G F ("in:flit_ready2" & "in:destined2_0" & "in:vc_timeout0_wr")) -> (G F "out:nack_response2")) &
+((G F ("in:flit_ready2" & "in:destined2_0" & "in:vc_timeout0_ll")) -> (G F "out:nack_response2")) &
+((G F ("in:flit_ready2" & "in:destined2_1" & "in:vc_timeout1_rd")) -> (G F "out:nack_response2")) &
+((G F ("in:flit_ready2" & "in:destined2_1" & "in:vc_timeout1_wr")) -> (G F "out:nack_response2")) &
+((G F ("in:flit_ready2" & "in:destined2_1" & "in:vc_timeout1_ll")) -> (G F "out:nack_response2")) &
+((G F ("in:flit_ready2" & "in:destined2_2" & "in:vc_timeout2_rd")) -> (G F "out:nack_response2")) &
+((G F ("in:flit_ready2" & "in:destined2_2" & "in:vc_timeout2_wr")) -> (G F "out:nack_response2")) &
+((G F ("in:flit_ready2" & "in:destined2_2" & "in:vc_timeout2_ll")) -> (G F "out:nack_response2")) &
+((G F ("in:flit_ready3" & "in:destined3_0" & "in:vc_timeout0_rd")) -> (G F "out:nack_response3")) &
+((G F ("in:flit_ready3" & "in:destined3_0" & "in:vc_timeout0_wr")) -> (G F "out:nack_response3")) &
+((G F ("in:flit_ready3" & "in:destined3_0" & "in:vc_timeout0_ll")) -> (G F "out:nack_response3")) &
+((G F ("in:flit_ready3" & "in:destined3_1" & "in:vc_timeout1_rd")) -> (G F "out:nack_response3")) &
+((G F ("in:flit_ready3" & "in:destined3_1" & "in:vc_timeout1_wr")) -> (G F "out:nack_response3")) &
+((G F ("in:flit_ready3" & "in:destined3_1" & "in:vc_timeout1_ll")) -> (G F "out:nack_response3")) &
+((G F ("in:flit_ready3" & "in:destined3_2" & "in:vc_timeout2_rd")) -> (G F "out:nack_response3")) &
+((G F ("in:flit_ready3" & "in:destined3_2" & "in:vc_timeout2_wr")) -> (G F "out:nack_response3")) &
+((G F ("in:flit_ready3" & "in:destined3_2" & "in:vc_timeout2_ll")) -> (G F "out:nack_response3")) &
+((G F ("in:flit_ready4" & "in:destined4_0" & "in:vc_timeout0_rd")) -> (G F "out:nack_response4")) &
+((G F ("in:flit_ready4" & "in:destined4_0" & "in:vc_timeout0_wr")) -> (G F "out:nack_response4")) &
+((G F ("in:flit_ready4" & "in:destined4_0" & "in:vc_timeout0_ll")) -> (G F "out:nack_response4")) &
+((G F ("in:flit_ready4" & "in:destined4_1" & "in:vc_timeout1_rd")) -> (G F "out:nack_response4")) &
+((G F ("in:flit_ready4" & "in:destined4_1" & "in:vc_timeout1_wr")) -> (G F "out:nack_response4")) &
+((G F ("in:flit_ready4" & "in:destined4_1" & "in:vc_timeout1_ll")) -> (G F "out:nack_response4")) &
+((G F ("in:flit_ready4" & "in:destined4_2" & "in:vc_timeout2_rd")) -> (G F "out:nack_response4")) &
+((G F ("in:flit_ready4" & "in:destined4_2" & "in:vc_timeout2_wr")) -> (G F "out:nack_response4")) &
+((G F ("in:flit_ready4" & "in:destined4_2" & "in:vc_timeout2_ll")) -> (G F "out:nack_response4")) &
+((G F ("in:flit_ready5" & "in:destined5_0" & "in:vc_timeout0_rd")) -> (G F "out:nack_response5")) &
+((G F ("in:flit_ready5" & "in:destined5_0" & "in:vc_timeout0_wr")) -> (G F "out:nack_response5")) &
+((G F ("in:flit_ready5" & "in:destined5_0" & "in:vc_timeout0_ll")) -> (G F "out:nack_response5")) &
+((G F ("in:flit_ready5" & "in:destined5_1" & "in:vc_timeout1_rd")) -> (G F "out:nack_response5")) &
+((G F ("in:flit_ready5" & "in:destined5_1" & "in:vc_timeout1_wr")) -> (G F "out:nack_response5")) &
+((G F ("in:flit_ready5" & "in:destined5_1" & "in:vc_timeout1_ll")) -> (G F "out:nack_response5")) &
+((G F ("in:flit_ready5" & "in:destined5_2" & "in:vc_timeout2_rd")) -> (G F "out:nack_response5")) &
+((G F ("in:flit_ready5" & "in:destined5_2" & "in:vc_timeout2_wr")) -> (G F "out:nack_response5")) &
+((G F ("in:flit_ready5" & "in:destined5_2" & "in:vc_timeout2_ll")) -> (G F "out:nack_response5")) &
+((G F ("in:flit_ready6" & "in:destined6_0" & "in:vc_timeout0_rd")) -> (G F "out:nack_response6")) &
+((G F ("in:flit_ready6" & "in:destined6_0" & "in:vc_timeout0_wr")) -> (G F "out:nack_response6")) &
+((G F ("in:flit_ready6" & "in:destined6_0" & "in:vc_timeout0_ll")) -> (G F "out:nack_response6")) &
+((G F ("in:flit_ready6" & "in:destined6_1" & "in:vc_timeout1_rd")) -> (G F "out:nack_response6")) &
+((G F ("in:flit_ready6" & "in:destined6_1" & "in:vc_timeout1_wr")) -> (G F "out:nack_response6")) &
+((G F ("in:flit_ready6" & "in:destined6_1" & "in:vc_timeout1_ll")) -> (G F "out:nack_response6")) &
+((G F ("in:flit_ready6" & "in:destined6_2" & "in:vc_timeout2_rd")) -> (G F "out:nack_response6")) &
+((G F ("in:flit_ready6" & "in:destined6_2" & "in:vc_timeout2_wr")) -> (G F "out:nack_response6")) &
+((G F ("in:flit_ready6" & "in:destined6_2" & "in:vc_timeout2_ll")) -> (G F "out:nack_response6")) &
+((G F ("in:flit_ready0" & "in:flit_ready1" & "in:contend_for_vc0")) -> (G F "out:rr_arbitrate0")) &
+((G F ("in:flit_ready0" & "in:flit_ready1" & "in:qos_contention0")) -> (G F "out:preempt_traffic0")) &
+((G F ("in:flit_ready1" & "in:flit_ready2" & "in:contend_for_vc1")) -> (G F "out:rr_arbitrate1")) &
+((G F ("in:flit_ready1" & "in:flit_ready2" & "in:qos_contention1")) -> (G F "out:preempt_traffic1")) &
+((G F ("in:flit_ready2" & "in:flit_ready3" & "in:contend_for_vc2")) -> (G F "out:rr_arbitrate2")) &
+((G F ("in:flit_ready2" & "in:flit_ready3" & "in:qos_contention2")) -> (G F "out:preempt_traffic2")) &
+((G F ("in:flit_ready3" & "in:flit_ready4" & "in:contend_for_vc3")) -> (G F "out:rr_arbitrate3")) &
+((G F ("in:flit_ready3" & "in:flit_ready4" & "in:qos_contention3")) -> (G F "out:preempt_traffic3")) &
+((G F ("in:flit_ready4" & "in:flit_ready5" & "in:contend_for_vc4")) -> (G F "out:rr_arbitrate4")) &
+((G F ("in:flit_ready4" & "in:flit_ready5" & "in:qos_contention4")) -> (G F "out:preempt_traffic4")) &
+((G F ("in:flit_ready5" & "in:flit_ready6" & "in:contend_for_vc5")) -> (G F "out:rr_arbitrate5")) &
+((G F ("in:flit_ready5" & "in:flit_ready6" & "in:qos_contention5")) -> (G F "out:preempt_traffic5")) &
+((G F ("in:blocked0_rd" & "in:credit_received0_wr")) -> (G F "out:transmit_flit0")) &
+((G F ("in:blocked0_rd" & "in:credit_received0_ll")) -> (G F "out:transmit_flit0")) &
+((G F ("in:blocked0_wr" & "in:credit_received0_rd")) -> (G F "out:transmit_flit0")) &
+((G F ("in:blocked0_wr" & "in:credit_received0_ll")) -> (G F "out:transmit_flit0")) &
+((G F ("in:blocked0_ll" & "in:credit_received0_rd")) -> (G F "out:transmit_flit0")) &
+((G F ("in:blocked0_ll" & "in:credit_received0_wr")) -> (G F "out:transmit_flit0")) &
+((G F ("in:blocked1_rd" & "in:credit_received1_wr")) -> (G F "out:transmit_flit1")) &
+((G F ("in:blocked1_rd" & "in:credit_received1_ll")) -> (G F "out:transmit_flit1")) &
+((G F ("in:blocked1_wr" & "in:credit_received1_rd")) -> (G F "out:transmit_flit1")) &
+((G F ("in:blocked1_wr" & "in:credit_received1_ll")) -> (G F "out:transmit_flit1")) &
+((G F ("in:blocked1_ll" & "in:credit_received1_rd")) -> (G F "out:transmit_flit1")) &
+((G F ("in:blocked1_ll" & "in:credit_received1_wr")) -> (G F "out:transmit_flit1")) &
+((G F ("in:blocked2_rd" & "in:credit_received2_wr")) -> (G F "out:transmit_flit2")) &
+((G F ("in:blocked2_rd" & "in:credit_received2_ll")) -> (G F "out:transmit_flit2")) &
+((G F ("in:blocked2_wr" & "in:credit_received2_rd")) -> (G F "out:transmit_flit2")) &
+((G F ("in:blocked2_wr" & "in:credit_received2_ll")) -> (G F "out:transmit_flit2")) &
+((G F ("in:blocked2_ll" & "in:credit_received2_rd")) -> (G F "out:transmit_flit2")) &
+((G F ("in:blocked2_ll" & "in:credit_received2_wr")) -> (G F "out:transmit_flit2"))

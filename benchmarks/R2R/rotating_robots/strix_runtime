@@ -1,0 +1,3 @@
+Test                                             Seconds         ms           us  Result         
+----                                             -------         --           --  ------         
+rotating_robots.sgrk                              4.097s     4096ms    4096674us  REALIZABLE     

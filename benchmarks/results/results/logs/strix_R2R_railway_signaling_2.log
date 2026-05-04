@@ -1,0 +1,12 @@
+=== strix on R2R/railway_signaling_2 (9 tests, timeout=5400s) ===
+  railway_signaling_2_2.sgrk: 0.524s  REALIZABLE
+  railway_signaling_2_3.sgrk: 33.677s  REALIZABLE
+  railway_signaling_2_4.sgrk: 4663.711s  REALIZABLE
+  railway_signaling_2_5.sgrk: TIMEOUT
+  railway_signaling_2_6.sgrk: SKIPPED (cascade)
+  railway_signaling_2_7.sgrk: SKIPPED (cascade)
+  railway_signaling_2_8.sgrk: SKIPPED (cascade)
+  railway_signaling_2_9.sgrk: SKIPPED (cascade)
+  railway_signaling_2_10.sgrk: SKIPPED (cascade)
+=== Done: strix on R2R/railway_signaling_2 ===
+Results: /RG/rg-fried/avitalpa/separation-grk/benchmarks/R2R/railway_signaling_2//strix_runtime

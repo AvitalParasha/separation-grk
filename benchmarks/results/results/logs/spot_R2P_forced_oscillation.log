@@ -1,0 +1,4 @@
+=== spot on R2P/forced_oscillation (1 tests, timeout=5400s) ===
+  forced_oscillation.sgrk: 0.043s  UNREALIZABLE
+=== Done: spot on R2P/forced_oscillation ===
+Results: /RG/rg-fried/avitalpa/separation-grk/benchmarks/R2P/forced_oscillation//spot_runtime

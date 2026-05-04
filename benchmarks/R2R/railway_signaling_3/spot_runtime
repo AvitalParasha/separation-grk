@@ -1,0 +1,11 @@
+Test                                             Seconds         ms           us  Result         
+----                                             -------         --           --  ------         
+railway_signaling_3_2.sgrk                             -          -            -  TIMEOUT        
+railway_signaling_3_3.sgrk                             -          -            -  SKIPPED        
+railway_signaling_3_4.sgrk                             -          -            -  SKIPPED        
+railway_signaling_3_5.sgrk                             -          -            -  SKIPPED        
+railway_signaling_3_6.sgrk                             -          -            -  SKIPPED        
+railway_signaling_3_7.sgrk                             -          -            -  SKIPPED        
+railway_signaling_3_8.sgrk                             -          -            -  SKIPPED        
+railway_signaling_3_9.sgrk                             -          -            -  SKIPPED        
+railway_signaling_3_10.sgrk                            -          -            -  SKIPPED        

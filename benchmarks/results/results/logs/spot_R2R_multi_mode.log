@@ -1,0 +1,13 @@
+=== spot on R2R/multi_mode (10 tests, timeout=5400s) ===
+  multi_mode_1.sgrk: 0.048s  REALIZABLE
+  multi_mode_2.sgrk: TIMEOUT
+  multi_mode_3.sgrk: SKIPPED (cascade)
+  multi_mode_4.sgrk: SKIPPED (cascade)
+  multi_mode_5.sgrk: SKIPPED (cascade)
+  multi_mode_6.sgrk: SKIPPED (cascade)
+  multi_mode_7.sgrk: SKIPPED (cascade)
+  multi_mode_8.sgrk: SKIPPED (cascade)
+  multi_mode_9.sgrk: SKIPPED (cascade)
+  multi_mode_10.sgrk: SKIPPED (cascade)
+=== Done: spot on R2R/multi_mode ===
+Results: /RG/rg-fried/avitalpa/separation-grk/benchmarks/R2R/multi_mode//spot_runtime

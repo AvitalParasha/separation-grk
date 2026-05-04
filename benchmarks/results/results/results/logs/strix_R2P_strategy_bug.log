@@ -1,0 +1,4 @@
+=== strix on R2P/strategy_bug (1 tests, timeout=5400s) ===
+  strategy_bug.sgrk: 0.084s  REALIZABLE
+=== Done: strix on R2P/strategy_bug ===
+Results: /RG/rg-fried/avitalpa/separation-grk/benchmarks/R2P/strategy_bug//strix_runtime

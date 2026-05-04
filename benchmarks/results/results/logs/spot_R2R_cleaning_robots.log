@@ -1,0 +1,13 @@
+=== spot on R2R/cleaning_robots (10 tests, timeout=5400s) ===
+  cleaning_robots_1.sgrk: 0.194s  REALIZABLE
+  cleaning_robots_2.sgrk: TIMEOUT
+  cleaning_robots_3.sgrk: SKIPPED (cascade)
+  cleaning_robots_4.sgrk: SKIPPED (cascade)
+  cleaning_robots_5.sgrk: SKIPPED (cascade)
+  cleaning_robots_6.sgrk: SKIPPED (cascade)
+  cleaning_robots_7.sgrk: SKIPPED (cascade)
+  cleaning_robots_8.sgrk: SKIPPED (cascade)
+  cleaning_robots_9.sgrk: SKIPPED (cascade)
+  cleaning_robots_10.sgrk: SKIPPED (cascade)
+=== Done: spot on R2R/cleaning_robots ===
+Results: /RG/rg-fried/avitalpa/separation-grk/benchmarks/R2R/cleaning_robots//spot_runtime

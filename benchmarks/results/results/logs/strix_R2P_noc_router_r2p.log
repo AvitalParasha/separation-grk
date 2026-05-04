@@ -1,0 +1,43 @@
+=== strix on R2P/noc_router_r2p (40 tests, timeout=5400s) ===
+  noc_router_r2p_1_1.sgrk: 0.132s  REALIZABLE
+  noc_router_r2p_1_2.sgrk: 0.460s  REALIZABLE
+  noc_router_r2p_1_3.sgrk: 1.053s  REALIZABLE
+  noc_router_r2p_1_4.sgrk: 2.063s  REALIZABLE
+  noc_router_r2p_2_1.sgrk: 1.121s  REALIZABLE
+  noc_router_r2p_2_2.sgrk: 6.595s  REALIZABLE
+  noc_router_r2p_2_3.sgrk: 17.526s  REALIZABLE
+  noc_router_r2p_2_4.sgrk: 40.181s  REALIZABLE
+  noc_router_r2p_3_1.sgrk: 11.292s  REALIZABLE
+  noc_router_r2p_3_2.sgrk: 92.374s  REALIZABLE
+  noc_router_r2p_3_3.sgrk: 269.791s  REALIZABLE
+  noc_router_r2p_3_4.sgrk: 691.660s  REALIZABLE
+  noc_router_r2p_4_1.sgrk: 134.081s  REALIZABLE
+  noc_router_r2p_4_2.sgrk: 1290.328s  REALIZABLE
+  noc_router_r2p_4_3.sgrk: 3750.910s  REALIZABLE
+  noc_router_r2p_4_4.sgrk: TIMEOUT
+  noc_router_r2p_5_1.sgrk: SKIPPED (cascade)
+  noc_router_r2p_5_2.sgrk: SKIPPED (cascade)
+  noc_router_r2p_5_3.sgrk: SKIPPED (cascade)
+  noc_router_r2p_5_4.sgrk: SKIPPED (cascade)
+  noc_router_r2p_6_1.sgrk: SKIPPED (cascade)
+  noc_router_r2p_6_2.sgrk: SKIPPED (cascade)
+  noc_router_r2p_6_3.sgrk: SKIPPED (cascade)
+  noc_router_r2p_6_4.sgrk: SKIPPED (cascade)
+  noc_router_r2p_7_1.sgrk: SKIPPED (cascade)
+  noc_router_r2p_7_2.sgrk: SKIPPED (cascade)
+  noc_router_r2p_7_3.sgrk: SKIPPED (cascade)
+  noc_router_r2p_7_4.sgrk: SKIPPED (cascade)
+  noc_router_r2p_8_1.sgrk: SKIPPED (cascade)
+  noc_router_r2p_8_2.sgrk: SKIPPED (cascade)
+  noc_router_r2p_8_3.sgrk: SKIPPED (cascade)
+  noc_router_r2p_8_4.sgrk: SKIPPED (cascade)
+  noc_router_r2p_9_1.sgrk: SKIPPED (cascade)
+  noc_router_r2p_9_2.sgrk: SKIPPED (cascade)
+  noc_router_r2p_9_3.sgrk: SKIPPED (cascade)
+  noc_router_r2p_9_4.sgrk: SKIPPED (cascade)
+  noc_router_r2p_10_1.sgrk: SKIPPED (cascade)
+  noc_router_r2p_10_2.sgrk: SKIPPED (cascade)
+  noc_router_r2p_10_3.sgrk: SKIPPED (cascade)
+  noc_router_r2p_10_4.sgrk: SKIPPED (cascade)
+=== Done: strix on R2P/noc_router_r2p ===
+Results: /RG/rg-fried/avitalpa/separation-grk/benchmarks/R2P/noc_router_r2p//strix_runtime

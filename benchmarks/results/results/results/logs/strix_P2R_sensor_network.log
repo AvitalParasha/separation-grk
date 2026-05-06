@@ -1,7 +1,0 @@
-=== strix on P2R/sensor_network (4 tests, timeout=5400s) ===
-  sensor_network.sgrk: 0.089s  REALIZABLE
-  sensor_network_bug.sgrk: 0.097s  REALIZABLE
-  sensor_network_unrealizable.sgrk: 0.074s  UNREALIZABLE
-  sensor_network_vacuous.sgrk: 0.075s  REALIZABLE
-=== Done: strix on P2R/sensor_network ===
-Results: /RG/rg-fried/avitalpa/separation-grk/benchmarks/P2R/sensor_network//strix_runtime

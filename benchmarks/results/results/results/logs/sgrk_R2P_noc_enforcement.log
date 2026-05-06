@@ -1,6 +1,0 @@
-=== sgrk on R2P/noc_enforcement (3 tests, timeout=5400s) ===
-  noc_enforcement.sgrk: 0.052s  Unrealizable
-  noc_enforcement_no46.sgrk: 0.044s  Unrealizable
-  noc_formulas_4_13.sgrk: 0.043s  Unrealizable
-=== Done: sgrk on R2P/noc_enforcement ===
-Results: /RG/rg-fried/avitalpa/separation-grk/benchmarks/R2P/noc_enforcement//runtime

@@ -55,7 +55,7 @@ esac
 sgrk_files=()
 while IFS= read -r line; do
     sgrk_files+=("$line")
-done < <(find "$FAMILY_DIR" -maxdepth 1 -name "*.sgrk" ! -name "mixed_*" | sort -V)
+done < <(find "$FAMILY_DIR" -maxdepth 1 -name "*.sgrk" | sort -V)
 
 if [[ ${#sgrk_files[@]} -eq 0 ]]; then
     echo "No .sgrk files in $FAMILY_DIR"

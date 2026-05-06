@@ -3,7 +3,7 @@
 # Runs bin/sgrk on all benchmarks in the specified category (R2R, R2P, P2R, or all).
 # Outputs a per-family table with runtime in seconds, ms, and us.
 #
-# Usage: bash run_benchmarks.sh [--timeout=SECONDS] [R2R|R2P|P2R|all]
+# Usage: bash run_benchmarks.sh [--timeout=SECONDS] [R2R|R2P|P2R|Mixed|all]
 
 MYSELF=$(realpath "$0")
 MYDIR="${MYSELF%/*}"
@@ -17,9 +17,9 @@ CATEGORY="all"
 for arg in "$@"; do
     case "$arg" in
         --timeout=*) TIMEOUT="${arg#*=}" ;;
-        R2R|R2P|P2R|all) CATEGORY="$arg" ;;
+        R2R|R2P|P2R|Mixed|all) CATEGORY="$arg" ;;
         --help)
-            echo "Usage: $(basename "$0") [--timeout=SECONDS] [R2R|R2P|P2R|all]"
+            echo "Usage: $(basename "$0") [--timeout=SECONDS] [R2R|R2P|P2R|Mixed|all]"
             exit 0
             ;;
         *) echo "Unknown option: $arg"; exit 1 ;;
@@ -37,7 +37,7 @@ source "${MYDIR}/timeout_helper.sh"
 
 # Determine which categories to run
 if [[ "$CATEGORY" == "all" ]]; then
-    CATEGORIES=(R2R R2P P2R)
+    CATEGORIES=(R2R R2P P2R Mixed)
 else
     CATEGORIES=("$CATEGORY")
 fi
@@ -61,11 +61,11 @@ for cat in "${CATEGORIES[@]}"; do
         [[ ! -d "$family_dir" ]] && continue
         family="$(basename "$family_dir")"
 
-        # Collect .sgrk files, skip mixed test files
+        # Collect .sgrk files
         sgrk_files=()
         while IFS= read -r line; do
             sgrk_files+=("$line")
-        done < <(find "$family_dir" -maxdepth 1 -name "*.sgrk" ! -name "mixed_*" | sort -V)
+        done < <(find "$family_dir" -maxdepth 1 -name "*.sgrk" | sort -V)
 
         if [[ ${#sgrk_files[@]} -eq 0 ]]; then
             continue

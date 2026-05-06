@@ -1,7 +1,0 @@
-=== spot on P2R/sensor_network (4 tests, timeout=5400s) ===
-  sensor_network.sgrk: 0.045s  REALIZABLE
-  sensor_network_bug.sgrk: 0.048s  REALIZABLE
-  sensor_network_unrealizable.sgrk: 0.045s  UNREALIZABLE
-  sensor_network_vacuous.sgrk: 0.045s  REALIZABLE
-=== Done: spot on P2R/sensor_network ===
-Results: /RG/rg-fried/avitalpa/separation-grk/benchmarks/P2R/sensor_network//spot_runtime

@@ -1,6 +1,0 @@
-1 ;
-!"out:locked" ;
-1 ;
-("out:locked" -> X "out:locked") ;
-((GF "in:trigger") -> (GF "out:locked")) &
-((GF "in:trigger") -> (FG "out:locked"))

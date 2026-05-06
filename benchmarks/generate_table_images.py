@@ -292,17 +292,22 @@ def generate_family_svg(cat, family, family_dir, results_dir, timeout):
             sgrk_data, strix_data, spot_data, has_spot, test_names
         )
 
+    # Determine if tests have numeric instance suffixes
+    has_numeric_ids = any(re.search(r'_(\d+)\.sgrk$', n) for n in test_names)
+
     # Standard single-table family
+    first_col = '#' if has_numeric_ids else 'Test'
+    first_align = 'r' if has_numeric_ids else 'l'
     if has_spot:
-        headers = ['#', 'sgrk (s)', 'Strix (s)', 'Spot (s)', 'Strix Sp.', 'Spot Sp.', 'Result']
-        col_aligns = ['r', 'r', 'r', 'r', 'r', 'r', 'l']
+        headers = [first_col, 'sgrk (s)', 'Strix (s)', 'Spot (s)', 'Strix Sp.', 'Spot Sp.', 'Result']
+        col_aligns = [first_align, 'r', 'r', 'r', 'r', 'r', 'l']
     else:
-        headers = ['#', 'sgrk (s)', 'Strix (s)', 'Speedup', 'Result']
-        col_aligns = ['r', 'r', 'r', 'r', 'l']
+        headers = [first_col, 'sgrk (s)', 'Strix (s)', 'Speedup', 'Result']
+        col_aligns = [first_align, 'r', 'r', 'r', 'l']
     rows = []
 
     for name in test_names:
-        inst = extract_instance_number(name)
+        inst = extract_instance_number(name) if has_numeric_ids else name.replace('.sgrk', '').replace('_', ' ')
         sgrk_time, sgrk_result = sgrk_data[name]
         strix_time, strix_result = strix_data.get(name, ('-', 'N/A'))
 
@@ -684,13 +689,18 @@ def main():
     slideshow_name = sys.argv[2] if len(sys.argv) > 2 else "slideshow.html"
 
     if category == "all":
-        categories = ["R2R", "R2P", "P2R"]
+        categories = ["R2R", "R2P", "P2R", "Mixed"]
     else:
         categories = [category]
 
     # Read timeout from compare_results.sh default (5400)
     timeout = 5400
     results_base_dir = os.path.join(SCRIPT_DIR, "results")
+
+    # Guard against nested results (e.g., if script is accidentally inside results/)
+    if "results" in SCRIPT_DIR.split(os.sep):
+        print("ERROR: script appears to be inside a results/ directory. Aborting.")
+        sys.exit(1)
     all_slides = []
 
     for cat in categories:

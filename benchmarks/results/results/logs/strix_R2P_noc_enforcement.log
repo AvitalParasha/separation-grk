@@ -1,6 +1,0 @@
-=== strix on R2P/noc_enforcement (3 tests, timeout=5400s) ===
-  noc_enforcement.sgrk: 0.071s  UNREALIZABLE
-  noc_enforcement_no46.sgrk: 0.069s  UNREALIZABLE
-  noc_formulas_4_13.sgrk: 0.058s  UNREALIZABLE
-=== Done: strix on R2P/noc_enforcement ===
-Results: /RG/rg-fried/avitalpa/separation-grk/benchmarks/R2P/noc_enforcement//strix_runtime

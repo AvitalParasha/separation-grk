@@ -7,7 +7,7 @@
 # Only tests missing from the cache are actually executed.
 # Use --force to ignore the cache and re-run everything.
 #
-# Usage: bash compare_results.sh [--strix=<path>] [--spot=<path>] [--timeout=SECONDS] [--force] [R2R|R2P|P2R|all]
+# Usage: bash compare_results.sh [--strix=<path>] [--spot=<path>] [--timeout=SECONDS] [--force] [R2R|R2P|P2R|Mixed|all]
 
 MYSELF=$(realpath "$0")
 MYDIR="${MYSELF%/*}"
@@ -32,9 +32,9 @@ for arg in "$@"; do
         --strix-timeout=*) STRIX_TIMEOUT="${arg#*=}" ;;
         --spot-timeout=*)  SPOT_TIMEOUT="${arg#*=}" ;;
         --force)           USE_CACHE=false ;;
-        R2R|R2P|P2R|all)   CATEGORY="$arg" ;;
+        R2R|R2P|P2R|Mixed|all)   CATEGORY="$arg" ;;
         --help)
-            echo "Usage: $(basename "$0") [OPTIONS] [R2R|R2P|P2R|all]"
+            echo "Usage: $(basename "$0") [OPTIONS] [R2R|R2P|P2R|Mixed|all]"
             echo ""
             echo "  --strix=<path>      Path to Strix binary"
             echo "  --spot=<path>       Path to ltlsynt binary (default: ltlsynt)"
@@ -185,7 +185,7 @@ latex_speedup() {
 }
 
 if [[ "$CATEGORY" == "all" ]]; then
-    CATEGORIES=(R2R R2P P2R)
+    CATEGORIES=(R2R R2P P2R Mixed)
 else
     CATEGORIES=("$CATEGORY")
 fi
@@ -219,7 +219,7 @@ for cat in "${CATEGORIES[@]}"; do
         sgrk_files=()
         while IFS= read -r line; do
             sgrk_files+=("$line")
-        done < <(find "$family_dir" -maxdepth 1 -name "*.sgrk" ! -name "mixed_*" | sort -V)
+        done < <(find "$family_dir" -maxdepth 1 -name "*.sgrk" | sort -V)
 
         [[ ${#sgrk_files[@]} -eq 0 ]] && continue
 

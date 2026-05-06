@@ -28,21 +28,21 @@ done
 echo "Settings: timeout=${TIMEOUT}s, skip-heavy=${SKIP_HEAVY}"
 echo ""
 
-# Mixed type rejection test
-echo "=== Mixed Type Rejection Test ==="
+# Mixed type test (now supported — should solve successfully)
+echo "=== Mixed Type Tests ==="
 
 MIXED_PASS=0
 MIXED_FAIL=0
 
-for f in "${MYDIR}/R2R/mixed_r2r_r2p.sgrk" "${MYDIR}/R2P/mixed_r2r_r2p.sgrk" "${MYDIR}/P2R/mixed_p2r_r2r.sgrk"; do
+for f in "${MYDIR}/Mixed/mixed_unit/mixed_r2r_r2p.sgrk" "${MYDIR}/Mixed/mixed_unit/mixed_p2r_r2r.sgrk"; do
     if [[ ! -f "$f" ]]; then
         continue
     fi
     echo -n "$(basename "$f") (from $(basename "$(dirname "$f")")): "
-    result=$("$SGRK" "$f" 2>&1)
+    result=$("$SGRK" "$f" 2>&1 | head -1)
     exit_code=$?
-    if [[ $exit_code -eq 1 ]] && echo "$result" | grep -q "mixed implication types"; then
-        echo "correctly rejected"
+    if [[ $exit_code -eq 0 ]] && [[ "$result" == "Realizable" || "$result" == "Unrealizable" ]]; then
+        echo "$result"
         MIXED_PASS=$((MIXED_PASS + 1))
     else
         echo "UNEXPECTED: $result (exit code $exit_code)"
@@ -63,3 +63,7 @@ echo ""
 
 # Run P2R tests
 bash "${MYDIR}/P2R/run_p2r_tests.sh"
+echo ""
+
+# Run Mixed tests
+bash "${MYDIR}/Mixed/run_mixed_tests.sh"

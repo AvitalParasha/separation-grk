@@ -1,5 +1,0 @@
-=== strix on R2R/railway_signaling_2 (9 tests, timeout=5400s) ===
-  railway_signaling_2_2.sgrk: 0.712s  REALIZABLE
-  railway_signaling_2_3.sgrk: 34.530s  REALIZABLE
-  railway_signaling_2_4.sgrk: 4701.910s  REALIZABLE
-slurmstepd: error: *** JOB 373641 ON cn27 CANCELLED AT 2026-04-21T17:32:53 ***

@@ -186,11 +186,6 @@ for category_dir in "${MYDIR}"/R2P "${MYDIR}"/R2R "${MYDIR}"/P2R; do
         name="$(basename "$f")"
         dir="$(basename "$(dirname "$f")")"
 
-        # Skip mixed test files
-        if [[ "$name" == "mixed_"* ]]; then
-            continue
-        fi
-
         echo -n "  ${dir}/${name}: "
 
         verify_strategy "$f" "${dir}/${name}"

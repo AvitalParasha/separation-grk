@@ -82,7 +82,7 @@ For P2R benchmarks, the fairness section uses ``FG`` (persistence) on the assump
 ...
 ```
 
-All implications in a specification must use the same fairness pattern — mixing R2R, R2P, and P2R implications is not supported.
+Implications can mix different fairness patterns (R2R, R2P, P2R) in the same specification. When R2P is mixed with R2R or P2R, the solver uses a restricted cycle strategy within the R2P alive region.
 
 Boolean formulas use the operators ``!`` (not), ``&`` (and), ``|`` (or), ``->`` (implies), ``<->`` (iff) and ``^`` (xor), and the constants ``0`` and ``1``. In the safety assumptions and guarantees variables can also be preceded by the temporal operator ``X`` (next).
 

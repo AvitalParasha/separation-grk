@@ -27,11 +27,6 @@ SKIP=0
 for f in "${MYDIR}"/**/*.sgrk; do
     name="$(basename "$f")"
 
-    # Skip the mixed test file
-    if [[ "$name" == "mixed_r2r_r2p.sgrk" ]]; then
-        continue
-    fi
-
     if [[ "$SKIP_HEAVY" == "true" ]] && is_heavy "$name"; then
         echo "${name}: SKIPPED (heavy)"
         SKIP=$((SKIP + 1))

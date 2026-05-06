@@ -3,7 +3,7 @@
 # Converts .sgrk files to Strix format and runs them through Strix.
 # Works across all formula types (R2R, R2P, P2R).
 #
-# Usage: bash run_strix.sh [--strix=<path>] [--timeout=SECONDS] [R2R|R2P|P2R|all]
+# Usage: bash run_strix.sh [--strix=<path>] [--timeout=SECONDS] [R2R|R2P|P2R|Mixed|all]
 
 MYSELF=$(realpath "$0")
 MYDIR="${MYSELF%/*}"
@@ -19,9 +19,9 @@ for arg in "$@"; do
     case "$arg" in
         --strix=*)   STRIX="${arg#*=}" ;;
         --timeout=*) TIMEOUT="${arg#*=}" ;;
-        R2R|R2P|P2R|all) CATEGORY="$arg" ;;
+        R2R|R2P|P2R|Mixed|all) CATEGORY="$arg" ;;
         --help)
-            echo "Usage: $(basename "$0") [--strix=<path>] [--timeout=SECONDS] [R2R|R2P|P2R|all]"
+            echo "Usage: $(basename "$0") [--strix=<path>] [--timeout=SECONDS] [R2R|R2P|P2R|Mixed|all]"
             exit 0
             ;;
         *) echo "Unknown option: $arg"; exit 1 ;;
@@ -30,13 +30,13 @@ done
 
 if [[ ! -x "$STRIX" ]]; then
     echo "Error: Strix binary not found at $STRIX"
-    echo "Usage: $(basename "$0") --strix=<path-to-strix-binary> [--timeout=SECONDS] [R2R|R2P|P2R|all]"
+    echo "Usage: $(basename "$0") --strix=<path-to-strix-binary> [--timeout=SECONDS] [R2R|R2P|P2R|Mixed|all]"
     exit 1
 fi
 
 # Determine which categories to run
 if [[ "$CATEGORY" == "all" ]]; then
-    CATEGORIES=(R2R R2P P2R)
+    CATEGORIES=(R2R R2P P2R Mixed)
 else
     CATEGORIES=("$CATEGORY")
 fi
@@ -59,11 +59,11 @@ for cat in "${CATEGORIES[@]}"; do
         [[ ! -d "$family_dir" ]] && continue
         family="$(basename "$family_dir")"
 
-        # Collect .sgrk files, skip mixed test files
+        # Collect .sgrk files
         sgrk_files=()
         while IFS= read -r line; do
             sgrk_files+=("$line")
-        done < <(find "$family_dir" -maxdepth 1 -name "*.sgrk" ! -name "mixed_*" | sort -V)
+        done < <(find "$family_dir" -maxdepth 1 -name "*.sgrk" | sort -V)
 
         if [[ ${#sgrk_files[@]} -eq 0 ]]; then
             continue

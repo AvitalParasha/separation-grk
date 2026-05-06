@@ -58,7 +58,7 @@ for arg in "$@"; do
         --node=*)          NODE="${arg#*=}" ;;
         --constraint=*)    CONSTRAINT="${arg#*=}" ;;
         --poll=*)          POLL_INTERVAL="${arg#*=}" ;;
-        R2R|R2P|P2R|all)   CATEGORY="$arg" ;;
+        R2R|R2P|P2R|Mixed|all)   CATEGORY="$arg" ;;
         --help)
             head -20 "$0" | grep -E "^#" | sed 's/^# //'
             exit 0
@@ -109,7 +109,7 @@ echo ""
 
 # Determine categories
 if [[ "$CATEGORY" == "all" ]]; then
-    CATEGORIES=(R2R R2P P2R)
+    CATEGORIES=(R2R R2P P2R Mixed)
 else
     CATEGORIES=("$CATEGORY")
 fi
@@ -132,7 +132,7 @@ for cat in "${CATEGORIES[@]}"; do
         family="$(basename "$family_dir")"
 
         # Check if family has .sgrk files
-        sgrk_count=$(find "$family_dir" -maxdepth 1 -name "*.sgrk" ! -name "mixed_*" 2>/dev/null | wc -l)
+        sgrk_count=$(find "$family_dir" -maxdepth 1 -name "*.sgrk" 2>/dev/null | wc -l)
         [[ "$sgrk_count" -eq 0 ]] && continue
 
         for tool in "${TOOLS[@]}"; do
@@ -277,7 +277,7 @@ for cat in "${CATEGORIES[@]}"; do
         sgrk_files=()
         while IFS= read -r line; do
             sgrk_files+=("$line")
-        done < <(find "$family_dir" -maxdepth 1 -name "*.sgrk" ! -name "mixed_*" | sort -V)
+        done < <(find "$family_dir" -maxdepth 1 -name "*.sgrk" | sort -V)
         [[ ${#sgrk_files[@]} -eq 0 ]] && continue
 
         echo "=== ${cat} / ${family} ==="

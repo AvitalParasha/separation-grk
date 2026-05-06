@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="814.8000000000001" height="268" viewBox="0 0 814.8000000000001 268">
+<rect width="814.8000000000001" height="268" fill="white" rx="4"/>
+<text x="407.40000000000003" y="25.2" font-family="Menlo, Consolas, monospace" font-size="15" font-weight="bold" text-anchor="middle" fill="#222">Mixed: mixed unit</text>
+<rect x="1" y="36" width="812.8000000000001" height="32" fill="#2c3e50"/>
+<text x="13" y="57.760000000000005" font-family="Menlo, Consolas, monospace" font-size="13" font-weight="bold" text-anchor="start" fill="white">Test</text>
+<text x="311.04" y="57.760000000000005" font-family="Menlo, Consolas, monospace" font-size="13" font-weight="bold" text-anchor="end" fill="white">sgrk (s)</text>
+<text x="407.58000000000004" y="57.760000000000005" font-family="Menlo, Consolas, monospace" font-size="13" font-weight="bold" text-anchor="end" fill="white">Strix (s)</text>
+<text x="496.06000000000006" y="57.760000000000005" font-family="Menlo, Consolas, monospace" font-size="13" font-weight="bold" text-anchor="end" fill="white">Spot (s)</text>
+<text x="592.6" y="57.760000000000005" font-family="Menlo, Consolas, monospace" font-size="13" font-weight="bold" text-anchor="end" fill="white">Strix Sp.</text>
+<text x="681.08" y="57.760000000000005" font-family="Menlo, Consolas, monospace" font-size="13" font-weight="bold" text-anchor="end" fill="white">Spot Sp.</text>
+<text x="705.08" y="57.760000000000005" font-family="Menlo, Consolas, monospace" font-size="13" font-weight="bold" text-anchor="start" fill="white">Result</text>
+<line x1="1" y1="68" x2="813.8000000000001" y2="68" stroke="#bdc3c7" stroke-width="2"/>
+<rect x="1" y="68" width="812.8000000000001" height="28" fill="#f8f9fa"/>
+<text x="13" y="87.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="start" fill="#2c3e50">alive inside</text>
+<text x="311.04" y="87.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.041</text>
+<text x="407.58000000000004" y="87.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.057</text>
+<text x="496.06000000000006" y="87.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.044</text>
+<text x="592.6" y="87.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">1.4x</text>
+<text x="681.08" y="87.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">1.1x</text>
+<text x="705.08" y="87.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="start" fill="#2c3e50">Realizable</text>
+<line x1="1" y1="96" x2="813.8000000000001" y2="96" stroke="#ecf0f1" stroke-width="0.5"/>
+<text x="13" y="115.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="start" fill="#2c3e50">alive outside unrealizable</text>
+<text x="311.04" y="115.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.040</text>
+<text x="407.58000000000004" y="115.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.055</text>
+<text x="496.06000000000006" y="115.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.043</text>
+<text x="592.6" y="115.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">1.4x</text>
+<text x="681.08" y="115.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">1.1x</text>
+<text x="705.08" y="115.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="start" fill="#2c3e50">Unrealizable</text>
+<line x1="1" y1="124" x2="813.8000000000001" y2="124" stroke="#ecf0f1" stroke-width="0.5"/>
+<rect x="1" y="124" width="812.8000000000001" height="28" fill="#f8f9fa"/>
+<text x="13" y="143.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="start" fill="#2c3e50">different scc realizable</text>
+<text x="311.04" y="143.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.040</text>
+<text x="407.58000000000004" y="143.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.069</text>
+<text x="496.06000000000006" y="143.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.045</text>
+<text x="592.6" y="143.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">1.7x</text>
+<text x="681.08" y="143.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">1.1x</text>
+<text x="705.08" y="143.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="start" fill="#2c3e50">Realizable</text>
+<line x1="1" y1="152" x2="813.8000000000001" y2="152" stroke="#ecf0f1" stroke-width="0.5"/>
+<text x="13" y="171.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="start" fill="#2c3e50">different scc unrealizable</text>
+<text x="311.04" y="171.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.041</text>
+<text x="407.58000000000004" y="171.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.061</text>
+<text x="496.06000000000006" y="171.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.043</text>
+<text x="592.6" y="171.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">1.5x</text>
+<text x="681.08" y="171.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">1.0x</text>
+<text x="705.08" y="171.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="start" fill="#2c3e50">Unrealizable</text>
+<line x1="1" y1="180" x2="813.8000000000001" y2="180" stroke="#ecf0f1" stroke-width="0.5"/>
+<rect x="1" y="180" width="812.8000000000001" height="28" fill="#f8f9fa"/>
+<text x="13" y="199.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="start" fill="#2c3e50">same scc trivial</text>
+<text x="311.04" y="199.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.040</text>
+<text x="407.58000000000004" y="199.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.056</text>
+<text x="496.06000000000006" y="199.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.042</text>
+<text x="592.6" y="199.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">1.4x</text>
+<text x="681.08" y="199.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">1.1x</text>
+<text x="705.08" y="199.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="start" fill="#2c3e50">Realizable</text>
+<line x1="1" y1="208" x2="813.8000000000001" y2="208" stroke="#ecf0f1" stroke-width="0.5"/>
+<text x="13" y="227.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="start" fill="#2c3e50">mixed p2r r2r</text>
+<text x="311.04" y="227.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.041</text>
+<text x="407.58000000000004" y="227.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.057</text>
+<text x="496.06000000000006" y="227.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.044</text>
+<text x="592.6" y="227.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">1.4x</text>
+<text x="681.08" y="227.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">1.1x</text>
+<text x="705.08" y="227.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="start" fill="#2c3e50">Realizable</text>
+<line x1="1" y1="236" x2="813.8000000000001" y2="236" stroke="#ecf0f1" stroke-width="0.5"/>
+<rect x="1" y="236" width="812.8000000000001" height="28" fill="#f8f9fa"/>
+<text x="13" y="255.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="start" fill="#2c3e50">mixed r2r r2p</text>
+<text x="311.04" y="255.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.040</text>
+<text x="407.58000000000004" y="255.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.058</text>
+<text x="496.06000000000006" y="255.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">0.043</text>
+<text x="592.6" y="255.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">1.4x</text>
+<text x="681.08" y="255.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="end" fill="#2c3e50">1.1x</text>
+<text x="705.08" y="255.04" font-family="Menlo, Consolas, monospace" font-size="13" text-anchor="start" fill="#2c3e50">Realizable</text>
+<line x1="1" y1="264" x2="813.8000000000001" y2="264" stroke="#ecf0f1" stroke-width="0.5"/>
+<line x1="1" y1="266" x2="813.8000000000001" y2="266" stroke="#bdc3c7" stroke-width="2"/>
+</svg>

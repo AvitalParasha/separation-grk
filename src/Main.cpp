@@ -120,16 +120,16 @@ int main(int argc, char* argv[]) {
 
 	const auto& implications = spec.JusticeImplications();
 	if (!implications.empty()) {
-		SGrk::ImplicationType expected_type = implications[0].Type();
-		for (std::size_t i = 1; i < implications.size(); ++i) {
-			if (implications[i].Type() != expected_type) {
-				std::cerr << "Error: mixed implication types "
-				          << "(R2R: GF->GF, R2P: GF->FG, P2R: FG->GF) "
-				          << "are not supported. "
-				          << "All implications must use the same type."
-				          << std::endl;
-				return 1;
-			}
+		bool has_r2p = false, has_p2r = false;
+		for (std::size_t i = 0; i < implications.size(); ++i) {
+			if (implications[i].Type() == SGrk::ImplicationType::R2P) has_r2p = true;
+			if (implications[i].Type() == SGrk::ImplicationType::P2R) has_p2r = true;
+		}
+		if (has_p2r && has_r2p) {
+			std::cerr << "Error: P2R (FG->GF) + R2P (GF->FG) mixed implications "
+			          << "are not supported yet."
+			          << std::endl;
+			return 1;
 		}
 	}
 

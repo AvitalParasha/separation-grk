@@ -18,11 +18,6 @@ for f in "${MYDIR}"/**/*.sgrk; do
     name="$(basename "$f")"
     dir="$(basename "$(dirname "$f")")"
 
-    # Skip the mixed test file — tested separately
-    if [[ "$name" == "mixed_r2r_r2p.sgrk" ]]; then
-        continue
-    fi
-
     echo -n "${dir}/${name}: "
 
     if [[ "$TIMEOUT" -gt 0 ]]; then

@@ -29,7 +29,7 @@ This is described in the FMCAD26 paper (Section VII.C "Solving R2P Games"). The 
 Add an enum and a type field to `SeparationGrkImplication`:
 
 ```cpp
-enum class ImplicationType { R2R, R2P };
+enum class ImplicationType { R2R, R2P, P2R };
 
 class SeparationGrkImplication {
     ImplicationType type_;  // NEW
@@ -69,32 +69,16 @@ justice_implication:
 ;
 ```
 
-The parser auto-detects R2R vs R2P based on whether guarantees use `GF` or `FG`.
+The parser auto-detects R2R vs R2P vs P2R based on whether assumptions/guarantees use `GF` or `FG`.
 
-### 2.5. Input Validation (`src/Main.cpp`)
+### 2.5. Mixed Implication Types
 
-After parsing, validate that all implications are the same type (no mixing R2R and R2P):
+Mixed implication types are now supported. The solver handles all combinations:
+- **R2R + P2R** (no R2P): handled by the conjunction covered region (each type uses its own assumption/guarantee checks, results conjuncted). No restriction needed.
+- **R2R + R2P**: R2R goals must be cycleable within R2P alive region. Uses restricted transition/bipath. R2R implications are always jointly active with R2P (GF+GF coexist).
+- **P2R + R2P** (and all three): env-side joint check determines if P2R and R2P can co-fire. Computes union of P2R env alive regions, restricted env TC/bipath, and `jointly_active(x)` BDD. P2R implications use effective (input-dependent) relations: restricted at jointly-active inputs, unrestricted at exclusive inputs.
 
-```cpp
-// After: const SGrk::SeparationGrkSpec& spec = driver.spec;
-// Before: SGrk::SeparationGrkSolver solver(mgr, vars, spec);
-
-const auto& implications = spec.JusticeImplications();
-if (!implications.empty()) {
-    SGrk::ImplicationType expected_type = implications[0].Type();
-    for (std::size_t i = 1; i < implications.size(); ++i) {
-        if (implications[i].Type() != expected_type) {
-            std::cerr << "Error: mixed R2R (GF->GF) and R2P (GF->FG) "
-                      << "implications are not supported. "
-                      << "All implications must use the same type."
-                      << std::endl;
-            return 1;
-        }
-    }
-}
-```
-
-This check goes in `Main.cpp` between line 119 (spec parsed) and line 121 (solver created). If the user writes a `.sgrk` file with some implications using `GF` guarantees and others using `FG` guarantees, the tool exits with a clear error message.
+No input validation rejects mixed types. The `CycleCover` code branches on whether R2P is present alongside R2R/P2R to choose the appropriate algorithm. See `mix_explanation.md` for the full algorithm description.
 
 ### 3. CycleCover — Covered Region (`src/CycleCover.cpp`)
 
@@ -289,7 +273,7 @@ PathStrategy ComputeR2PPathStrategy(
 |------|--------|
 | `src/SeparationGrkSpec.h` | Add `ImplicationType` enum, add `type_` field to `SeparationGrkImplication` |
 | `src/sgrk_parser.yy` | Add `FG` grammar rules, update `justice_implication` rule |
-| `src/Main.cpp` | Add validation: reject mixed R2R/R2P implications |
+| `src/Main.cpp` | Entry point; no longer rejects mixed implication types |
 | `src/CycleCover.h` | Add `ComputeAliveRegion` and `ComputeR2PPathStrategy` declarations |
 | `src/CycleCover.cpp` | Add `ComputeAliveRegion`, `ComputeR2PPathStrategy`; modify `ComputeCoveredRegion` and `ComputeCycleStrategy` to branch on type |
 

@@ -26,3 +26,9 @@ play_*.txt
 # Thesis documents
 R2P_updated_NoC_example.txt
 bib_file.txt
+
+# Mixed-type design docs (not for submission)
+mix_explanation.md
+review_mix_review.md
+solutions.md
+benchmarks/Mixed/

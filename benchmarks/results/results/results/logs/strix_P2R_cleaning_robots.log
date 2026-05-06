@@ -1,6 +1,0 @@
-=== strix on P2R/cleaning_robots (10 tests, timeout=5400s) ===
-  cleaning_robots_1.sgrk: 0.129s  REALIZABLE
-  cleaning_robots_2.sgrk: 0.357s  REALIZABLE
-  cleaning_robots_3.sgrk: 19.141s  REALIZABLE
-  cleaning_robots_4.sgrk: 1211.024s  REALIZABLE
-slurmstepd: error: *** JOB 373671 ON cn29 CANCELLED AT 2026-04-21T17:31:01 ***

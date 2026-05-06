@@ -1,4 +1,0 @@
-=== spot on P2R/commitment_conflict (1 tests, timeout=5400s) ===
-  commitment_conflict.sgrk: 0.063s  REALIZABLE
-=== Done: spot on P2R/commitment_conflict ===
-Results: /RG/rg-fried/avitalpa/separation-grk/benchmarks/P2R/commitment_conflict//spot_runtime

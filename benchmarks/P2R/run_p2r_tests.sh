@@ -18,11 +18,6 @@ for f in "${MYDIR}"/**/*.sgrk; do
     name="$(basename "$f")"
     dir="$(basename "$(dirname "$f")")"
 
-    # Skip the mixed test file — tested separately
-    if [[ "$name" == mixed_* ]]; then
-        continue
-    fi
-
     echo -n "${dir}/${name}: "
 
     if [[ "$TIMEOUT" -gt 0 ]]; then
@@ -40,11 +35,14 @@ for f in "${MYDIR}"/**/*.sgrk; do
 
     echo -n "$result"
 
-    # Determine expected result from directory name
+    # Determine expected result from directory or filename
     case "$dir" in
         forced_stability) expected="Unrealizable" ;;
         *)                expected="Realizable" ;;
     esac
+    if [[ "$name" == *"_unrealizable"* ]]; then
+        expected="Unrealizable"
+    fi
 
     if [[ "$result" == "$expected" ]]; then
         echo " (OK)"

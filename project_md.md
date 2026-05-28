@@ -73,12 +73,11 @@ The parser auto-detects R2R vs R2P vs P2R based on whether assumptions/guarantee
 
 ### 2.5. Mixed Implication Types
 
-Mixed implication types are now supported. The solver handles all combinations:
-- **R2R + P2R** (no R2P): handled by the conjunction covered region (each type uses its own assumption/guarantee checks, results conjuncted). No restriction needed.
+Mixed implication types are now supported. The solver handles two combinations (R2R is always the base):
+- **R2R + P2R**: handled by the conjunction covered region (each type uses its own assumption/guarantee checks, results conjuncted). No alive region restriction needed.
 - **R2R + R2P**: R2R goals must be cycleable within R2P alive region. Uses restricted transition/bipath. R2R implications are always jointly active with R2P (GF+GF coexist).
-- **P2R + R2P** (and all three): env-side joint check determines if P2R and R2P can co-fire. Computes union of P2R env alive regions, restricted env TC/bipath, and `jointly_active(x)` BDD. P2R implications use effective (input-dependent) relations: restricted at jointly-active inputs, unrestricted at exclusive inputs.
 
-No input validation rejects mixed types. The `CycleCover` code branches on whether R2P is present alongside R2R/P2R to choose the appropriate algorithm. See `mix_explanation.md` for the full algorithm description.
+P2R + R2P together (without R2R as the base) is not supported, nor is combining all three types. The `CycleCover` code branches on whether R2P is present alongside R2R to choose the appropriate algorithm. See `mix_explanation.md` for the full algorithm description.
 
 ### 3. CycleCover — Covered Region (`src/CycleCover.cpp`)
 

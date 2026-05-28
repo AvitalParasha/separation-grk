@@ -1,263 +1,170 @@
 1 ;
 !"out:bound_injection0" &
 !"out:revoke_grant0" &
-!"out:bypass_faulty_block0" &
 !"out:bound_injection1" &
 !"out:revoke_grant1" &
-!"out:bypass_faulty_block1" &
 !"out:bound_injection2" &
 !"out:revoke_grant2" &
-!"out:bypass_faulty_block2" &
 !"out:bound_injection3" &
 !"out:revoke_grant3" &
-!"out:bypass_faulty_block3" &
 !"out:bound_injection4" &
 !"out:revoke_grant4" &
-!"out:bypass_faulty_block4" &
 !"out:bound_injection5" &
 !"out:revoke_grant5" &
-!"out:bypass_faulty_block5" &
+!"out:bypass_fault_o0" &
 !"out:reconfigure_spare_o0" &
+!"out:bypass_fault_o1" &
 !"out:reconfigure_spare_o1" ;
-!("in:bist_fault_detected0" & "in:ecc_uncorrectable_error0") &
-!("in:bist_fault_detected1" & "in:ecc_uncorrectable_error1") &
-!("in:bist_fault_detected2" & "in:ecc_uncorrectable_error2") &
-!("in:bist_fault_detected3" & "in:ecc_uncorrectable_error3") &
-!("in:bist_fault_detected4" & "in:ecc_uncorrectable_error4") &
-!("in:bist_fault_detected5" & "in:ecc_uncorrectable_error5") &
-!("in:spare_resource_available_o0" & "in:spare_resource_available_o1") ;
-(X "out:bypass_faulty_block0" -> X "out:revoke_grant0") &
+!("in:spare_resource_available_o0" & "in:spare_resource_available_o1") &
+!("in:bist_fault_detected_o0" & "in:bist_fault_detected_o1") ;
 ("out:revoke_grant0" -> X "out:revoke_grant0") &
 ("out:bound_injection0" -> X "out:bound_injection0") &
-("out:bypass_faulty_block0" -> X "out:bypass_faulty_block0") &
-(X "out:bypass_faulty_block1" -> X "out:revoke_grant1") &
 ("out:revoke_grant1" -> X "out:revoke_grant1") &
 ("out:bound_injection1" -> X "out:bound_injection1") &
-("out:bypass_faulty_block1" -> X "out:bypass_faulty_block1") &
-(X "out:bypass_faulty_block2" -> X "out:revoke_grant2") &
 ("out:revoke_grant2" -> X "out:revoke_grant2") &
 ("out:bound_injection2" -> X "out:bound_injection2") &
-("out:bypass_faulty_block2" -> X "out:bypass_faulty_block2") &
-(X "out:bypass_faulty_block3" -> X "out:revoke_grant3") &
 ("out:revoke_grant3" -> X "out:revoke_grant3") &
 ("out:bound_injection3" -> X "out:bound_injection3") &
-("out:bypass_faulty_block3" -> X "out:bypass_faulty_block3") &
-(X "out:bypass_faulty_block4" -> X "out:revoke_grant4") &
 ("out:revoke_grant4" -> X "out:revoke_grant4") &
 ("out:bound_injection4" -> X "out:bound_injection4") &
-("out:bypass_faulty_block4" -> X "out:bypass_faulty_block4") &
-(X "out:bypass_faulty_block5" -> X "out:revoke_grant5") &
 ("out:revoke_grant5" -> X "out:revoke_grant5") &
 ("out:bound_injection5" -> X "out:bound_injection5") &
-("out:bypass_faulty_block5" -> X "out:bypass_faulty_block5") &
 (X "out:revoke_grant1" -> X "out:revoke_grant0") &
 (X "out:bound_injection1" -> X "out:bound_injection0") &
-(X "out:bypass_faulty_block1" -> X "out:bypass_faulty_block0") &
 (X "out:revoke_grant2" -> X "out:revoke_grant1") &
 (X "out:bound_injection2" -> X "out:bound_injection1") &
-(X "out:bypass_faulty_block2" -> X "out:bypass_faulty_block1") &
 (X "out:revoke_grant3" -> X "out:revoke_grant2") &
 (X "out:bound_injection3" -> X "out:bound_injection2") &
-(X "out:bypass_faulty_block3" -> X "out:bypass_faulty_block2") &
 (X "out:revoke_grant4" -> X "out:revoke_grant3") &
 (X "out:bound_injection4" -> X "out:bound_injection3") &
-(X "out:bypass_faulty_block4" -> X "out:bypass_faulty_block3") &
 (X "out:revoke_grant5" -> X "out:revoke_grant4") &
 (X "out:bound_injection5" -> X "out:bound_injection4") &
-(X "out:bypass_faulty_block5" -> X "out:bypass_faulty_block4") &
+("out:bypass_fault_o0" -> X "out:bypass_fault_o0") &
 ("out:reconfigure_spare_o0" -> X "out:reconfigure_spare_o0") &
+("out:bypass_fault_o1" -> X "out:bypass_fault_o1") &
 ("out:reconfigure_spare_o1" -> X "out:reconfigure_spare_o1") &
+(X "out:bypass_fault_o1" -> X "out:bypass_fault_o0") &
 (X "out:reconfigure_spare_o1" -> X "out:reconfigure_spare_o0") &
 !((!"out:bound_injection0" & X "out:bound_injection0") & (!"out:revoke_grant0" & X "out:revoke_grant0")) &
-!((!"out:bound_injection0" & X "out:bound_injection0") & (!"out:bypass_faulty_block0" & X "out:bypass_faulty_block0")) &
 !((!"out:bound_injection0" & X "out:bound_injection0") & (!"out:bound_injection1" & X "out:bound_injection1")) &
 !((!"out:bound_injection0" & X "out:bound_injection0") & (!"out:revoke_grant1" & X "out:revoke_grant1")) &
-!((!"out:bound_injection0" & X "out:bound_injection0") & (!"out:bypass_faulty_block1" & X "out:bypass_faulty_block1")) &
 !((!"out:bound_injection0" & X "out:bound_injection0") & (!"out:bound_injection2" & X "out:bound_injection2")) &
 !((!"out:bound_injection0" & X "out:bound_injection0") & (!"out:revoke_grant2" & X "out:revoke_grant2")) &
-!((!"out:bound_injection0" & X "out:bound_injection0") & (!"out:bypass_faulty_block2" & X "out:bypass_faulty_block2")) &
 !((!"out:bound_injection0" & X "out:bound_injection0") & (!"out:bound_injection3" & X "out:bound_injection3")) &
 !((!"out:bound_injection0" & X "out:bound_injection0") & (!"out:revoke_grant3" & X "out:revoke_grant3")) &
-!((!"out:bound_injection0" & X "out:bound_injection0") & (!"out:bypass_faulty_block3" & X "out:bypass_faulty_block3")) &
 !((!"out:bound_injection0" & X "out:bound_injection0") & (!"out:bound_injection4" & X "out:bound_injection4")) &
 !((!"out:bound_injection0" & X "out:bound_injection0") & (!"out:revoke_grant4" & X "out:revoke_grant4")) &
-!((!"out:bound_injection0" & X "out:bound_injection0") & (!"out:bypass_faulty_block4" & X "out:bypass_faulty_block4")) &
 !((!"out:bound_injection0" & X "out:bound_injection0") & (!"out:bound_injection5" & X "out:bound_injection5")) &
 !((!"out:bound_injection0" & X "out:bound_injection0") & (!"out:revoke_grant5" & X "out:revoke_grant5")) &
-!((!"out:bound_injection0" & X "out:bound_injection0") & (!"out:bypass_faulty_block5" & X "out:bypass_faulty_block5")) &
+!((!"out:bound_injection0" & X "out:bound_injection0") & (!"out:bypass_fault_o0" & X "out:bypass_fault_o0")) &
 !((!"out:bound_injection0" & X "out:bound_injection0") & (!"out:reconfigure_spare_o0" & X "out:reconfigure_spare_o0")) &
+!((!"out:bound_injection0" & X "out:bound_injection0") & (!"out:bypass_fault_o1" & X "out:bypass_fault_o1")) &
 !((!"out:bound_injection0" & X "out:bound_injection0") & (!"out:reconfigure_spare_o1" & X "out:reconfigure_spare_o1")) &
-!((!"out:revoke_grant0" & X "out:revoke_grant0") & (!"out:bypass_faulty_block0" & X "out:bypass_faulty_block0")) &
 !((!"out:revoke_grant0" & X "out:revoke_grant0") & (!"out:bound_injection1" & X "out:bound_injection1")) &
 !((!"out:revoke_grant0" & X "out:revoke_grant0") & (!"out:revoke_grant1" & X "out:revoke_grant1")) &
-!((!"out:revoke_grant0" & X "out:revoke_grant0") & (!"out:bypass_faulty_block1" & X "out:bypass_faulty_block1")) &
 !((!"out:revoke_grant0" & X "out:revoke_grant0") & (!"out:bound_injection2" & X "out:bound_injection2")) &
 !((!"out:revoke_grant0" & X "out:revoke_grant0") & (!"out:revoke_grant2" & X "out:revoke_grant2")) &
-!((!"out:revoke_grant0" & X "out:revoke_grant0") & (!"out:bypass_faulty_block2" & X "out:bypass_faulty_block2")) &
 !((!"out:revoke_grant0" & X "out:revoke_grant0") & (!"out:bound_injection3" & X "out:bound_injection3")) &
 !((!"out:revoke_grant0" & X "out:revoke_grant0") & (!"out:revoke_grant3" & X "out:revoke_grant3")) &
-!((!"out:revoke_grant0" & X "out:revoke_grant0") & (!"out:bypass_faulty_block3" & X "out:bypass_faulty_block3")) &
 !((!"out:revoke_grant0" & X "out:revoke_grant0") & (!"out:bound_injection4" & X "out:bound_injection4")) &
 !((!"out:revoke_grant0" & X "out:revoke_grant0") & (!"out:revoke_grant4" & X "out:revoke_grant4")) &
-!((!"out:revoke_grant0" & X "out:revoke_grant0") & (!"out:bypass_faulty_block4" & X "out:bypass_faulty_block4")) &
 !((!"out:revoke_grant0" & X "out:revoke_grant0") & (!"out:bound_injection5" & X "out:bound_injection5")) &
 !((!"out:revoke_grant0" & X "out:revoke_grant0") & (!"out:revoke_grant5" & X "out:revoke_grant5")) &
-!((!"out:revoke_grant0" & X "out:revoke_grant0") & (!"out:bypass_faulty_block5" & X "out:bypass_faulty_block5")) &
+!((!"out:revoke_grant0" & X "out:revoke_grant0") & (!"out:bypass_fault_o0" & X "out:bypass_fault_o0")) &
 !((!"out:revoke_grant0" & X "out:revoke_grant0") & (!"out:reconfigure_spare_o0" & X "out:reconfigure_spare_o0")) &
+!((!"out:revoke_grant0" & X "out:revoke_grant0") & (!"out:bypass_fault_o1" & X "out:bypass_fault_o1")) &
 !((!"out:revoke_grant0" & X "out:revoke_grant0") & (!"out:reconfigure_spare_o1" & X "out:reconfigure_spare_o1")) &
-!((!"out:bypass_faulty_block0" & X "out:bypass_faulty_block0") & (!"out:bound_injection1" & X "out:bound_injection1")) &
-!((!"out:bypass_faulty_block0" & X "out:bypass_faulty_block0") & (!"out:revoke_grant1" & X "out:revoke_grant1")) &
-!((!"out:bypass_faulty_block0" & X "out:bypass_faulty_block0") & (!"out:bypass_faulty_block1" & X "out:bypass_faulty_block1")) &
-!((!"out:bypass_faulty_block0" & X "out:bypass_faulty_block0") & (!"out:bound_injection2" & X "out:bound_injection2")) &
-!((!"out:bypass_faulty_block0" & X "out:bypass_faulty_block0") & (!"out:revoke_grant2" & X "out:revoke_grant2")) &
-!((!"out:bypass_faulty_block0" & X "out:bypass_faulty_block0") & (!"out:bypass_faulty_block2" & X "out:bypass_faulty_block2")) &
-!((!"out:bypass_faulty_block0" & X "out:bypass_faulty_block0") & (!"out:bound_injection3" & X "out:bound_injection3")) &
-!((!"out:bypass_faulty_block0" & X "out:bypass_faulty_block0") & (!"out:revoke_grant3" & X "out:revoke_grant3")) &
-!((!"out:bypass_faulty_block0" & X "out:bypass_faulty_block0") & (!"out:bypass_faulty_block3" & X "out:bypass_faulty_block3")) &
-!((!"out:bypass_faulty_block0" & X "out:bypass_faulty_block0") & (!"out:bound_injection4" & X "out:bound_injection4")) &
-!((!"out:bypass_faulty_block0" & X "out:bypass_faulty_block0") & (!"out:revoke_grant4" & X "out:revoke_grant4")) &
-!((!"out:bypass_faulty_block0" & X "out:bypass_faulty_block0") & (!"out:bypass_faulty_block4" & X "out:bypass_faulty_block4")) &
-!((!"out:bypass_faulty_block0" & X "out:bypass_faulty_block0") & (!"out:bound_injection5" & X "out:bound_injection5")) &
-!((!"out:bypass_faulty_block0" & X "out:bypass_faulty_block0") & (!"out:revoke_grant5" & X "out:revoke_grant5")) &
-!((!"out:bypass_faulty_block0" & X "out:bypass_faulty_block0") & (!"out:bypass_faulty_block5" & X "out:bypass_faulty_block5")) &
-!((!"out:bypass_faulty_block0" & X "out:bypass_faulty_block0") & (!"out:reconfigure_spare_o0" & X "out:reconfigure_spare_o0")) &
-!((!"out:bypass_faulty_block0" & X "out:bypass_faulty_block0") & (!"out:reconfigure_spare_o1" & X "out:reconfigure_spare_o1")) &
 !((!"out:bound_injection1" & X "out:bound_injection1") & (!"out:revoke_grant1" & X "out:revoke_grant1")) &
-!((!"out:bound_injection1" & X "out:bound_injection1") & (!"out:bypass_faulty_block1" & X "out:bypass_faulty_block1")) &
 !((!"out:bound_injection1" & X "out:bound_injection1") & (!"out:bound_injection2" & X "out:bound_injection2")) &
 !((!"out:bound_injection1" & X "out:bound_injection1") & (!"out:revoke_grant2" & X "out:revoke_grant2")) &
-!((!"out:bound_injection1" & X "out:bound_injection1") & (!"out:bypass_faulty_block2" & X "out:bypass_faulty_block2")) &
 !((!"out:bound_injection1" & X "out:bound_injection1") & (!"out:bound_injection3" & X "out:bound_injection3")) &
 !((!"out:bound_injection1" & X "out:bound_injection1") & (!"out:revoke_grant3" & X "out:revoke_grant3")) &
-!((!"out:bound_injection1" & X "out:bound_injection1") & (!"out:bypass_faulty_block3" & X "out:bypass_faulty_block3")) &
 !((!"out:bound_injection1" & X "out:bound_injection1") & (!"out:bound_injection4" & X "out:bound_injection4")) &
 !((!"out:bound_injection1" & X "out:bound_injection1") & (!"out:revoke_grant4" & X "out:revoke_grant4")) &
-!((!"out:bound_injection1" & X "out:bound_injection1") & (!"out:bypass_faulty_block4" & X "out:bypass_faulty_block4")) &
 !((!"out:bound_injection1" & X "out:bound_injection1") & (!"out:bound_injection5" & X "out:bound_injection5")) &
 !((!"out:bound_injection1" & X "out:bound_injection1") & (!"out:revoke_grant5" & X "out:revoke_grant5")) &
-!((!"out:bound_injection1" & X "out:bound_injection1") & (!"out:bypass_faulty_block5" & X "out:bypass_faulty_block5")) &
+!((!"out:bound_injection1" & X "out:bound_injection1") & (!"out:bypass_fault_o0" & X "out:bypass_fault_o0")) &
 !((!"out:bound_injection1" & X "out:bound_injection1") & (!"out:reconfigure_spare_o0" & X "out:reconfigure_spare_o0")) &
+!((!"out:bound_injection1" & X "out:bound_injection1") & (!"out:bypass_fault_o1" & X "out:bypass_fault_o1")) &
 !((!"out:bound_injection1" & X "out:bound_injection1") & (!"out:reconfigure_spare_o1" & X "out:reconfigure_spare_o1")) &
-!((!"out:revoke_grant1" & X "out:revoke_grant1") & (!"out:bypass_faulty_block1" & X "out:bypass_faulty_block1")) &
 !((!"out:revoke_grant1" & X "out:revoke_grant1") & (!"out:bound_injection2" & X "out:bound_injection2")) &
 !((!"out:revoke_grant1" & X "out:revoke_grant1") & (!"out:revoke_grant2" & X "out:revoke_grant2")) &
-!((!"out:revoke_grant1" & X "out:revoke_grant1") & (!"out:bypass_faulty_block2" & X "out:bypass_faulty_block2")) &
 !((!"out:revoke_grant1" & X "out:revoke_grant1") & (!"out:bound_injection3" & X "out:bound_injection3")) &
 !((!"out:revoke_grant1" & X "out:revoke_grant1") & (!"out:revoke_grant3" & X "out:revoke_grant3")) &
-!((!"out:revoke_grant1" & X "out:revoke_grant1") & (!"out:bypass_faulty_block3" & X "out:bypass_faulty_block3")) &
 !((!"out:revoke_grant1" & X "out:revoke_grant1") & (!"out:bound_injection4" & X "out:bound_injection4")) &
 !((!"out:revoke_grant1" & X "out:revoke_grant1") & (!"out:revoke_grant4" & X "out:revoke_grant4")) &
-!((!"out:revoke_grant1" & X "out:revoke_grant1") & (!"out:bypass_faulty_block4" & X "out:bypass_faulty_block4")) &
 !((!"out:revoke_grant1" & X "out:revoke_grant1") & (!"out:bound_injection5" & X "out:bound_injection5")) &
 !((!"out:revoke_grant1" & X "out:revoke_grant1") & (!"out:revoke_grant5" & X "out:revoke_grant5")) &
-!((!"out:revoke_grant1" & X "out:revoke_grant1") & (!"out:bypass_faulty_block5" & X "out:bypass_faulty_block5")) &
+!((!"out:revoke_grant1" & X "out:revoke_grant1") & (!"out:bypass_fault_o0" & X "out:bypass_fault_o0")) &
 !((!"out:revoke_grant1" & X "out:revoke_grant1") & (!"out:reconfigure_spare_o0" & X "out:reconfigure_spare_o0")) &
+!((!"out:revoke_grant1" & X "out:revoke_grant1") & (!"out:bypass_fault_o1" & X "out:bypass_fault_o1")) &
 !((!"out:revoke_grant1" & X "out:revoke_grant1") & (!"out:reconfigure_spare_o1" & X "out:reconfigure_spare_o1")) &
-!((!"out:bypass_faulty_block1" & X "out:bypass_faulty_block1") & (!"out:bound_injection2" & X "out:bound_injection2")) &
-!((!"out:bypass_faulty_block1" & X "out:bypass_faulty_block1") & (!"out:revoke_grant2" & X "out:revoke_grant2")) &
-!((!"out:bypass_faulty_block1" & X "out:bypass_faulty_block1") & (!"out:bypass_faulty_block2" & X "out:bypass_faulty_block2")) &
-!((!"out:bypass_faulty_block1" & X "out:bypass_faulty_block1") & (!"out:bound_injection3" & X "out:bound_injection3")) &
-!((!"out:bypass_faulty_block1" & X "out:bypass_faulty_block1") & (!"out:revoke_grant3" & X "out:revoke_grant3")) &
-!((!"out:bypass_faulty_block1" & X "out:bypass_faulty_block1") & (!"out:bypass_faulty_block3" & X "out:bypass_faulty_block3")) &
-!((!"out:bypass_faulty_block1" & X "out:bypass_faulty_block1") & (!"out:bound_injection4" & X "out:bound_injection4")) &
-!((!"out:bypass_faulty_block1" & X "out:bypass_faulty_block1") & (!"out:revoke_grant4" & X "out:revoke_grant4")) &
-!((!"out:bypass_faulty_block1" & X "out:bypass_faulty_block1") & (!"out:bypass_faulty_block4" & X "out:bypass_faulty_block4")) &
-!((!"out:bypass_faulty_block1" & X "out:bypass_faulty_block1") & (!"out:bound_injection5" & X "out:bound_injection5")) &
-!((!"out:bypass_faulty_block1" & X "out:bypass_faulty_block1") & (!"out:revoke_grant5" & X "out:revoke_grant5")) &
-!((!"out:bypass_faulty_block1" & X "out:bypass_faulty_block1") & (!"out:bypass_faulty_block5" & X "out:bypass_faulty_block5")) &
-!((!"out:bypass_faulty_block1" & X "out:bypass_faulty_block1") & (!"out:reconfigure_spare_o0" & X "out:reconfigure_spare_o0")) &
-!((!"out:bypass_faulty_block1" & X "out:bypass_faulty_block1") & (!"out:reconfigure_spare_o1" & X "out:reconfigure_spare_o1")) &
 !((!"out:bound_injection2" & X "out:bound_injection2") & (!"out:revoke_grant2" & X "out:revoke_grant2")) &
-!((!"out:bound_injection2" & X "out:bound_injection2") & (!"out:bypass_faulty_block2" & X "out:bypass_faulty_block2")) &
 !((!"out:bound_injection2" & X "out:bound_injection2") & (!"out:bound_injection3" & X "out:bound_injection3")) &
 !((!"out:bound_injection2" & X "out:bound_injection2") & (!"out:revoke_grant3" & X "out:revoke_grant3")) &
-!((!"out:bound_injection2" & X "out:bound_injection2") & (!"out:bypass_faulty_block3" & X "out:bypass_faulty_block3")) &
 !((!"out:bound_injection2" & X "out:bound_injection2") & (!"out:bound_injection4" & X "out:bound_injection4")) &
 !((!"out:bound_injection2" & X "out:bound_injection2") & (!"out:revoke_grant4" & X "out:revoke_grant4")) &
-!((!"out:bound_injection2" & X "out:bound_injection2") & (!"out:bypass_faulty_block4" & X "out:bypass_faulty_block4")) &
 !((!"out:bound_injection2" & X "out:bound_injection2") & (!"out:bound_injection5" & X "out:bound_injection5")) &
 !((!"out:bound_injection2" & X "out:bound_injection2") & (!"out:revoke_grant5" & X "out:revoke_grant5")) &
-!((!"out:bound_injection2" & X "out:bound_injection2") & (!"out:bypass_faulty_block5" & X "out:bypass_faulty_block5")) &
+!((!"out:bound_injection2" & X "out:bound_injection2") & (!"out:bypass_fault_o0" & X "out:bypass_fault_o0")) &
 !((!"out:bound_injection2" & X "out:bound_injection2") & (!"out:reconfigure_spare_o0" & X "out:reconfigure_spare_o0")) &
+!((!"out:bound_injection2" & X "out:bound_injection2") & (!"out:bypass_fault_o1" & X "out:bypass_fault_o1")) &
 !((!"out:bound_injection2" & X "out:bound_injection2") & (!"out:reconfigure_spare_o1" & X "out:reconfigure_spare_o1")) &
-!((!"out:revoke_grant2" & X "out:revoke_grant2") & (!"out:bypass_faulty_block2" & X "out:bypass_faulty_block2")) &
 !((!"out:revoke_grant2" & X "out:revoke_grant2") & (!"out:bound_injection3" & X "out:bound_injection3")) &
 !((!"out:revoke_grant2" & X "out:revoke_grant2") & (!"out:revoke_grant3" & X "out:revoke_grant3")) &
-!((!"out:revoke_grant2" & X "out:revoke_grant2") & (!"out:bypass_faulty_block3" & X "out:bypass_faulty_block3")) &
 !((!"out:revoke_grant2" & X "out:revoke_grant2") & (!"out:bound_injection4" & X "out:bound_injection4")) &
 !((!"out:revoke_grant2" & X "out:revoke_grant2") & (!"out:revoke_grant4" & X "out:revoke_grant4")) &
-!((!"out:revoke_grant2" & X "out:revoke_grant2") & (!"out:bypass_faulty_block4" & X "out:bypass_faulty_block4")) &
 !((!"out:revoke_grant2" & X "out:revoke_grant2") & (!"out:bound_injection5" & X "out:bound_injection5")) &
 !((!"out:revoke_grant2" & X "out:revoke_grant2") & (!"out:revoke_grant5" & X "out:revoke_grant5")) &
-!((!"out:revoke_grant2" & X "out:revoke_grant2") & (!"out:bypass_faulty_block5" & X "out:bypass_faulty_block5")) &
+!((!"out:revoke_grant2" & X "out:revoke_grant2") & (!"out:bypass_fault_o0" & X "out:bypass_fault_o0")) &
 !((!"out:revoke_grant2" & X "out:revoke_grant2") & (!"out:reconfigure_spare_o0" & X "out:reconfigure_spare_o0")) &
+!((!"out:revoke_grant2" & X "out:revoke_grant2") & (!"out:bypass_fault_o1" & X "out:bypass_fault_o1")) &
 !((!"out:revoke_grant2" & X "out:revoke_grant2") & (!"out:reconfigure_spare_o1" & X "out:reconfigure_spare_o1")) &
-!((!"out:bypass_faulty_block2" & X "out:bypass_faulty_block2") & (!"out:bound_injection3" & X "out:bound_injection3")) &
-!((!"out:bypass_faulty_block2" & X "out:bypass_faulty_block2") & (!"out:revoke_grant3" & X "out:revoke_grant3")) &
-!((!"out:bypass_faulty_block2" & X "out:bypass_faulty_block2") & (!"out:bypass_faulty_block3" & X "out:bypass_faulty_block3")) &
-!((!"out:bypass_faulty_block2" & X "out:bypass_faulty_block2") & (!"out:bound_injection4" & X "out:bound_injection4")) &
-!((!"out:bypass_faulty_block2" & X "out:bypass_faulty_block2") & (!"out:revoke_grant4" & X "out:revoke_grant4")) &
-!((!"out:bypass_faulty_block2" & X "out:bypass_faulty_block2") & (!"out:bypass_faulty_block4" & X "out:bypass_faulty_block4")) &
-!((!"out:bypass_faulty_block2" & X "out:bypass_faulty_block2") & (!"out:bound_injection5" & X "out:bound_injection5")) &
-!((!"out:bypass_faulty_block2" & X "out:bypass_faulty_block2") & (!"out:revoke_grant5" & X "out:revoke_grant5")) &
-!((!"out:bypass_faulty_block2" & X "out:bypass_faulty_block2") & (!"out:bypass_faulty_block5" & X "out:bypass_faulty_block5")) &
-!((!"out:bypass_faulty_block2" & X "out:bypass_faulty_block2") & (!"out:reconfigure_spare_o0" & X "out:reconfigure_spare_o0")) &
-!((!"out:bypass_faulty_block2" & X "out:bypass_faulty_block2") & (!"out:reconfigure_spare_o1" & X "out:reconfigure_spare_o1")) &
 !((!"out:bound_injection3" & X "out:bound_injection3") & (!"out:revoke_grant3" & X "out:revoke_grant3")) &
-!((!"out:bound_injection3" & X "out:bound_injection3") & (!"out:bypass_faulty_block3" & X "out:bypass_faulty_block3")) &
 !((!"out:bound_injection3" & X "out:bound_injection3") & (!"out:bound_injection4" & X "out:bound_injection4")) &
 !((!"out:bound_injection3" & X "out:bound_injection3") & (!"out:revoke_grant4" & X "out:revoke_grant4")) &
-!((!"out:bound_injection3" & X "out:bound_injection3") & (!"out:bypass_faulty_block4" & X "out:bypass_faulty_block4")) &
 !((!"out:bound_injection3" & X "out:bound_injection3") & (!"out:bound_injection5" & X "out:bound_injection5")) &
 !((!"out:bound_injection3" & X "out:bound_injection3") & (!"out:revoke_grant5" & X "out:revoke_grant5")) &
-!((!"out:bound_injection3" & X "out:bound_injection3") & (!"out:bypass_faulty_block5" & X "out:bypass_faulty_block5")) &
+!((!"out:bound_injection3" & X "out:bound_injection3") & (!"out:bypass_fault_o0" & X "out:bypass_fault_o0")) &
 !((!"out:bound_injection3" & X "out:bound_injection3") & (!"out:reconfigure_spare_o0" & X "out:reconfigure_spare_o0")) &
+!((!"out:bound_injection3" & X "out:bound_injection3") & (!"out:bypass_fault_o1" & X "out:bypass_fault_o1")) &
 !((!"out:bound_injection3" & X "out:bound_injection3") & (!"out:reconfigure_spare_o1" & X "out:reconfigure_spare_o1")) &
-!((!"out:revoke_grant3" & X "out:revoke_grant3") & (!"out:bypass_faulty_block3" & X "out:bypass_faulty_block3")) &
 !((!"out:revoke_grant3" & X "out:revoke_grant3") & (!"out:bound_injection4" & X "out:bound_injection4")) &
 !((!"out:revoke_grant3" & X "out:revoke_grant3") & (!"out:revoke_grant4" & X "out:revoke_grant4")) &
-!((!"out:revoke_grant3" & X "out:revoke_grant3") & (!"out:bypass_faulty_block4" & X "out:bypass_faulty_block4")) &
 !((!"out:revoke_grant3" & X "out:revoke_grant3") & (!"out:bound_injection5" & X "out:bound_injection5")) &
 !((!"out:revoke_grant3" & X "out:revoke_grant3") & (!"out:revoke_grant5" & X "out:revoke_grant5")) &
-!((!"out:revoke_grant3" & X "out:revoke_grant3") & (!"out:bypass_faulty_block5" & X "out:bypass_faulty_block5")) &
+!((!"out:revoke_grant3" & X "out:revoke_grant3") & (!"out:bypass_fault_o0" & X "out:bypass_fault_o0")) &
 !((!"out:revoke_grant3" & X "out:revoke_grant3") & (!"out:reconfigure_spare_o0" & X "out:reconfigure_spare_o0")) &
+!((!"out:revoke_grant3" & X "out:revoke_grant3") & (!"out:bypass_fault_o1" & X "out:bypass_fault_o1")) &
 !((!"out:revoke_grant3" & X "out:revoke_grant3") & (!"out:reconfigure_spare_o1" & X "out:reconfigure_spare_o1")) &
-!((!"out:bypass_faulty_block3" & X "out:bypass_faulty_block3") & (!"out:bound_injection4" & X "out:bound_injection4")) &
-!((!"out:bypass_faulty_block3" & X "out:bypass_faulty_block3") & (!"out:revoke_grant4" & X "out:revoke_grant4")) &
-!((!"out:bypass_faulty_block3" & X "out:bypass_faulty_block3") & (!"out:bypass_faulty_block4" & X "out:bypass_faulty_block4")) &
-!((!"out:bypass_faulty_block3" & X "out:bypass_faulty_block3") & (!"out:bound_injection5" & X "out:bound_injection5")) &
-!((!"out:bypass_faulty_block3" & X "out:bypass_faulty_block3") & (!"out:revoke_grant5" & X "out:revoke_grant5")) &
-!((!"out:bypass_faulty_block3" & X "out:bypass_faulty_block3") & (!"out:bypass_faulty_block5" & X "out:bypass_faulty_block5")) &
-!((!"out:bypass_faulty_block3" & X "out:bypass_faulty_block3") & (!"out:reconfigure_spare_o0" & X "out:reconfigure_spare_o0")) &
-!((!"out:bypass_faulty_block3" & X "out:bypass_faulty_block3") & (!"out:reconfigure_spare_o1" & X "out:reconfigure_spare_o1")) &
 !((!"out:bound_injection4" & X "out:bound_injection4") & (!"out:revoke_grant4" & X "out:revoke_grant4")) &
-!((!"out:bound_injection4" & X "out:bound_injection4") & (!"out:bypass_faulty_block4" & X "out:bypass_faulty_block4")) &
 !((!"out:bound_injection4" & X "out:bound_injection4") & (!"out:bound_injection5" & X "out:bound_injection5")) &
 !((!"out:bound_injection4" & X "out:bound_injection4") & (!"out:revoke_grant5" & X "out:revoke_grant5")) &
-!((!"out:bound_injection4" & X "out:bound_injection4") & (!"out:bypass_faulty_block5" & X "out:bypass_faulty_block5")) &
+!((!"out:bound_injection4" & X "out:bound_injection4") & (!"out:bypass_fault_o0" & X "out:bypass_fault_o0")) &
 !((!"out:bound_injection4" & X "out:bound_injection4") & (!"out:reconfigure_spare_o0" & X "out:reconfigure_spare_o0")) &
+!((!"out:bound_injection4" & X "out:bound_injection4") & (!"out:bypass_fault_o1" & X "out:bypass_fault_o1")) &
 !((!"out:bound_injection4" & X "out:bound_injection4") & (!"out:reconfigure_spare_o1" & X "out:reconfigure_spare_o1")) &
-!((!"out:revoke_grant4" & X "out:revoke_grant4") & (!"out:bypass_faulty_block4" & X "out:bypass_faulty_block4")) &
 !((!"out:revoke_grant4" & X "out:revoke_grant4") & (!"out:bound_injection5" & X "out:bound_injection5")) &
 !((!"out:revoke_grant4" & X "out:revoke_grant4") & (!"out:revoke_grant5" & X "out:revoke_grant5")) &
-!((!"out:revoke_grant4" & X "out:revoke_grant4") & (!"out:bypass_faulty_block5" & X "out:bypass_faulty_block5")) &
+!((!"out:revoke_grant4" & X "out:revoke_grant4") & (!"out:bypass_fault_o0" & X "out:bypass_fault_o0")) &
 !((!"out:revoke_grant4" & X "out:revoke_grant4") & (!"out:reconfigure_spare_o0" & X "out:reconfigure_spare_o0")) &
+!((!"out:revoke_grant4" & X "out:revoke_grant4") & (!"out:bypass_fault_o1" & X "out:bypass_fault_o1")) &
 !((!"out:revoke_grant4" & X "out:revoke_grant4") & (!"out:reconfigure_spare_o1" & X "out:reconfigure_spare_o1")) &
-!((!"out:bypass_faulty_block4" & X "out:bypass_faulty_block4") & (!"out:bound_injection5" & X "out:bound_injection5")) &
-!((!"out:bypass_faulty_block4" & X "out:bypass_faulty_block4") & (!"out:revoke_grant5" & X "out:revoke_grant5")) &
-!((!"out:bypass_faulty_block4" & X "out:bypass_faulty_block4") & (!"out:bypass_faulty_block5" & X "out:bypass_faulty_block5")) &
-!((!"out:bypass_faulty_block4" & X "out:bypass_faulty_block4") & (!"out:reconfigure_spare_o0" & X "out:reconfigure_spare_o0")) &
-!((!"out:bypass_faulty_block4" & X "out:bypass_faulty_block4") & (!"out:reconfigure_spare_o1" & X "out:reconfigure_spare_o1")) &
 !((!"out:bound_injection5" & X "out:bound_injection5") & (!"out:revoke_grant5" & X "out:revoke_grant5")) &
-!((!"out:bound_injection5" & X "out:bound_injection5") & (!"out:bypass_faulty_block5" & X "out:bypass_faulty_block5")) &
+!((!"out:bound_injection5" & X "out:bound_injection5") & (!"out:bypass_fault_o0" & X "out:bypass_fault_o0")) &
 !((!"out:bound_injection5" & X "out:bound_injection5") & (!"out:reconfigure_spare_o0" & X "out:reconfigure_spare_o0")) &
+!((!"out:bound_injection5" & X "out:bound_injection5") & (!"out:bypass_fault_o1" & X "out:bypass_fault_o1")) &
 !((!"out:bound_injection5" & X "out:bound_injection5") & (!"out:reconfigure_spare_o1" & X "out:reconfigure_spare_o1")) &
-!((!"out:revoke_grant5" & X "out:revoke_grant5") & (!"out:bypass_faulty_block5" & X "out:bypass_faulty_block5")) &
+!((!"out:revoke_grant5" & X "out:revoke_grant5") & (!"out:bypass_fault_o0" & X "out:bypass_fault_o0")) &
 !((!"out:revoke_grant5" & X "out:revoke_grant5") & (!"out:reconfigure_spare_o0" & X "out:reconfigure_spare_o0")) &
+!((!"out:revoke_grant5" & X "out:revoke_grant5") & (!"out:bypass_fault_o1" & X "out:bypass_fault_o1")) &
 !((!"out:revoke_grant5" & X "out:revoke_grant5") & (!"out:reconfigure_spare_o1" & X "out:reconfigure_spare_o1")) &
-!((!"out:bypass_faulty_block5" & X "out:bypass_faulty_block5") & (!"out:reconfigure_spare_o0" & X "out:reconfigure_spare_o0")) &
-!((!"out:bypass_faulty_block5" & X "out:bypass_faulty_block5") & (!"out:reconfigure_spare_o1" & X "out:reconfigure_spare_o1")) &
-!((!"out:reconfigure_spare_o0" & X "out:reconfigure_spare_o0") & (!"out:reconfigure_spare_o1" & X "out:reconfigure_spare_o1")) ;
+!((!"out:bypass_fault_o0" & X "out:bypass_fault_o0") & (!"out:reconfigure_spare_o0" & X "out:reconfigure_spare_o0")) &
+!((!"out:bypass_fault_o0" & X "out:bypass_fault_o0") & (!"out:bypass_fault_o1" & X "out:bypass_fault_o1")) &
+!((!"out:bypass_fault_o0" & X "out:bypass_fault_o0") & (!"out:reconfigure_spare_o1" & X "out:reconfigure_spare_o1")) &
+!((!"out:reconfigure_spare_o0" & X "out:reconfigure_spare_o0") & (!"out:bypass_fault_o1" & X "out:bypass_fault_o1")) &
+!((!"out:reconfigure_spare_o0" & X "out:reconfigure_spare_o0") & (!"out:reconfigure_spare_o1" & X "out:reconfigure_spare_o1")) &
+!((!"out:bypass_fault_o1" & X "out:bypass_fault_o1") & (!"out:reconfigure_spare_o1" & X "out:reconfigure_spare_o1")) ;
 ((G F "in:high_priority_preempt0") -> (F G "out:bound_injection0")) &
 ((G F "in:vc_timeout0_rd") -> (F G "out:bound_injection0")) &
 ((G F "in:vc_timeout0_wr") -> (F G "out:bound_injection0")) &
@@ -267,8 +174,6 @@
 ((G F "in:vc_timeout1_ll") -> (F G "out:bound_injection0")) &
 ((G F "in:hready_stall_violation0") -> (F G "out:revoke_grant0")) &
 ((G F "in:unauthorized_access0") -> (F G "out:revoke_grant0")) &
-((G F "in:bist_fault_detected0" & G F "in:spare_resource_available_o0") -> (F G "out:bypass_faulty_block0" & F G "out:reconfigure_spare_o0")) &
-((G F "in:bist_fault_detected0" & G F "in:spare_resource_available_o1") -> (F G "out:bypass_faulty_block0" & F G "out:reconfigure_spare_o1")) &
 ((G F "in:ecc_uncorrectable_error0" & G F "in:flow_control_violation0") -> (F G "out:revoke_grant0" & F G "out:bound_injection0")) &
 ((G F "in:high_priority_preempt1") -> (F G "out:bound_injection1")) &
 ((G F "in:vc_timeout0_rd") -> (F G "out:bound_injection1")) &
@@ -279,8 +184,6 @@
 ((G F "in:vc_timeout1_ll") -> (F G "out:bound_injection1")) &
 ((G F "in:hready_stall_violation1") -> (F G "out:revoke_grant1")) &
 ((G F "in:unauthorized_access1") -> (F G "out:revoke_grant1")) &
-((G F "in:bist_fault_detected1" & G F "in:spare_resource_available_o0") -> (F G "out:bypass_faulty_block1" & F G "out:reconfigure_spare_o0")) &
-((G F "in:bist_fault_detected1" & G F "in:spare_resource_available_o1") -> (F G "out:bypass_faulty_block1" & F G "out:reconfigure_spare_o1")) &
 ((G F "in:ecc_uncorrectable_error1" & G F "in:flow_control_violation1") -> (F G "out:revoke_grant1" & F G "out:bound_injection1")) &
 ((G F "in:high_priority_preempt2") -> (F G "out:bound_injection2")) &
 ((G F "in:vc_timeout0_rd") -> (F G "out:bound_injection2")) &
@@ -291,8 +194,6 @@
 ((G F "in:vc_timeout1_ll") -> (F G "out:bound_injection2")) &
 ((G F "in:hready_stall_violation2") -> (F G "out:revoke_grant2")) &
 ((G F "in:unauthorized_access2") -> (F G "out:revoke_grant2")) &
-((G F "in:bist_fault_detected2" & G F "in:spare_resource_available_o0") -> (F G "out:bypass_faulty_block2" & F G "out:reconfigure_spare_o0")) &
-((G F "in:bist_fault_detected2" & G F "in:spare_resource_available_o1") -> (F G "out:bypass_faulty_block2" & F G "out:reconfigure_spare_o1")) &
 ((G F "in:ecc_uncorrectable_error2" & G F "in:flow_control_violation2") -> (F G "out:revoke_grant2" & F G "out:bound_injection2")) &
 ((G F "in:high_priority_preempt3") -> (F G "out:bound_injection3")) &
 ((G F "in:vc_timeout0_rd") -> (F G "out:bound_injection3")) &
@@ -303,8 +204,6 @@
 ((G F "in:vc_timeout1_ll") -> (F G "out:bound_injection3")) &
 ((G F "in:hready_stall_violation3") -> (F G "out:revoke_grant3")) &
 ((G F "in:unauthorized_access3") -> (F G "out:revoke_grant3")) &
-((G F "in:bist_fault_detected3" & G F "in:spare_resource_available_o0") -> (F G "out:bypass_faulty_block3" & F G "out:reconfigure_spare_o0")) &
-((G F "in:bist_fault_detected3" & G F "in:spare_resource_available_o1") -> (F G "out:bypass_faulty_block3" & F G "out:reconfigure_spare_o1")) &
 ((G F "in:ecc_uncorrectable_error3" & G F "in:flow_control_violation3") -> (F G "out:revoke_grant3" & F G "out:bound_injection3")) &
 ((G F "in:high_priority_preempt4") -> (F G "out:bound_injection4")) &
 ((G F "in:vc_timeout0_rd") -> (F G "out:bound_injection4")) &
@@ -315,8 +214,6 @@
 ((G F "in:vc_timeout1_ll") -> (F G "out:bound_injection4")) &
 ((G F "in:hready_stall_violation4") -> (F G "out:revoke_grant4")) &
 ((G F "in:unauthorized_access4") -> (F G "out:revoke_grant4")) &
-((G F "in:bist_fault_detected4" & G F "in:spare_resource_available_o0") -> (F G "out:bypass_faulty_block4" & F G "out:reconfigure_spare_o0")) &
-((G F "in:bist_fault_detected4" & G F "in:spare_resource_available_o1") -> (F G "out:bypass_faulty_block4" & F G "out:reconfigure_spare_o1")) &
 ((G F "in:ecc_uncorrectable_error4" & G F "in:flow_control_violation4") -> (F G "out:revoke_grant4" & F G "out:bound_injection4")) &
 ((G F "in:high_priority_preempt5") -> (F G "out:bound_injection5")) &
 ((G F "in:vc_timeout0_rd") -> (F G "out:bound_injection5")) &
@@ -327,6 +224,6 @@
 ((G F "in:vc_timeout1_ll") -> (F G "out:bound_injection5")) &
 ((G F "in:hready_stall_violation5") -> (F G "out:revoke_grant5")) &
 ((G F "in:unauthorized_access5") -> (F G "out:revoke_grant5")) &
-((G F "in:bist_fault_detected5" & G F "in:spare_resource_available_o0") -> (F G "out:bypass_faulty_block5" & F G "out:reconfigure_spare_o0")) &
-((G F "in:bist_fault_detected5" & G F "in:spare_resource_available_o1") -> (F G "out:bypass_faulty_block5" & F G "out:reconfigure_spare_o1")) &
-((G F "in:ecc_uncorrectable_error5" & G F "in:flow_control_violation5") -> (F G "out:revoke_grant5" & F G "out:bound_injection5"))
+((G F "in:ecc_uncorrectable_error5" & G F "in:flow_control_violation5") -> (F G "out:revoke_grant5" & F G "out:bound_injection5")) &
+((G F "in:bist_fault_detected_o0" & G F "in:spare_resource_available_o0") -> (F G "out:bypass_fault_o0" & F G "out:reconfigure_spare_o0")) &
+((G F "in:bist_fault_detected_o1" & G F "in:spare_resource_available_o1") -> (F G "out:bypass_fault_o1" & F G "out:reconfigure_spare_o1"))

@@ -201,12 +201,14 @@ for i in range(n):
         bp = pair("backpressure_data", i, j)
         for vc in VCS:
             cr = inv_vc("credit_received", j, vc)
-            # 2.1 Pipelined Deterministic Routing
+            rl = outv_vc("release_lock", j, vc)
+            # 2.1 Wormhole Progress: persistent routable traffic -> release lock
             impls.append("((F G (" + fr + " & " + de + " & " + cr +
-                         ")) -> (G F " + fp + " & G F " + tf + "))")
-        # 2.2 Sustained RDC Backpressure Protection (not VC-specific)
-        impls.append("((F G (" + fr + " & " + de + " & " + ra +
-                     ")) -> (G F " + bp + "))")
+                         ")) -> (G F " + rl + "))")
+            bl = inv_vc("blocked", j, vc)
+            # 2.2 Congestion Backpressure: persistent congestion -> backpressure
+            impls.append("((F G (" + bl + " & " + fr + " & " + de +
+                         ")) -> (G F " + bp + "))")
 
 # 2.3: per input port
 for i in range(n):

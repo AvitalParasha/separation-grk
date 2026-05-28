@@ -84,14 +84,18 @@
 ((!"out:nack_response0" & !"out:nack_cooldown0") -> !X "out:nack_cooldown0") &
 !("out:nack_response0" & "out:forward_packet0_0") &
 !("out:nack_response0" & "out:forward_packet0_1") ;
-((F G ("in:flit_ready0" & "in:destined0_0" & "in:credit_received0_rd")) -> (G F "out:forward_packet0_0" & G F "out:transmit_flit0")) &
-((F G ("in:flit_ready0" & "in:destined0_0" & "in:credit_received0_wr")) -> (G F "out:forward_packet0_0" & G F "out:transmit_flit0")) &
-((F G ("in:flit_ready0" & "in:destined0_0" & "in:credit_received0_ll")) -> (G F "out:forward_packet0_0" & G F "out:transmit_flit0")) &
-((F G ("in:flit_ready0" & "in:destined0_0" & "in:reset_active0")) -> (G F "out:backpressure_data0_0")) &
-((F G ("in:flit_ready0" & "in:destined0_1" & "in:credit_received1_rd")) -> (G F "out:forward_packet0_1" & G F "out:transmit_flit1")) &
-((F G ("in:flit_ready0" & "in:destined0_1" & "in:credit_received1_wr")) -> (G F "out:forward_packet0_1" & G F "out:transmit_flit1")) &
-((F G ("in:flit_ready0" & "in:destined0_1" & "in:credit_received1_ll")) -> (G F "out:forward_packet0_1" & G F "out:transmit_flit1")) &
-((F G ("in:flit_ready0" & "in:destined0_1" & "in:reset_active1")) -> (G F "out:backpressure_data0_1")) &
+((F G ("in:flit_ready0" & "in:destined0_0" & "in:credit_received0_rd")) -> (G F "out:release_lock0_rd")) &
+((F G ("in:blocked0_rd" & "in:flit_ready0" & "in:destined0_0")) -> (G F "out:backpressure_data0_0")) &
+((F G ("in:flit_ready0" & "in:destined0_0" & "in:credit_received0_wr")) -> (G F "out:release_lock0_wr")) &
+((F G ("in:blocked0_wr" & "in:flit_ready0" & "in:destined0_0")) -> (G F "out:backpressure_data0_0")) &
+((F G ("in:flit_ready0" & "in:destined0_0" & "in:credit_received0_ll")) -> (G F "out:release_lock0_ll")) &
+((F G ("in:blocked0_ll" & "in:flit_ready0" & "in:destined0_0")) -> (G F "out:backpressure_data0_0")) &
+((F G ("in:flit_ready0" & "in:destined0_1" & "in:credit_received1_rd")) -> (G F "out:release_lock1_rd")) &
+((F G ("in:blocked1_rd" & "in:flit_ready0" & "in:destined0_1")) -> (G F "out:backpressure_data0_1")) &
+((F G ("in:flit_ready0" & "in:destined0_1" & "in:credit_received1_wr")) -> (G F "out:release_lock1_wr")) &
+((F G ("in:blocked1_wr" & "in:flit_ready0" & "in:destined0_1")) -> (G F "out:backpressure_data0_1")) &
+((F G ("in:flit_ready0" & "in:destined0_1" & "in:credit_received1_ll")) -> (G F "out:release_lock1_ll")) &
+((F G ("in:blocked1_ll" & "in:flit_ready0" & "in:destined0_1")) -> (G F "out:backpressure_data0_1")) &
 ((F G ("in:flit_ready0" & "in:unauthorized_access0")) -> (G F "out:nack_response0")) &
 ((F G "in:blocked0_rd") -> (G F "out:transmit_flit0")) &
 ((F G "in:blocked0_wr") -> (G F "out:transmit_flit0")) &

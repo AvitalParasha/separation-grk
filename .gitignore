@@ -32,3 +32,6 @@ mix_explanation.md
 review_mix_review.md
 solutions.md
 benchmarks/Mixed/
+
+# Benchmark run artifacts
+benchmarks/results/results/

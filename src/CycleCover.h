@@ -2,6 +2,7 @@
 #define CYCLE_COVER_H
 
 #include <memory>
+#include <utility>
 #include <vector>
 
 #include "cuddObj.hh"
@@ -35,10 +36,35 @@ class CycleCover {
 	};
 
 	std::vector<ImplicationPredicates> predicates_;
+
+	// Shared artifacts computed once and consumed by both ComputeCoveredRegion
+	// and ComputeCycleStrategy, so the expensive fixpoints (the R2P alive region
+	// and the per-R2R reachability strategies) are not computed twice.
+	struct Artifacts {
+		bool has_r2p = false;
+		bool has_r2r = false;
+		// The R2P alive region (valid when has_r2p). bddZero otherwise.
+		CUDD::BDD alive;
+		// System transition/bipath relations restricted to the alive region
+		// (valid when has_r2p && has_r2r). bddZero otherwise.
+		CUDD::BDD restricted_transition;
+		CUDD::BDD restricted_bipath;
+		// Per-R2R reachability strategies computed within the alive restriction
+		// (when has_r2p && has_r2r), paired with the implication's index so the
+		// covered region can match each against predicates_[i]. Built in spec
+		// order, which is the order the cycle strategy merges them.
+		std::vector<std::pair<std::size_t, PathStrategy>> r2r_restricted_strategies;
+	};
+
+	Artifacts artifacts_;
 	CUDD::BDD covered_region_;
 	CycleStrategy cycle_strategy_;
 
 	std::vector<ImplicationPredicates> ComputeImplicationPredicates(
+	    const SeparationGrkSpec& spec,
+	    const SpaceConnectivity& connectivity) const;
+
+	Artifacts ComputeArtifacts(
 	    const SeparationGrkSpec& spec,
 	    const SpaceConnectivity& connectivity) const;
 

@@ -152,6 +152,10 @@ justice_implication: LEFT LEFT in_justices RIGHT IFTHEN LEFT out_justices RIGHT 
 | LEFT LEFT in_persistences RIGHT IFTHEN LEFT out_justices RIGHT RIGHT
 {
 	$$ = SGrk::SeparationGrkImplication(SGrk::ImplicationType::P2R, $3, $7);
+}
+| LEFT LEFT in_persistences RIGHT IFTHEN LEFT out_persistences RIGHT RIGHT
+{
+	$$ = SGrk::SeparationGrkImplication(SGrk::ImplicationType::P2P, $3, $7);
 };
 
 in_justices: justices { $$ = std::move($1); };

@@ -8,7 +8,7 @@
 
 namespace SGrk {
 
-enum class ImplicationType { R2R, R2P, P2R };
+enum class ImplicationType { R2R, R2P, P2R, P2P };
 
 class SeparationGrkImplication {
 	ImplicationType type_;

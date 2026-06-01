@@ -7,6 +7,7 @@
 
 #include "cuddObj.hh"
 
+#include "ImplicationProfile.h"
 #include "SeparationGrkPlayer.h"
 #include "SeparationGrkSolver.h"
 #include "SeparationGrkSpec.h"
@@ -118,19 +119,11 @@ int main(int argc, char* argv[]) {
 	
 	const SGrk::SeparationGrkSpec& spec = driver.spec;
 
-	const auto& implications = spec.JusticeImplications();
-	if (!implications.empty()) {
-		bool has_r2p = false, has_p2r = false;
-		for (std::size_t i = 0; i < implications.size(); ++i) {
-			if (implications[i].Type() == SGrk::ImplicationType::R2P) has_r2p = true;
-			if (implications[i].Type() == SGrk::ImplicationType::P2R) has_p2r = true;
-		}
-		if (has_p2r && has_r2p) {
-			std::cerr << "Error: P2R (FG->GF) + R2P (GF->FG) mixed implications "
-			          << "are not supported yet."
-			          << std::endl;
-			return 1;
-		}
+	try {
+		SGrk::ImplicationProfile::Classify(spec);
+	} catch (const std::runtime_error& e) {
+		std::cerr << "Error: " << e.what() << std::endl;
+		return 1;
 	}
 
 	SGrk::SeparationGrkSolver solver(mgr, vars, spec);

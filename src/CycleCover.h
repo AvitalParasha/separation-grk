@@ -17,8 +17,30 @@ namespace SGrk {
 class CycleCover {
 	std::shared_ptr<CUDD::Cudd> mgr_;
 	std::shared_ptr<VarMgr> vars_;
+
+	// Per-implication satisfiability predicates, computed once and reused by
+	// both ComputeCoveredRegion and ComputeCycleStrategy. Indexed in the same
+	// order as spec.JusticeImplications().
+	struct ImplicationPredicates {
+		// env-side: can the environment cycle through this implication's
+		// assumptions? (For P2R, the assumptions are first closed into an alive
+		// region.)
+		CUDD::BDD can_satisfy_assumptions;
+		// sys-side: can the system cycle through all of this implication's
+		// guarantees?
+		CUDD::BDD can_satisfy_guarantees;
+		// raw conjunction of this implication's guarantee formulas (used to
+		// build the R2P demanded region).
+		CUDD::BDD conjoined_guarantees;
+	};
+
+	std::vector<ImplicationPredicates> predicates_;
 	CUDD::BDD covered_region_;
 	CycleStrategy cycle_strategy_;
+
+	std::vector<ImplicationPredicates> ComputeImplicationPredicates(
+	    const SeparationGrkSpec& spec,
+	    const SpaceConnectivity& connectivity) const;
 
 	MemorylessStrategy ComputeReachabilityStrategy(
 	  const CUDD::BDD& transition_relation,

@@ -17,11 +17,9 @@ SeparationGrkSolver::SeparationGrkSolver(std::shared_ptr<CUDD::Cudd> mgr,
 std::optional<SeparationGrkStrategy> SeparationGrkSolver::Run() const {
 	CUDD::BDD initial_assumptions = spec_.InitialAssumptions();
 	CUDD::BDD initial_guarantees = spec_.InitialGuarantees();
-	CUDD::BDD initial_states = initial_assumptions & initial_guarantees;
-	
+
 	CUDD::BDD safety_assumptions = spec_.SafetyAssumptions();
 	CUDD::BDD safety_guarantees = spec_.SafetyGuarantees();
-	CUDD::BDD transition_relation = safety_assumptions & safety_guarantees;
 
 	SpaceConnectivity connectivity(vars_, initial_assumptions, initial_guarantees,
 	                               safety_assumptions, safety_guarantees);

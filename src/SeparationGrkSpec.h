@@ -64,7 +64,7 @@ class SeparationGrkSpec {
 	CUDD::BDD InitialGuarantees() const { return initial_guarantees_; }
 	CUDD::BDD SafetyAssumptions() const { return safety_assumptions_; }
 	CUDD::BDD SafetyGuarantees() const { return safety_guarantees_; }
-	const std::vector<SeparationGrkImplication> JusticeImplications() const {
+	const std::vector<SeparationGrkImplication>& JusticeImplications() const {
 		return justice_implications_;
 	}
 };

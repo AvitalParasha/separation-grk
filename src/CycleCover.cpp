@@ -10,6 +10,8 @@ CycleCover::CycleCover(std::shared_ptr<CUDD::Cudd> mgr,
                        const SpaceConnectivity& connectivity)
 	  : mgr_(std::move(mgr))
 	  , vars_(std::move(vars))
+	  , predicates_(ComputeImplicationPredicates(spec, connectivity))
+	  , artifacts_(ComputeArtifacts(spec, connectivity))
 	  , covered_region_(ComputeCoveredRegion(spec, connectivity))
 	  , cycle_strategy_(ComputeCycleStrategy(spec, connectivity)) {}
 
@@ -19,6 +21,100 @@ CUDD::BDD CycleCover::CoveredRegion() const {
 
 const CycleStrategy& CycleCover::Strategy() const {
 	return cycle_strategy_;
+}
+
+std::vector<CycleCover::ImplicationPredicates>
+CycleCover::ComputeImplicationPredicates(
+    const SeparationGrkSpec& spec,
+    const SpaceConnectivity& connectivity) const {
+	CUDD::BDD environment_bipath = connectivity.EnvironmentBipathRelation();
+	CUDD::BDD system_bipath = connectivity.SystemBipathRelation();
+
+	std::vector<ImplicationPredicates> predicates;
+
+	for (const auto& implication : spec.JusticeImplications()) {
+		ImplicationPredicates p;
+
+		// env-side: can the environment cycle through the assumptions?
+		// P2R assumptions are first closed into an alive region.
+		if (implication.Type() == ImplicationType::P2R) {
+			CUDD::BDD alive_env = ComputeAliveRegion(
+				spec.SafetyAssumptions(), implication.Assumptions(),
+				vars_->PrimedInputs());
+			p.can_satisfy_assumptions = HasCycle(environment_bipath, alive_env);
+		} else {
+			p.can_satisfy_assumptions = mgr_->bddOne();
+			for (const auto& assumption : implication.Assumptions()) {
+				p.can_satisfy_assumptions &=
+					HasCycle(environment_bipath, assumption);
+			}
+		}
+
+		// sys-side: can the system cycle through all the guarantees?
+		p.can_satisfy_guarantees = mgr_->bddOne();
+		for (const auto& guarantee : implication.Guarantees()) {
+			p.can_satisfy_guarantees &= HasCycle(system_bipath, guarantee);
+		}
+
+		// raw conjunction of the guarantee formulas (for the R2P demanded region)
+		p.conjoined_guarantees = mgr_->bddOne();
+		for (const auto& guarantee : implication.Guarantees()) {
+			p.conjoined_guarantees &= guarantee;
+		}
+
+		predicates.push_back(p);
+	}
+
+	return predicates;
+}
+
+CycleCover::Artifacts CycleCover::ComputeArtifacts(
+    const SeparationGrkSpec& spec,
+    const SpaceConnectivity& connectivity) const {
+	Artifacts a;
+	a.alive = mgr_->bddZero();
+	a.restricted_transition = mgr_->bddZero();
+	a.restricted_bipath = mgr_->bddZero();
+
+	const auto& implications = spec.JusticeImplications();
+	for (const auto& implication : implications) {
+		if (implication.Type() == ImplicationType::R2P) a.has_r2p = true;
+		if (implication.Type() == ImplicationType::R2R) a.has_r2r = true;
+	}
+
+	// The alive region (and everything derived from it) is only needed when R2P
+	// is present.
+	if (!a.has_r2p) {
+		return a;
+	}
+
+	// R2P alive region: shared by the covered region and the cycle strategy.
+	CUDD::BDD r2p_demanded = mgr_->bddOne();
+	for (std::size_t i = 0; i < implications.size(); ++i) {
+		if (implications[i].Type() != ImplicationType::R2P) continue;
+		r2p_demanded &= !predicates_[i].can_satisfy_assumptions |
+			predicates_[i].conjoined_guarantees;
+	}
+	a.alive = ComputeStateDependentAliveRegion(
+		spec.SafetyGuarantees(), r2p_demanded, vars_->PrimedOutputs());
+
+	// R2R + R2P: R2R goals must cycle within the alive region. Restrict the
+	// relations to alive and precompute the per-R2R reachability strategies once.
+	if (a.has_r2r) {
+		a.restricted_transition = spec.SafetyGuarantees() &
+			a.alive & vars_->OutputUnprimedToPrimed(a.alive);
+		a.restricted_bipath = connectivity.SystemBipathRelation() &
+			a.alive & vars_->OutputUnprimedToPrimed(a.alive);
+
+		for (std::size_t i = 0; i < implications.size(); ++i) {
+			if (implications[i].Type() != ImplicationType::R2R) continue;
+			a.r2r_restricted_strategies.emplace_back(
+				i, ComputePathStrategy(a.restricted_transition, a.restricted_bipath,
+				                       implications[i].Guarantees()));
+		}
+	}
+
+	return a;
 }
 
 MemorylessStrategy CycleCover::ComputeReachabilityStrategy(
@@ -82,56 +178,16 @@ CycleStrategy CycleCover::ComputeCycleStrategy(
 	CUDD::BDD transition_relation = spec.SafetyGuarantees();
 	CUDD::BDD bipath_relation = connectivity.SystemBipathRelation();
 
-	bool has_r2p = false;
-	bool has_r2r = false;
-	for (const auto& implication : spec.JusticeImplications()) {
-		if (implication.Type() == ImplicationType::R2P) has_r2p = true;
-		if (implication.Type() == ImplicationType::R2R) has_r2r = true;
-	}
-
-	if (has_r2p && has_r2r) {
-		// R2R + R2P: restricted cycling within alive region
-		CUDD::BDD r2p_demanded = mgr_->bddOne();
-		CUDD::BDD environment_bipath = connectivity.EnvironmentBipathRelation();
-
-		for (const auto& implication : spec.JusticeImplications()) {
-			if (implication.Type() != ImplicationType::R2P) continue;
-
-			CUDD::BDD can_satisfy_assumptions = mgr_->bddOne();
-			for (const auto& assumption : implication.Assumptions()) {
-				can_satisfy_assumptions &=
-					HasCycle(environment_bipath, assumption);
-			}
-
-			CUDD::BDD guarantee = mgr_->bddOne();
-			for (const auto& g : implication.Guarantees()) {
-				guarantee &= g;
-			}
-
-			r2p_demanded &= !can_satisfy_assumptions | guarantee;
-		}
-
-		CUDD::BDD alive = ComputeStateDependentAliveRegion(
-			spec.SafetyGuarantees(), r2p_demanded, vars_->PrimedOutputs());
-
-		CUDD::BDD restricted_transition = transition_relation &
-			alive & vars_->OutputUnprimedToPrimed(alive);
-		CUDD::BDD restricted_bipath = bipath_relation &
-			alive & vars_->OutputUnprimedToPrimed(alive);
-
+	if (artifacts_.has_r2p && artifacts_.has_r2r) {
+		// R2R + R2P: restricted cycling within the alive region.
 		MemorylessStrategy idle_strategy =
 			MemorylessStrategy::Determinize(mgr_, vars_,
-			                                restricted_transition & restricted_bipath);
+				artifacts_.restricted_transition & artifacts_.restricted_bipath);
 
 		CycleStrategy cycle_strategy(mgr_, vars_, idle_strategy);
 
-		for (const auto& implication : spec.JusticeImplications()) {
-			if (implication.Type() == ImplicationType::R2R) {
-				PathStrategy path_strategy = ComputePathStrategy(
-					restricted_transition, restricted_bipath,
-					implication.Guarantees());
-				cycle_strategy.Merge(path_strategy);
-			}
+		for (const auto& indexed_strategy : artifacts_.r2r_restricted_strategies) {
+			cycle_strategy.Merge(indexed_strategy.second);
 		}
 
 		return cycle_strategy;
@@ -144,48 +200,19 @@ CycleStrategy CycleCover::ComputeCycleStrategy(
 
 		CycleStrategy cycle_strategy(mgr_, vars_, idle_strategy);
 
-		bool has_r2p_impl = false;
-
 		for (const auto& implication : spec.JusticeImplications()) {
 			if (implication.Type() == ImplicationType::R2R ||
 			    implication.Type() == ImplicationType::P2R) {
 				PathStrategy path_strategy = ComputePathStrategy(
 					transition_relation, bipath_relation, implication.Guarantees());
 				cycle_strategy.Merge(path_strategy);
-			} else {
-				has_r2p_impl = true;
 			}
 		}
 
-		if (has_r2p_impl) {
-			CUDD::BDD r2p_demanded = mgr_->bddOne();
-			CUDD::BDD environment_bipath = connectivity.EnvironmentBipathRelation();
-
-			for (const auto& implication : spec.JusticeImplications()) {
-				if (implication.Type() != ImplicationType::R2P) continue;
-
-				CUDD::BDD can_satisfy_assumptions = mgr_->bddOne();
-				for (const auto& assumption : implication.Assumptions()) {
-					can_satisfy_assumptions &=
-						HasCycle(environment_bipath, assumption);
-				}
-
-				CUDD::BDD guarantee = mgr_->bddOne();
-				for (const auto& g : implication.Guarantees()) {
-					guarantee &= g;
-				}
-
-				r2p_demanded &= !can_satisfy_assumptions | guarantee;
-			}
-
-			CUDD::BDD alive = ComputeStateDependentAliveRegion(
-				spec.SafetyGuarantees(), r2p_demanded, vars_->PrimedOutputs());
-
-			if (!alive.IsZero()) {
-				PathStrategy path_strategy = ComputeR2PPathStrategy(
-					transition_relation, bipath_relation, alive);
-				cycle_strategy.Merge(path_strategy);
-			}
+		if (artifacts_.has_r2p && !artifacts_.alive.IsZero()) {
+			PathStrategy path_strategy = ComputeR2PPathStrategy(
+				transition_relation, bipath_relation, artifacts_.alive);
+			cycle_strategy.Merge(path_strategy);
 		}
 
 		return cycle_strategy;
@@ -272,8 +299,6 @@ CUDD::BDD CycleCover::ComputeCoveredRegion(
 		connectivity.ValidStates();
 	CUDD::BDD bipath_relation =
 		connectivity.BipathRelation();
-	CUDD::BDD environment_bipath_relation =
-		connectivity.EnvironmentBipathRelation();
 	CUDD::BDD system_bipath_relation =
 		connectivity.SystemBipathRelation();
 
@@ -283,72 +308,27 @@ CUDD::BDD CycleCover::ComputeCoveredRegion(
 
 	CUDD::BDD covered_region = cycle_states;
 
-	bool has_r2p = false;
-	bool has_r2r = false;
-	for (const auto& implication : spec.JusticeImplications()) {
-		if (implication.Type() == ImplicationType::R2P) has_r2p = true;
-		if (implication.Type() == ImplicationType::R2R) has_r2r = true;
-	}
+	const auto& implications = spec.JusticeImplications();
 
-	if (has_r2p && has_r2r) {
-		// R2R + R2P: R2R goals must be cycleable within alive
-
-		// Compute R2P alive region
-		CUDD::BDD r2p_demanded = mgr_->bddOne();
-		for (const auto& implication : spec.JusticeImplications()) {
-			if (implication.Type() != ImplicationType::R2P) continue;
-
-			CUDD::BDD can_satisfy_assumptions = mgr_->bddOne();
-			for (const auto& assumption : implication.Assumptions()) {
-				can_satisfy_assumptions &=
-					HasCycle(environment_bipath_relation, assumption);
-			}
-
-			CUDD::BDD guarantee = mgr_->bddOne();
-			for (const auto& g : implication.Guarantees()) {
-				guarantee &= g;
-			}
-
-			r2p_demanded &= !can_satisfy_assumptions | guarantee;
-		}
-
-		CUDD::BDD alive = ComputeStateDependentAliveRegion(
-			spec.SafetyGuarantees(), r2p_demanded, vars_->PrimedOutputs());
-
-		// Restrict transition and bipath to alive
-		CUDD::BDD restricted_transition = spec.SafetyGuarantees() &
-			alive & vars_->OutputUnprimedToPrimed(alive);
-		CUDD::BDD restricted_bipath = system_bipath_relation &
-			alive & vars_->OutputUnprimedToPrimed(alive);
-
-		// R2R implications: check guarantees within alive
-		for (const auto& implication : spec.JusticeImplications()) {
-			if (implication.Type() != ImplicationType::R2R) continue;
-
-			CUDD::BDD can_satisfy_assumptions = mgr_->bddOne();
-			for (const auto& assumption : implication.Assumptions()) {
-				can_satisfy_assumptions &=
-					HasCycle(environment_bipath_relation, assumption);
-			}
-
-			PathStrategy restricted_strategy = ComputePathStrategy(
-				restricted_transition, restricted_bipath, implication.Guarantees());
-			CUDD::BDD can_satisfy_guarantees = restricted_strategy.RealizableRegion();
-
-			covered_region &= !can_satisfy_assumptions | can_satisfy_guarantees;
+	if (artifacts_.has_r2p && artifacts_.has_r2r) {
+		// R2R + R2P: R2R goals must be cycleable within the alive region. Use the
+		// per-R2R reachability strategies precomputed in artifacts_.
+		for (const auto& indexed_strategy : artifacts_.r2r_restricted_strategies) {
+			std::size_t i = indexed_strategy.first;
+			CUDD::BDD can_satisfy_guarantees =
+				indexed_strategy.second.RealizableRegion();
+			covered_region &= !predicates_[i].can_satisfy_assumptions |
+				can_satisfy_guarantees;
 		}
 
 		// R2P clause: system must be able to reach alive
 		CUDD::BDD can_satisfy_r2p_assumptions = mgr_->bddOne();
-		for (const auto& implication : spec.JusticeImplications()) {
-			if (implication.Type() != ImplicationType::R2P) continue;
-			for (const auto& assumption : implication.Assumptions()) {
-				can_satisfy_r2p_assumptions &=
-					HasCycle(environment_bipath_relation, assumption);
-			}
+		for (std::size_t i = 0; i < implications.size(); ++i) {
+			if (implications[i].Type() != ImplicationType::R2P) continue;
+			can_satisfy_r2p_assumptions &= predicates_[i].can_satisfy_assumptions;
 		}
 		CUDD::BDD can_satisfy_r2p = vars_->Exists(vars_->PrimedOutputs(),
-			system_bipath_relation & vars_->OutputUnprimedToPrimed(alive));
+			system_bipath_relation & vars_->OutputUnprimedToPrimed(artifacts_.alive));
 		covered_region &= !can_satisfy_r2p_assumptions | can_satisfy_r2p;
 
 	} else {
@@ -356,60 +336,19 @@ CUDD::BDD CycleCover::ComputeCoveredRegion(
 
 		bool has_r2p_impl = false;
 
-		for (const auto& implication : spec.JusticeImplications()) {
-			if (implication.Type() == ImplicationType::R2P) {
+		for (std::size_t i = 0; i < implications.size(); ++i) {
+			if (implications[i].Type() == ImplicationType::R2P) {
 				has_r2p_impl = true;
 				continue;
 			}
 
-			CUDD::BDD can_satisfy_assumptions;
-
-			if (implication.Type() == ImplicationType::P2R) {
-				CUDD::BDD alive_env = ComputeAliveRegion(
-					spec.SafetyAssumptions(), implication.Assumptions(),
-					vars_->PrimedInputs());
-				can_satisfy_assumptions = HasCycle(environment_bipath_relation, alive_env);
-			} else {
-				can_satisfy_assumptions = mgr_->bddOne();
-				for (const auto& assumption : implication.Assumptions()) {
-					can_satisfy_assumptions &=
-						HasCycle(environment_bipath_relation, assumption);
-				}
-			}
-
-			CUDD::BDD can_satisfy_guarantees = mgr_->bddOne();
-			for (const auto& guarantee : implication.Guarantees()) {
-				can_satisfy_guarantees &=
-					HasCycle(system_bipath_relation, guarantee);
-			}
-
-			covered_region &= !can_satisfy_assumptions | can_satisfy_guarantees;
+			covered_region &= !predicates_[i].can_satisfy_assumptions |
+				predicates_[i].can_satisfy_guarantees;
 		}
 
 		if (has_r2p_impl) {
-			CUDD::BDD r2p_demanded = mgr_->bddOne();
-			for (const auto& implication : spec.JusticeImplications()) {
-				if (implication.Type() != ImplicationType::R2P) continue;
-
-				CUDD::BDD can_satisfy_assumptions = mgr_->bddOne();
-				for (const auto& assumption : implication.Assumptions()) {
-					can_satisfy_assumptions &=
-						HasCycle(environment_bipath_relation, assumption);
-				}
-
-				CUDD::BDD guarantee = mgr_->bddOne();
-				for (const auto& g : implication.Guarantees()) {
-					guarantee &= g;
-				}
-
-				r2p_demanded &= !can_satisfy_assumptions | guarantee;
-			}
-
-			CUDD::BDD alive = ComputeStateDependentAliveRegion(
-				spec.SafetyGuarantees(), r2p_demanded, vars_->PrimedOutputs());
-
 			CUDD::BDD can_satisfy_r2p = vars_->Exists(vars_->PrimedOutputs(),
-				system_bipath_relation & vars_->OutputUnprimedToPrimed(alive));
+				system_bipath_relation & vars_->OutputUnprimedToPrimed(artifacts_.alive));
 
 			covered_region &= can_satisfy_r2p;
 		}

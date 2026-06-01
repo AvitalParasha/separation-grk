@@ -60,10 +60,17 @@ class CycleCover {
 	CUDD::BDD covered_region_;
 	CycleStrategy cycle_strategy_;
 
+	// Builds the predicates_ table: walks the implications once and precomputes
+	// each implication's reusable satisfiability predicates (see
+	// ImplicationPredicates). Called once from the constructor.
 	std::vector<ImplicationPredicates> ComputeImplicationPredicates(
 	    const SeparationGrkSpec& spec,
 	    const SpaceConnectivity& connectivity) const;
 
+	// Builds the artifacts_ struct: the R2P alive region and the
+	// alive-restricted relations/strategies shared by ComputeCoveredRegion and
+	// ComputeCycleStrategy. Reads predicates_, so it must run after it. Called
+	// once from the constructor.
 	Artifacts ComputeArtifacts(
 	    const SeparationGrkSpec& spec,
 	    const SpaceConnectivity& connectivity) const;

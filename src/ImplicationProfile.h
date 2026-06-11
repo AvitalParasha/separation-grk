@@ -1,6 +1,7 @@
 #ifndef IMPLICATION_PROFILE_H
 #define IMPLICATION_PROFILE_H
 
+#include <cstddef>
 #include <vector>
 
 #include "SeparationGrkSpec.h"
@@ -13,20 +14,24 @@ namespace SGrk {
 enum class Combination { Empty, R2R, R2P, P2R, R2R_R2P, R2R_P2R };
 
 // Single owner of the implication-type support matrix: partitions a spec's
-// justice implications by type and names the resulting combination, rejecting
+// justice implications by type, names the resulting combination, and rejects
 // unsupported combinations with a clear message.
 //
-// The returned profile holds pointers into the spec's implication vector, so it
-// must not outlive the spec it was classified from.
+// Buckets are stored as INDICES into spec.JusticeImplications() (rather than
+// pointers) so a profile is a value type with no lifetime dependency on the
+// spec — safe to store, move, and pass by value. Consumers join an index
+// back to its implication via spec.JusticeImplications()[i].
 class ImplicationProfile {
-	std::vector<const SeparationGrkImplication*> r2r_;
-	std::vector<const SeparationGrkImplication*> r2p_;
-	std::vector<const SeparationGrkImplication*> p2r_;
+	std::vector<std::size_t> r2r_indices_;
+	std::vector<std::size_t> r2p_indices_;
+	std::vector<std::size_t> p2r_indices_;
+	std::vector<std::size_t> cycling_indices_;  // union of R2R + P2R in spec order
 	Combination combination_;
 
-	ImplicationProfile(std::vector<const SeparationGrkImplication*> r2r,
-	                   std::vector<const SeparationGrkImplication*> r2p,
-	                   std::vector<const SeparationGrkImplication*> p2r,
+	ImplicationProfile(std::vector<std::size_t> r2r,
+	                   std::vector<std::size_t> r2p,
+	                   std::vector<std::size_t> p2r,
+	                   std::vector<std::size_t> cycling,
 	                   Combination combination);
 
  public:
@@ -37,9 +42,17 @@ class ImplicationProfile {
 	static ImplicationProfile Classify(const SeparationGrkSpec& spec);
 
 	Combination Kind() const;
-	const std::vector<const SeparationGrkImplication*>& R2R() const;
-	const std::vector<const SeparationGrkImplication*>& R2P() const;
-	const std::vector<const SeparationGrkImplication*>& P2R() const;
+
+	// Indices of each implication type in spec.JusticeImplications(), preserved
+	// in spec order. Use as: `for (std::size_t i : profile.R2RIndices()) { ... }`.
+	const std::vector<std::size_t>& R2RIndices() const;
+	const std::vector<std::size_t>& R2PIndices() const;
+	const std::vector<std::size_t>& P2RIndices() const;
+
+	// Union of R2R and P2R indices in spec order — the implication types whose
+	// guarantee side is GF (cycle-through) rather than FG (stabilize). These
+	// are handled uniformly by ComputeCycleStrategy. Precomputed in Classify.
+	const std::vector<std::size_t>& CyclingIndices() const;
 };
 
 }

@@ -8,6 +8,7 @@
 #include "cuddObj.hh"
 
 #include "ImplicationProfile.h"
+#include "SeparationCheck.h"
 #include "SeparationGrkPlayer.h"
 #include "SeparationGrkSolver.h"
 #include "SeparationGrkSpec.h"
@@ -121,6 +122,7 @@ int main(int argc, char* argv[]) {
 
 	try {
 		SGrk::ImplicationProfile::Classify(spec);
+		SGrk::CheckSeparation(spec, *vars);
 	} catch (const std::runtime_error& e) {
 		std::cerr << "Error: " << e.what() << std::endl;
 		return 1;

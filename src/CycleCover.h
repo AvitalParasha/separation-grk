@@ -57,6 +57,17 @@ class CycleCover {
 	};
 
 	Artifacts artifacts_;
+	// IMPORTANT — DO NOT REORDER the four members above and below.
+	// C++ initializes members in DECLARATION order (in this class), NOT in
+	// the order written in the constructor's initializer list. Initialization
+	// dependencies:
+	//   artifacts_      reads predicates_     (must come after predicates_)
+	//   covered_region_ reads predicates_ and artifacts_
+	//   cycle_strategy_ reads predicates_ and artifacts_
+	// Reordering will silently produce wrong results — empty/default BDDs
+	// being read before they're built. The matching initializer-list order in
+	// CycleCover.cpp is only cosmetic; this declaration order is what the
+	// compiler actually obeys.
 	CUDD::BDD covered_region_;
 	CycleStrategy cycle_strategy_;
 

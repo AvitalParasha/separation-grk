@@ -8,6 +8,14 @@ CycleCover::CycleCover(std::shared_ptr<CUDD::Cudd> mgr,
                        std::shared_ptr<VarMgr> vars,
                        const SeparationGrkSpec& spec,
                        const SpaceConnectivity& connectivity)
+	  // The initializers below have data dependencies on each other:
+	  //   artifacts_      uses predicates_
+	  //   covered_region_ uses predicates_ and artifacts_
+	  //   cycle_strategy_ uses predicates_ and artifacts_
+	  // This is safe because C++ runs member initializers in DECLARATION order
+	  // (see CycleCover.h), and the declaration order matches the dependency
+	  // chain. The order written here is just for readability — if you change
+	  // it, do NOT also reorder the member declarations in the header.
 	  : mgr_(std::move(mgr))
 	  , vars_(std::move(vars))
 	  , predicates_(ComputeImplicationPredicates(spec, connectivity))
